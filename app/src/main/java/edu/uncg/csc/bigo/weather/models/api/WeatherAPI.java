@@ -30,13 +30,13 @@ public abstract class WeatherAPI extends JSONAPI {
 
 
     /**
-     * This method defines a way of getting the minutely weather conditions for a given coordinate.
-     * @param _location A LocationCoordinate of the location to get the minutely weather for
-     * @return A WeatherData instance containing the data for the minutely weather conditions
+     * This method defines a way of getting the daily weather conditions for a given coordinate.
+     * @param _location A LocationCoordinate of the location to get the daily weather for
+     * @return A WeatherData instance containing the data for the daily weather conditions
      * @throws Exception An exception of any arbitrary type that was thrown from the API sub-class
      *      based on its implementation
      */
-    public abstract WeatherData getMinutelyWeather(LocationCoordinate _location) throws Exception;
+    public abstract WeatherData getDailyWeather(LocationCoordinate _location) throws Exception;
 
 
     /**
@@ -50,11 +50,11 @@ public abstract class WeatherAPI extends JSONAPI {
 
 
     /**
-     * This method defines a way of getting the daily weather conditions for a given coordinate.
-     * @param _location A LocationCoordinate of the location to get the daily weather for
-     * @return A WeatherData instance containing the data for the daily weather conditions
+     * This method defines a way of getting the minutely weather conditions for a given coordinate.
+     * @param _location A LocationCoordinate of the location to get the minutely weather for
+     * @return A WeatherData instance containing the data for the minutely weather conditions
      * @throws Exception An exception of any arbitrary type that was thrown from the API sub-class
      *      based on its implementation
      */
-    public abstract WeatherData getDailyWeather(LocationCoordinate _location) throws Exception;
+    public abstract WeatherData getMinutelyWeather(LocationCoordinate _location) throws Exception;
 }

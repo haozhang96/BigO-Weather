@@ -185,4 +185,47 @@ public class WeatherData {
     public Double getWindSpeed() {
         return this.windSpeed;
     }
+
+
+    @Override
+    public String toString() {
+        return String.format(
+                "WeatherData[%s] {\n" +
+                    "\tApparentTemperature: %s\n" +
+                    "\tCloudCover: %s\n" +
+                    "\tDewPoint: %s\n" +
+                    "\tHumidity: %s\n" +
+                    "\tLocation: %s\n" +
+                    "\tNearestStormDistance: %s\n" +
+                    "\tOzone: %s\n" +
+                    "\tPrecipitationIntensity: %s\n" +
+                    "\tPrecipitationProbability: %s\n" +
+                    "\tPressure: %s\n" +
+                    "\tSummary: %s\n" +
+                    "\tTemperature: %s\n" +
+                    "\tUVIndex: %s\n" +
+                    "\tVisibility: %s\n" +
+                    "\tWindGust: %s\n" +
+                    "\tWindSpeed: %s\n" +
+                "}",
+
+                this.time,
+                this.apparentTemperature,
+                this.cloudCover,
+                this.dewPoint,
+                this.humidity,
+                this.location,
+                this.nearestStormDistance,
+                this.ozone,
+                this.precipitationIntensity,
+                this.precipitationProbability,
+                this.pressure,
+                this.summary,
+                this.temperature,
+                this.uvIndex,
+                this.visibility,
+                this.windGust,
+                this.windSpeed
+        );
+    }
 }
