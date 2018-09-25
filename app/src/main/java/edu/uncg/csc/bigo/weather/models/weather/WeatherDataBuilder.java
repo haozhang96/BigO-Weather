@@ -155,9 +155,9 @@ public final class WeatherDataBuilder {
             throw new IllegalStateException("The \"time\" field has not been set!");
         } else if (this.location == null) {
             throw new IllegalStateException("The \"location\" field has not been set!");
-        } else if (this.temperature == null) {
+        }/* else if (this.temperature == null) {
             throw new IllegalStateException("The \"temperature\" field has not been set!");
-        }
+        }*/
 
         // Return a new immutable WeatherData object (hopefully now you'll know why this is needed).
         return new WeatherData(

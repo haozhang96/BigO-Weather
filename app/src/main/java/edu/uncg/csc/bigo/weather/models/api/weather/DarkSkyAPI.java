@@ -1,4 +1,5 @@
 package edu.uncg.csc.bigo.weather.models.api.weather;
+
 /**
  * ?
  *
@@ -18,56 +19,22 @@ import org.json.JSONObject;
 
 
 public final class DarkSkyAPI extends WeatherAPI {
-    private enum WeatherInterval { CURRENTLY, MINUTELY, HOURLY, DAILY }
-
     /**
-     * This constructs
+     * This constructs an instance of DarkSkyAPI with a given API key.
      * @param _apiKey The API key to the Dark Sky API service
      */
     public DarkSkyAPI(String _apiKey) {
         super(String.format("https://api.darksky.net/forecast/%s/%%f,%%f", _apiKey));
     }
 
+
     public WeatherData getCurrentWeather(LocationCoordinate _location)
             throws IOException, JSONException
     {
-        return this.getWeather(WeatherInterval.CURRENTLY, _location);
-    }
-
-    public WeatherData getMinutelyWeather(LocationCoordinate _location)
-            throws IOException, JSONException
-    {
-        return this.getWeather(WeatherInterval.MINUTELY, _location);
-    }
-
-    public WeatherData getHourlyWeather(LocationCoordinate _location)
-            throws IOException, JSONException
-    {
-        return this.getWeather(WeatherInterval.HOURLY, _location);
-    }
-
-    public WeatherData getDailyWeather(LocationCoordinate _location)
-            throws IOException, JSONException
-    {
-        return this.getWeather(WeatherInterval.DAILY, _location);
-    }
-
-    private WeatherData getWeather(WeatherInterval _weatherInterval, LocationCoordinate _location)
-            throws IOException, JSONException
-    {
-        // Convert the weather interval enum value to a string we can use with the JSON object.
-        String weatherInterval;
-        switch (_weatherInterval) {
-            default: case CURRENTLY: weatherInterval = "currently"; break;
-            case MINUTELY: weatherInterval = "minutely"; break;
-            case HOURLY: weatherInterval = "hourly"; break;
-            case DAILY: weatherInterval = "daily"; break;
-        }
-
-        // Get the current weather data from the API at the current location.
+        // Get the current weather data from the API at the given location.
         JSONObject apiResponse = this.getResponse(
-                _location.getX(), _location.getY()
-        ).getJSONObject(weatherInterval);
+                _location.getLatitude(), _location.getLongitude()
+        ).getJSONObject("currently");
 
         // Use the WeatherDataBuilder class to build a WeatherData object.
         return new WeatherDataBuilder()
@@ -88,6 +55,60 @@ public final class DarkSkyAPI extends WeatherAPI {
                 .setVisibility(apiResponse.getDouble("visibility"))
                 .setWindGust(apiResponse.getDouble("windGust"))
                 .setWindSpeed(apiResponse.getDouble("windSpeed"))
+                .build();
+    }
+
+
+    public WeatherData getMinutelyWeather(LocationCoordinate _location)
+            throws IOException, JSONException
+    {
+        // Get the minutely weather data from the API at the given location.
+        JSONObject apiResponse = this.getResponse(
+                _location.getLatitude(), _location.getLongitude()
+        ).getJSONObject("minutely").getJSONArray("data").getJSONObject(0);
+
+        // Use the WeatherDataBuilder class to build a WeatherData object.
+        return new WeatherDataBuilder()
+                .setLocation(_location)
+                // .setSummary(apiResponse.getString("summary"))
+                // .setTemperature(apiResponse.getDouble("temperature"))
+                .setTime(new Date(apiResponse.getLong("time") * 1000))
+                .build();
+    }
+
+
+    public WeatherData getHourlyWeather(LocationCoordinate _location)
+            throws IOException, JSONException
+    {
+        // Get the hourly weather data from the API at the given location.
+        JSONObject apiResponse = this.getResponse(
+                _location.getLatitude(), _location.getLongitude()
+        ).getJSONObject("hourly").getJSONArray("data").getJSONObject(0);
+
+        // Use the WeatherDataBuilder class to build a WeatherData object.
+        return new WeatherDataBuilder()
+                .setLocation(_location)
+                .setSummary(apiResponse.getString("summary"))
+                // .setTemperature(apiResponse.getDouble("temperature"))
+                .setTime(new Date(apiResponse.getLong("time") * 1000))
+                .build();
+    }
+
+
+    public WeatherData getDailyWeather(LocationCoordinate _location)
+            throws IOException, JSONException
+    {
+        // Get the daily weather data from the API at the given location.
+        JSONObject apiResponse = this.getResponse(
+                _location.getLatitude(), _location.getLongitude()
+        ).getJSONObject("daily").getJSONArray("data").getJSONObject(0);
+
+        // Use the WeatherDataBuilder class to build a WeatherData object.
+        return new WeatherDataBuilder()
+                .setLocation(_location)
+                .setSummary(apiResponse.getString("summary"))
+                // .setTemperature(apiResponse.getDouble("temperature"))
+                .setTime(new Date(apiResponse.getLong("time") * 1000))
                 .build();
     }
 }
