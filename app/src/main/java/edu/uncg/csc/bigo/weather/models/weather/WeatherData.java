@@ -8,6 +8,7 @@ package edu.uncg.csc.bigo.weather.models.weather;
  */
 
 
+import edu.uncg.csc.bigo.weather.models.metrics.*;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 import java.util.Date;
 
@@ -17,65 +18,65 @@ public class WeatherData {
      * All the properties of WeatherData objects are defined below.
      * Boxed values are used over primitives because some fields are optional.
      */
-    private final Double apparentTemperature;
-    private final Double cloudCover;
-    private final Double dewPoint;
-    private final Double humidity;
+    private final Temperature apparentTemperature;
+    private final Amount cloudCover;
+    private final Temperature dewPoint;
+    private final Amount humidity;
     private final LocationCoordinate location;
-    private final Double nearestStormDistance;
-    private final Double ozone;
-    private final Double precipitationIntensity;
-    private final Double precipitationProbability;
-    private final Double pressure;
+    private final Distance nearestStormDistance;
+    private final ColumnarDensity ozone;
+    private final Speed precipitationIntensity;
+    private final Amount precipitationProbability;
+    private final Pressure pressure;
     private final String summary;
-    private final Double temperature;
+    private final Temperature temperature;
     private final Date time;
-    private final Double uvIndex;
-    private final Double visibility;
-    private final Double windGust;
-    private final Double windSpeed;
+    private final Integer uvIndex;
+    private final Distance visibility;
+    private final Speed windGust;
+    private final Speed windSpeed;
 
 
     /**
      * This constructs an object containing weather data.
      * Most of the logic are actually defined in the WeatherDataBuilder object. Check there for more
      *     details.
-     * @param _apparentTemperature The apparent temperature in degrees Fahrenheit
+     * @param _apparentTemperature The apparent temperature
      * @param _cloudCover The cloud cover in percent ratio
-     * @param _dewPoint The dew point in degrees Fahrenheit
+     * @param _dewPoint The dew point
      * @param _humidity The humidity in percent ratio
      * @param _location The location
-     * @param _nearestStormDistance The nearest storm distance in ?
-     * @param _ozone The ozone quantity in ?
-     * @param _precipitationIntensity The precipitation intensity in ?
-     * @param _precipitationProbability The precipitation probability in ?
-     * @param _pressure The pressure in ?
+     * @param _nearestStormDistance The nearest storm distance
+     * @param _ozone The ozone columnar density
+     * @param _precipitationIntensity The precipitation intensity
+     * @param _precipitationProbability The precipitation probability
+     * @param _pressure The pressure
      * @param _summary The summary message indicating the general conditions in plain English
-     * @param _temperature The temperature in degrees Fahrenheit
+     * @param _temperature The temperature
      * @param _time The time when the weather data was generated
-     * @param _uvIndex The ultraviolet index in ?
-     * @param _visibility The visibility in ?
-     * @param _windGust The wind gust in miles per hour
-     * @param _windSpeed The wind speed in miles per hour
+     * @param _uvIndex The ultraviolet index
+     * @param _visibility The visibility
+     * @param _windGust The wind gust
+     * @param _windSpeed The wind speed
      */
     protected WeatherData(
-            Double _apparentTemperature,
-            Double _cloudCover,
-            Double _dewPoint,
-            Double _humidity,
+            Temperature _apparentTemperature,
+            Amount _cloudCover,
+            Temperature _dewPoint,
+            Amount _humidity,
             LocationCoordinate _location,
-            Double _nearestStormDistance,
-            Double _ozone,
-            Double _precipitationIntensity,
-            Double _precipitationProbability,
-            Double _pressure,
+            Distance _nearestStormDistance,
+            ColumnarDensity _ozone,
+            Speed _precipitationIntensity,
+            Amount _precipitationProbability,
+            Pressure _pressure,
             String _summary,
-            Double _temperature,
+            Temperature _temperature,
             Date _time,
-            Double _uvIndex,
-            Double _visibility,
-            Double _windGust,
-            Double _windSpeed
+            Integer _uvIndex,
+            Distance _visibility,
+            Speed _windGust,
+            Speed _windSpeed
     ) {
         this.apparentTemperature = _apparentTemperature;
         this.cloudCover = _cloudCover;
@@ -102,22 +103,22 @@ public class WeatherData {
      */
 
 
-    public Double getApparentTemperature() {
+    public Temperature getApparentTemperature() {
         return this.apparentTemperature;
     }
 
 
-    public Double getCloudCover() {
+    public Amount getCloudCover() {
         return this.cloudCover;
     }
 
 
-    public Double getDewPoint() {
+    public Temperature getDewPoint() {
         return this.dewPoint;
     }
 
 
-    public Double getHumidity() {
+    public Amount getHumidity() {
         return this.humidity;
     }
 
@@ -127,27 +128,27 @@ public class WeatherData {
     }
 
 
-    public Double getNearestStormDistance() {
+    public Distance getNearestStormDistance() {
         return this.nearestStormDistance;
     }
 
 
-    public Double getOzone() {
+    public ColumnarDensity getOzone() {
         return this.ozone;
     }
 
 
-    public Double getPrecipitationIntensity() {
+    public Speed getPrecipitationIntensity() {
         return this.precipitationIntensity;
     }
 
 
-    public Double getPrecipitationProbability() {
+    public Amount getPrecipitationProbability() {
         return this.precipitationProbability;
     }
 
 
-    public Double getPressure() {
+    public Pressure getPressure() {
         return this.pressure;
     }
 
@@ -157,7 +158,7 @@ public class WeatherData {
     }
 
 
-    public Double getTemperature() {
+    public Temperature getTemperature() {
         return this.temperature;
     }
 
@@ -167,22 +168,22 @@ public class WeatherData {
     }
 
 
-    public Double getUVIndex() {
+    public Integer getUVIndex() {
         return this.uvIndex;
     }
 
 
-    public Double getVisibility() {
+    public Distance getVisibility() {
         return this.visibility;
     }
 
 
-    public Double getWindGust() {
+    public Speed getWindGust() {
         return this.windGust;
     }
 
 
-    public Double getWindSpeed() {
+    public Speed getWindSpeed() {
         return this.windSpeed;
     }
 

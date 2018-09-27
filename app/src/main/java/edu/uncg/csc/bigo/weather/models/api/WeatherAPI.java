@@ -1,5 +1,4 @@
 package edu.uncg.csc.bigo.weather.models.api;
-
 /**
  * This abstract class describes a JSON-based weather-related REST API.
  * It is only to be used by API classes extending it.

@@ -1,14 +1,15 @@
 package edu.uncg.csc.bigo.weather.models.api.weather;
-
 /**
  * This class defines the Dark Sky weather API.
  *
- * @updated 2018/09/25
+ * @updated 2018/09/27
  * @authors John Isaac Wilkinson, Harman Bains, Hao Zhang
  */
 
 
 import edu.uncg.csc.bigo.weather.models.api.WeatherAPI;
+import edu.uncg.csc.bigo.weather.models.metrics.*;
+import edu.uncg.csc.bigo.weather.models.metrics.units.*;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherData;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherDataBuilder;
@@ -51,21 +52,21 @@ public final class DarkSkyAPI extends WeatherAPI {
 
 
     /**
-     * This method returns the minutely weather conditions for a given coordinate.
-     * @param _location A LocationCoordinate of the location to get the minutely weather for
-     * @return A WeatherData instance containing the data for the minutely weather conditions
+     * This method returns the daily weather conditions for a given coordinate.
+     * @param _location A LocationCoordinate of the location to get the daily weather for
+     * @return A WeatherData instance containing the data for the daily weather conditions
      * @throws IOException An exception indicating a problem with the connection to the API endpoint
      * @throws JSONException An exception indicating a problem with parsing the API endpoint's
      *      response as a JSONObject
      */
     @Override
-    public WeatherData getMinutelyWeather(LocationCoordinate _location)
+    public WeatherData getDailyWeather(LocationCoordinate _location)
             throws IOException, JSONException
     {
-        // Get the minutely weather data from the API at the given location.
+        // Get the daily weather data from the API at the given location.
         JSONObject apiResponse = this.getResponse(
                 _location.getLatitude(), _location.getLongitude()
-        ).getJSONObject("minutely").getJSONArray("data").getJSONObject(0);
+        ).getJSONObject("daily").getJSONArray("data").getJSONObject(0);
 
         // Extract the weather data using the helper method.
         return this.extractWeatherData(apiResponse, _location);
@@ -95,21 +96,21 @@ public final class DarkSkyAPI extends WeatherAPI {
 
 
     /**
-     * This method returns the daily weather conditions for a given coordinate.
-     * @param _location A LocationCoordinate of the location to get the daily weather for
-     * @return A WeatherData instance containing the data for the daily weather conditions
+     * This method returns the minutely weather conditions for a given coordinate.
+     * @param _location A LocationCoordinate of the location to get the minutely weather for
+     * @return A WeatherData instance containing the data for the minutely weather conditions
      * @throws IOException An exception indicating a problem with the connection to the API endpoint
      * @throws JSONException An exception indicating a problem with parsing the API endpoint's
      *      response as a JSONObject
      */
     @Override
-    public WeatherData getDailyWeather(LocationCoordinate _location)
+    public WeatherData getMinutelyWeather(LocationCoordinate _location)
             throws IOException, JSONException
     {
-        // Get the daily weather data from the API at the given location.
+        // Get the minutely weather data from the API at the given location.
         JSONObject apiResponse = this.getResponse(
                 _location.getLatitude(), _location.getLongitude()
-        ).getJSONObject("daily").getJSONArray("data").getJSONObject(0);
+        ).getJSONObject("minutely").getJSONArray("data").getJSONObject(0);
 
         // Extract the weather data using the helper method.
         return this.extractWeatherData(apiResponse, _location);
@@ -126,23 +127,62 @@ public final class DarkSkyAPI extends WeatherAPI {
     private WeatherData extractWeatherData(JSONObject _dataPoint, LocationCoordinate _location) {
         // Use the WeatherDataBuilder class to build a WeatherData object.
         return new WeatherDataBuilder()
-                .setApparentTemperature(_dataPoint.optDouble("apparentTemperature"))
-                .setCloudCover(_dataPoint.optDouble("cloudCover"))
-                .setDewPoint(_dataPoint.optDouble("dewPoint"))
-                .setHumidity(_dataPoint.optDouble("humidity"))
+                .setApparentTemperature(new Temperature(
+                        _dataPoint.optDouble("apparentTemperature"),
+                        TemperatureUnit.FAHRENHEIT
+                ))
+                .setCloudCover(new Amount(
+                        _dataPoint.optDouble("cloudCover"),
+                        AmountUnit.RATIO
+                ))
+                .setDewPoint(new Temperature(
+                        _dataPoint.optDouble("dewPoint"),
+                        TemperatureUnit.FAHRENHEIT
+                ))
+                .setHumidity(new Amount(
+                        _dataPoint.optDouble("humidity"),
+                        AmountUnit.RATIO
+                ))
                 .setLocation(_location)
-                .setNearestStormDistance(_dataPoint.optDouble("nearestStormDistance"))
-                .setOzone(_dataPoint.optDouble("ozone"))
-                .setPrecipitationIntensity(_dataPoint.optDouble("precipIntensity"))
-                .setPrecipitationProbability(_dataPoint.optDouble("precipProbability"))
-                .setPressure(_dataPoint.optDouble("pressure"))
+                .setNearestStormDistance(new Distance(
+                        _dataPoint.optDouble("nearestStormDistance"),
+                        DistanceUnit.MILE
+                ))
+                .setOzone(new ColumnarDensity(
+                        _dataPoint.optDouble("ozone"),
+                        ColumnarDensityUnit.DOBSON_UNIT
+                ))
+                .setPrecipitationIntensity(new Speed(
+                        _dataPoint.optDouble("precipIntensity"),
+                        SpeedUnit.MILE_PER_HOUR
+                ))
+                .setPrecipitationProbability(new Amount(
+                        _dataPoint.optDouble("precipProbability"),
+                        AmountUnit.RATIO
+                ))
+                .setPressure(new Pressure(
+                        _dataPoint.optDouble("pressure"),
+                        PressureUnit.HECTOPASCAL
+                ))
                 .setSummary(_dataPoint.optString("summary"))
-                .setTemperature(_dataPoint.optDouble("temperature"))
+                .setTemperature(new Temperature(
+                        _dataPoint.optDouble("temperature"),
+                        TemperatureUnit.FAHRENHEIT
+                ))
                 .setTime(new Date(_dataPoint.optLong("time") * 1000))
-                .setUVIndex(_dataPoint.optDouble("uvIndex"))
-                .setVisibility(_dataPoint.optDouble("visibility"))
-                .setWindGust(_dataPoint.optDouble("windGust"))
-                .setWindSpeed(_dataPoint.optDouble("windSpeed"))
+                .setUVIndex(_dataPoint.optInt("uvIndex"))
+                .setVisibility(new Distance(
+                        _dataPoint.optDouble("visibility"),
+                        DistanceUnit.MILE
+                ))
+                .setWindGust(new Speed(
+                        _dataPoint.optDouble("windGust"),
+                        SpeedUnit.MILE_PER_HOUR
+                ))
+                .setWindSpeed(new Speed(
+                        _dataPoint.optDouble("windSpeed"),
+                        SpeedUnit.MILE_PER_HOUR
+                ))
                 .build();
     }
 }

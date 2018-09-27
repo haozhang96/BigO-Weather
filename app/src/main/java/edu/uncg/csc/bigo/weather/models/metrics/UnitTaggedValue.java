@@ -1,5 +1,4 @@
-package edu.uncg.csc.bigo.weather.models.util;
-
+package edu.uncg.csc.bigo.weather.models.metrics;
 /**
  * This class defines an immutable object holding a value tagged with a unit.
  * @param <V> The value's type
@@ -10,13 +9,13 @@ package edu.uncg.csc.bigo.weather.models.util;
  */
 
 
-public class UnitTaggedValue<V, U> {
+public abstract class UnitTaggedValue<V, U> {
     private final V value;
     private final U unit;
 
 
     /**
-     * This constructs a UnitTaggedValue object.
+     * This constructs a UnitTaggedValue object holding a value and a unit.
      * @param _value The value
      * @param _unit The unit for the value
      */
@@ -41,6 +40,19 @@ public class UnitTaggedValue<V, U> {
      */
     public U getUnit() {
         return this.unit;
+    }
+
+
+    /**
+     * This method defines a common interface for converting between units based on the sub-class'
+     *     implementation.
+     * @param _unit The unit to convert to
+     * @return A new UnitTaggedValue object with the converted value and unit
+     */
+    public UnitTaggedValue<V, U> convertTo(U _unit) {
+        throw new UnsupportedOperationException(
+                "This method is not implemented in " + this.getClass().getSimpleName() + "."
+        );
     }
 
 

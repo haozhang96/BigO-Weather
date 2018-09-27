@@ -1,9 +1,8 @@
 package edu.uncg.csc.bigo.weather.models.api.location;
-
 /**
- * ?
+ * This class defines the Geocodio location API.
  *
- * @updated 2018/09/25
+ * @updated 2018/09/27
  * @authors Harman Bains, Hao Zhang
  */
 

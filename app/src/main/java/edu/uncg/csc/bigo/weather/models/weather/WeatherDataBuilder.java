@@ -10,6 +10,7 @@ package edu.uncg.csc.bigo.weather.models.weather;
  */
 
 
+import edu.uncg.csc.bigo.weather.models.metrics.*;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 import java.util.Date;
 
@@ -18,23 +19,23 @@ public final class WeatherDataBuilder {
     /**
      * All the instance fields of the WeatherData class are replicated here.
      */
-    private Double apparentTemperature = null;
-    private Double cloudCover = null;
-    private Double dewPoint = null;
-    private Double humidity = null;
+    private Temperature apparentTemperature = null;
+    private Amount cloudCover = null;
+    private Temperature dewPoint = null;
+    private Amount humidity = null;
     private LocationCoordinate location = null;
-    private Double nearestStormDistance = null;
-    private Double ozone = null;
-    private Double precipitationIntensity = null;
-    private Double precipitationProbability = null;
-    private Double pressure = null;
+    private Distance nearestStormDistance = null;
+    private ColumnarDensity ozone = null;
+    private Speed precipitationIntensity = null;
+    private Amount precipitationProbability = null;
+    private Pressure pressure = null;
     private String summary = null;
-    private Double temperature = null;
+    private Temperature temperature = null;
     private Date time = null;
-    private Double uvIndex = null;
-    private Double visibility = null;
-    private Double windGust = null;
-    private Double windSpeed = null;
+    private Integer uvIndex = null;
+    private Distance visibility = null;
+    private Speed windGust = null;
+    private Speed windSpeed = null;
 
 
     /**
@@ -42,26 +43,26 @@ public final class WeatherDataBuilder {
      */
 
 
-    public WeatherDataBuilder setApparentTemperature(double _apparentTemperature) {
+    public WeatherDataBuilder setApparentTemperature(Temperature _apparentTemperature) {
         this.apparentTemperature = _apparentTemperature;
         return this;
     }
 
 
-    public WeatherDataBuilder setCloudCover(double _cloudCover) {
+    public WeatherDataBuilder setCloudCover(Amount _cloudCover) {
         this.cloudCover = _cloudCover;
         return this;
     }
 
 
-    public WeatherDataBuilder setDewPoint(double _dewPoint) {
+    public WeatherDataBuilder setDewPoint(Temperature _dewPoint) {
         this.dewPoint = _dewPoint;
         return this;
     }
 
 
-    public WeatherDataBuilder setHumidity(double _apparentTemperature) {
-        this.apparentTemperature = _apparentTemperature;
+    public WeatherDataBuilder setHumidity(Amount _humidity) {
+        this.humidity = _humidity;
         return this;
     }
 
@@ -72,31 +73,31 @@ public final class WeatherDataBuilder {
     }
 
 
-    public WeatherDataBuilder setNearestStormDistance(double _nearestStormDistance) {
+    public WeatherDataBuilder setNearestStormDistance(Distance _nearestStormDistance) {
         this.nearestStormDistance = _nearestStormDistance;
         return this;
     }
 
 
-    public WeatherDataBuilder setOzone(double _ozone) {
+    public WeatherDataBuilder setOzone(ColumnarDensity _ozone) {
         this.ozone = _ozone;
         return this;
     }
 
 
-    public WeatherDataBuilder setPrecipitationIntensity(double _precipitationIntensity) {
+    public WeatherDataBuilder setPrecipitationIntensity(Speed _precipitationIntensity) {
         this.precipitationIntensity = _precipitationIntensity;
         return this;
     }
 
 
-    public WeatherDataBuilder setPrecipitationProbability(double _precipitationProbability) {
+    public WeatherDataBuilder setPrecipitationProbability(Amount _precipitationProbability) {
         this.precipitationProbability = _precipitationProbability;
         return this;
     }
 
 
-    public WeatherDataBuilder setPressure(double _pressure) {
+    public WeatherDataBuilder setPressure(Pressure _pressure) {
         this.pressure = _pressure;
         return this;
     }
@@ -108,7 +109,7 @@ public final class WeatherDataBuilder {
     }
 
 
-    public WeatherDataBuilder setTemperature(double _temperature) {
+    public WeatherDataBuilder setTemperature(Temperature _temperature) {
         this.temperature = _temperature;
         return this;
     }
@@ -120,25 +121,25 @@ public final class WeatherDataBuilder {
     }
 
 
-    public WeatherDataBuilder setUVIndex(double _uvIndex) {
+    public WeatherDataBuilder setUVIndex(int _uvIndex) {
         this.uvIndex = _uvIndex;
         return this;
     }
 
 
-    public WeatherDataBuilder setVisibility(double _visibility) {
+    public WeatherDataBuilder setVisibility(Distance _visibility) {
         this.visibility = _visibility;
         return this;
     }
 
 
-    public WeatherDataBuilder setWindGust(double _windGust) {
+    public WeatherDataBuilder setWindGust(Speed _windGust) {
         this.windGust = _windGust;
         return this;
     }
 
 
-    public WeatherDataBuilder setWindSpeed(double _windSpeed) {
+    public WeatherDataBuilder setWindSpeed(Speed _windSpeed) {
         this.windSpeed = _windSpeed;
         return this;
     }
@@ -155,9 +156,7 @@ public final class WeatherDataBuilder {
             throw new IllegalStateException("The \"time\" field has not been set!");
         } else if (this.location == null) {
             throw new IllegalStateException("The \"location\" field has not been set!");
-        }/* else if (this.temperature == null) {
-            throw new IllegalStateException("The \"temperature\" field has not been set!");
-        }*/
+        }
 
         // Return a new immutable WeatherData object (hopefully now you'll know why this is needed).
         return new WeatherData(

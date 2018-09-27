@@ -1,4 +1,4 @@
-package edu.uncg.csc.bigo.weather;
+package edu.uncg.csc.bigo.weather.views.activities;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import edu.uncg.csc.bigo.weather.models.api.weather.DarkSkyAPI;
 import edu.uncg.csc.bigo.weather.models.api.location.GeocodioAPI;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherData;
+import edu.uncg.csc.bigo.weather.R;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            new Test().execute();
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     mTextMessage.setText(R.string.title_home);
@@ -49,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        // Testing code
-        new Test().execute();
     }
 
 
@@ -82,37 +81,20 @@ public class MainActivity extends AppCompatActivity {
 
                 // Get the current weather data for the ZIP code.
                 WeatherData testCurrent = darkSky.getCurrentWeather(location);
-                message.append(String.format("\n\nWeather at ZIP code %d:\n\nCurrently:\ngetSummary: %s", zipCode, testCurrent.getSummary()));
-                message.append("\ngetApparentTemperature: " + testCurrent.getApparentTemperature());
-                message.append("\ngetCloudCover: " + testCurrent.getCloudCover());
-                message.append("\ngetDewPoint: " + testCurrent.getDewPoint());
-                message.append("\ngetHumidity: " + testCurrent.getHumidity());
-                message.append("\ngetNearestStormDistance: " + testCurrent.getNearestStormDistance());
-                message.append("\ngetOzone: " + testCurrent.getOzone());
-                message.append("\ngetPrecipitationIntensity: " + testCurrent.getPrecipitationIntensity());
-                message.append("\ngetPrecipitationProbability: " + testCurrent.getPrecipitationProbability());
-                message.append("\ngetPressure: " + testCurrent.getPressure());
-                message.append("\ngetTemperature: " + testCurrent.getTemperature());
-                message.append("\ngetTime: " + testCurrent.getTime());
-                message.append("\ngetUVIndex: " + testCurrent.getUVIndex());
-                message.append("\ngetVisibility: " + testCurrent.getVisibility());
-                message.append("\ngetWindGust: " + testCurrent.getWindGust());
-                message.append("\ngetWindSpeed: " + testCurrent.getWindSpeed());
+                message.append("\n\nCurrently:\n" + testCurrent);
 
                 // Get the minutely weather data for the ZIP code.
                 // This one is very bare minimum.
-                WeatherData testMinutely = darkSky.getMinutelyWeather(location);
-                message.append("\n\nMinutely:\ngetTime: " + testMinutely.getTime());
+                //WeatherData testMinutely = darkSky.getMinutelyWeather(location);
+                //message.append("\n\nMinutely:\n" + testMinutely);
 
                 // Get the hourly weather data for the ZIP code.
                 WeatherData testHourly = darkSky.getHourlyWeather(location);
-                message.append("\n\nHourly:\ngetSummary: " + testHourly.getSummary());
-                message.append("\ngetTime: " + testHourly.getTime());
+                message.append("\n\nHourly:\n" + testHourly);
 
                 // Get the daily weather data for the ZIP code.
                 WeatherData testDaily = darkSky.getDailyWeather(location);
-                message.append("\n\nDaily:\ngetSummary: " + testDaily.getSummary());
-                message.append("\ngetTime: " + testDaily.getTime());
+                message.append("\n\nDaily:\n" + testDaily);
 
                 // Return the built message
                 return message.toString();

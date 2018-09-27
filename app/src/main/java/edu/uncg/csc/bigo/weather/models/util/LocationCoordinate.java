@@ -1,5 +1,4 @@
 package edu.uncg.csc.bigo.weather.models.util;
-
 /**
  * This class defines an immutable object holding the latitude and longitude of a location.
  *
@@ -39,5 +38,15 @@ public class LocationCoordinate {
      */
     public double getLongitude() {
         return this.longitude;
+    }
+
+
+    /**
+     * This method overrides Object's toString method for pretty-printing.
+     * @return A prettified string
+     */
+    @Override
+    public String toString() {
+        return String.format("LocationCoordinate[%f, %f]", this.latitude, this.longitude);
     }
 }
