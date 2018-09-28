@@ -23,6 +23,7 @@ public class WeatherData {
     private final Temperature dewPoint;
     private final Amount humidity;
     private final LocationCoordinate location;
+    private final Amount moonPhase;
     private final Distance nearestStormDistance;
     private final ColumnarDensity ozone;
     private final Speed precipitationIntensity;
@@ -46,6 +47,7 @@ public class WeatherData {
      * @param _dewPoint The dew point
      * @param _humidity The humidity in percent ratio
      * @param _location The location
+     * @param _moonPhase The lunation number
      * @param _nearestStormDistance The nearest storm distance
      * @param _ozone The ozone columnar density
      * @param _precipitationIntensity The precipitation intensity
@@ -65,6 +67,7 @@ public class WeatherData {
             Temperature _dewPoint,
             Amount _humidity,
             LocationCoordinate _location,
+            Amount _moonPhase,
             Distance _nearestStormDistance,
             ColumnarDensity _ozone,
             Speed _precipitationIntensity,
@@ -83,6 +86,7 @@ public class WeatherData {
         this.dewPoint = _dewPoint;
         this.humidity = _humidity;
         this.location = _location;
+        this.moonPhase = _moonPhase;
         this.nearestStormDistance = _nearestStormDistance;
         this.ozone = _ozone;
         this.precipitationIntensity = _precipitationIntensity;
@@ -125,6 +129,11 @@ public class WeatherData {
 
     public LocationCoordinate getLocation() {
         return this.location;
+    }
+
+
+    public Amount getMoonPhase() {
+        return this.moonPhase;
     }
 
 
@@ -197,6 +206,7 @@ public class WeatherData {
                     "\tDewPoint: %s\n" +
                     "\tHumidity: %s\n" +
                     "\tLocation: %s\n" +
+                    "\tMoonPhase: %s\n" +
                     "\tNearestStormDistance: %s\n" +
                     "\tOzone: %s\n" +
                     "\tPrecipitationIntensity: %s\n" +
@@ -216,6 +226,7 @@ public class WeatherData {
                 this.dewPoint,
                 this.humidity,
                 this.location,
+                this.moonPhase,
                 this.nearestStormDistance,
                 this.ozone,
                 this.precipitationIntensity,

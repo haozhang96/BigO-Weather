@@ -24,6 +24,7 @@ public final class WeatherDataBuilder {
     private Temperature dewPoint = null;
     private Amount humidity = null;
     private LocationCoordinate location = null;
+    private Amount moonPhase = null;
     private Distance nearestStormDistance = null;
     private ColumnarDensity ozone = null;
     private Speed precipitationIntensity = null;
@@ -69,6 +70,12 @@ public final class WeatherDataBuilder {
 
     public WeatherDataBuilder setLocation(LocationCoordinate _location) {
         this.location = _location;
+        return this;
+    }
+
+
+    public WeatherDataBuilder setMoonPhase(Amount _moonPhase) {
+        this.moonPhase = _moonPhase;
         return this;
     }
 
@@ -160,23 +167,24 @@ public final class WeatherDataBuilder {
 
         // Return a new immutable WeatherData object (hopefully now you'll know why this is needed).
         return new WeatherData(
-                apparentTemperature,
-                cloudCover,
-                dewPoint,
-                humidity,
-                location,
-                nearestStormDistance,
-                ozone,
-                precipitationIntensity,
-                precipitationProbability,
-                pressure,
-                summary,
-                temperature,
-                time,
-                uvIndex,
-                visibility,
-                windGust,
-                windSpeed
+                this.apparentTemperature,
+                this.cloudCover,
+                this.dewPoint,
+                this.humidity,
+                this.location,
+                this.moonPhase,
+                this.nearestStormDistance,
+                this.ozone,
+                this.precipitationIntensity,
+                this.precipitationProbability,
+                this.pressure,
+                this.summary,
+                this.temperature,
+                this.time,
+                this.uvIndex,
+                this.visibility,
+                this.windGust,
+                this.windSpeed
         );
     }
 }

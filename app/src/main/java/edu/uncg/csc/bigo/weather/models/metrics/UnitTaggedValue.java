@@ -29,7 +29,7 @@ public abstract class UnitTaggedValue<V, U> {
      * This method returns the value.
      * @return The value
      */
-    public V getValue() {
+    public final V getValue() {
         return this.value;
     }
 
@@ -38,8 +38,17 @@ public abstract class UnitTaggedValue<V, U> {
      * This method returns the unit for the value.
      * @return The unit for the value
      */
-    public U getUnit() {
+    public final U getUnit() {
         return this.unit;
+    }
+
+
+    /**
+     * This method indicates whether the value is null.
+     * @return Whether the value is null
+     */
+    public final boolean isNull() {
+        return this.value == null;
     }
 
 

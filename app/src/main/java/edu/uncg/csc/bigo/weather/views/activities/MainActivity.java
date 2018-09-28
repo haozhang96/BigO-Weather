@@ -13,6 +13,7 @@ import edu.uncg.csc.bigo.weather.models.api.LocationAPI;
 import edu.uncg.csc.bigo.weather.models.api.WeatherAPI;
 import edu.uncg.csc.bigo.weather.models.api.weather.DarkSkyAPI;
 import edu.uncg.csc.bigo.weather.models.api.location.GeocodioAPI;
+import edu.uncg.csc.bigo.weather.models.metrics.units.TemperatureUnit;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherData;
 import edu.uncg.csc.bigo.weather.R;
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 // Get the current weather data for the ZIP code.
                 WeatherData testCurrent = darkSky.getCurrentWeather(location);
                 message.append("\n\nCurrently:\n" + testCurrent);
+                message.append("\nTemperature in C: " + testCurrent.getTemperature().convertTo(TemperatureUnit.CELSIUS));
 
                 // Get the minutely weather data for the ZIP code.
                 // This one is very bare minimum.

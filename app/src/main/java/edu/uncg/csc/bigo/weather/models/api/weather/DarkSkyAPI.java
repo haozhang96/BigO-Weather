@@ -144,6 +144,10 @@ public final class DarkSkyAPI extends WeatherAPI {
                         AmountUnit.RATIO
                 ))
                 .setLocation(_location)
+                .setMoonPhase(new Amount(
+                        _dataPoint.optDouble("moonPhase"),
+                        AmountUnit.RATIO
+                ))
                 .setNearestStormDistance(new Distance(
                         _dataPoint.optDouble("nearestStormDistance"),
                         DistanceUnit.MILE
