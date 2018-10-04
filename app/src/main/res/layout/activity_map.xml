@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -9,39 +9,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20pt"
-        android:text="Map is working...."
-        android:textColor="@color/colorPrimaryDark"/>
+        android:text="@string/map_view"
+        android:onClick="Navigation"
+        android:textColor="@color/colorPrimaryDark" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/Current_Weather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="Navigation"
-        android:text="Daily Weather"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="112dp"
+        android:text="@string/current_weather"
+        android:textColor="@color/colorAccent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/Hourly_Weather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:layout_toRightOf="@+id/Current_Weather"
         android:onClick="Navigation"
-        android:text="Hourly Weather"
-        android:textColor="@color/colorPrimary" />
+        android:text="@string/hourly_weather"
+        android:textColor="@color/colorAccent" />
+
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/Daily_Weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:layout_toRightOf="@+id/Hourly_Weather"
+        android:onClick="Navigation"
+        android:text="@string/daily_weather"
+        android:textColor="@color/colorAccent" />
+
+    <Button
+        android:id="@+id/Settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
         android:onClick="Navigation"
-        android:text="Settings"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/settings"
+        android:textColor="@color/design_default_color_primary" />
 
-</LinearLayout>
+</RelativeLayout>
