@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="map_view">Map View</string>
+    <string name="settings">Settings</string>
+    <string name="daily_weather">Daily Weather</string>
+    <string name="hourly_weather">Hourly Weather</string>
+    <string name="current_weather">Current Weather</string>
 </resources>
