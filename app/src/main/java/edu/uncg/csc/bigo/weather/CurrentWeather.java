@@ -22,17 +22,17 @@ public class CurrentWeather extends AppCompatActivity {
     public void Navigation(View View) {
         String button_text;
         button_text = ((Button) View).getText().toString();
-        if (button_text.equals("Current Weather")) {
+        if (button_text.equals("Currently")) {
             Intent a = new Intent(this, CurrentWeather.class);
             startActivity(a);
-        } if (button_text.equals("Hourly Weather")) {
+        } if (button_text.equals("Hourly")) {
             Intent b = new Intent(this, HourlyWeather.class);
             startActivity(b);
-        } if (button_text.equals("Daily Weather")) {
+        } if (button_text.equals("Daily")) {
             Intent c = new Intent(this, DailyWeather.class);
             startActivity(c);
 
-        } if (button_text.equals("Map View")) {
+        } if (button_text.equals("Map")) {
             Intent d = new Intent(this, Map.class);
             startActivity(d);
 
