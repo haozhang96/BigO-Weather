@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/night_blue">
+    android:background="@color/design_default_color_primary">
 
     <Button
         android:id="@+id/Location"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Location"
         android:textColor="@color/white"
-        android:background="@color/night_blue"/>
+        android:background="@color/Transparent"/>
 
     <Button
         android:id="@+id/Time_Date"
@@ -24,7 +24,7 @@
         android:onClick="Navigation"
         android:text="Time and Date"
         android:textColor="@color/white"
-        android:background="@color/night_blue" />
+        android:background="@color/Transparent" />
 
 
     <Button
@@ -37,7 +37,7 @@
         android:onClick="Navigation"
         android:text="Notifications"
         android:textColor="@color/white"
-        android:background="@color/night_blue" />
+        android:background="@color/Transparent" />
 
     <Button
         android:id="@+id/Alerts"
@@ -49,7 +49,7 @@
         android:onClick="Navigation"
         android:text="Alerts"
         android:textColor="@color/white"
-        android:background="@color/night_blue" />
+        android:background="@color/Transparent" />
 
     <Button
         android:id="@+id/Sign_In"
@@ -61,7 +61,7 @@
         android:onClick="Navigation"
         android:text="Sign In"
         android:textColor="@color/white"
-        android:background="@color/night_blue" />
+        android:background="@color/Transparent" />
 
     <Button
         android:id="@+id/Support"
@@ -73,7 +73,7 @@
         android:onClick="Navigation"
         android:text="Support"
         android:textColor="@color/white"
-        android:background="@color/night_blue" />
+        android:background="@color/Transparent" />
 
     <Button
         android:id="@+id/About"
@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/Time_Date"
         android:layout_marginBottom="-173dp"
-        android:background="@color/night_blue"
+        android:background="@color/Transparent"
         android:gravity="left|center_vertical"
         android:onClick="Navigation"
         android:text="About"
