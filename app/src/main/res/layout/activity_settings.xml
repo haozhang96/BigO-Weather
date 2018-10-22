@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/design_default_color_primary">
+    android:background="@color/night_blue">
 
     <Button
         android:id="@+id/Location"
         android:layout_width="fill_parent"
         android:gravity="left|center_vertical"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:text="Location"
         android:textColor="@color/white"
         android:background="@color/Transparent"/>
@@ -19,6 +20,7 @@
         android:layout_width="fill_parent"
         android:gravity="left|center_vertical"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_alignBottom="@+id/Location"
         android:layout_marginBottom="-30dp"
         android:onClick="Navigation"
@@ -32,6 +34,7 @@
         android:layout_width="fill_parent"
         android:gravity="left|center_vertical"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_alignBottom="@+id/Time_Date"
         android:layout_marginBottom="-36dp"
         android:onClick="Navigation"
@@ -44,6 +47,7 @@
         android:layout_width="fill_parent"
         android:gravity="left|center_vertical"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_alignBottom="@+id/Time_Date"
         android:layout_marginBottom="-71dp"
         android:onClick="Navigation"
@@ -56,6 +60,7 @@
         android:layout_width="fill_parent"
         android:gravity="left|center_vertical"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_alignBottom="@+id/Time_Date"
         android:layout_marginBottom="-105dp"
         android:onClick="Navigation"
@@ -68,6 +73,7 @@
         android:layout_width="fill_parent"
         android:gravity="left|center_vertical"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_alignBottom="@+id/Time_Date"
         android:layout_marginBottom="-141dp"
         android:onClick="Navigation"
@@ -79,6 +85,7 @@
         android:id="@+id/About"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_alignBottom="@+id/Time_Date"
         android:layout_marginBottom="-173dp"
         android:background="@color/Transparent"

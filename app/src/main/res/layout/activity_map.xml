@@ -3,24 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="@color/design_default_color_primary_dark"
+    android:background="@color/night_blue"
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/cloud"
         android:layout_width="match_parent"
-        android:layout_height="127dp"
-        android:layout_alignStart="@+id/Daily_Weather"
-        android:layout_alignLeft="@+id/Daily_Weather"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="-186dp"
-        android:layout_marginLeft="-186dp"
-        android:layout_marginTop="-25dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-800dp"
         android:contentDescription="TODO"
-        app:srcCompat="@drawable/cirrus" />
+        app:srcCompat="@drawable/clouds" />
 
     <TextView
-        android:id="@+id/cityName"
+        android:id="@+id/city_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -30,76 +25,56 @@
         android:layout_marginLeft="6dp"
         android:layout_marginTop="5dp"
         android:text="Greensboro, NC"
-        android:textColor="@color/night_blue"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/Current_Weather"
+        android:id="@+id/Current_Tab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cityName"
-        android:layout_alignBottom="@+id/imageView4"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginBottom="-1dp"
+        android:layout_marginTop="70dp"
         android:background="@color/Transparent"
         android:onClick="Navigation"
-        android:text="@string/current_weather"
-        android:textColor="@color/night_blue"
+        android:text="@string/current_tab"
+        android:textColor="@color/white"
         android:textStyle="bold" />
 
 
     <Button
-        android:id="@+id/Hourly_Weather"
+        android:id="@+id/Hourly_Tab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cityName"
-        android:layout_alignBottom="@+id/imageView4"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="98dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginBottom="-1dp"
-        android:layout_toRightOf="@id/Current_Weather"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="70dp"
         android:background="@color/Transparent"
         android:onClick="Navigation"
-        android:text="@string/hourly_weather"
-        android:textColor="@color/night_blue"
+        android:text="@string/hourly_tab"
+        android:textColor="@color/white"
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/Daily_Weather"
+        android:id="@+id/Daily_Tab"
         android:layout_width="wrap_content"
-        android:layout_height="51dp"
-        android:layout_below="@+id/cityName"
-        android:layout_alignBottom="@+id/imageView4"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginBottom="-1dp"
-        android:layout_toRightOf="@+id/Hourly_Weather"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="170dp"
         android:onClick="Navigation"
         android:background="@color/Transparent"
-        android:text="@string/daily_weather"
-        android:textColor="@color/night_blue"
+        android:text="@string/daily_tab"
+        android:textColor="@color/white"
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/Map"
+        android:id="@+id/Map_Tab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cityName"
-        android:layout_alignBottom="@+id/imageView4"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginBottom="-1dp"
-        android:layout_toRightOf="@id/Daily_Weather"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="240dp"
         android:background="@color/Transparent"
         android:onClick="Navigation"
-        android:text="@string/map_view"
-        android:textColor="@color/night_blue"
+        android:text="@string/map_tab"
+        android:textColor="@color/white"
         android:textStyle="bold" />
 
     <Button
@@ -111,7 +86,7 @@
         android:onClick="Navigation"
         android:background="@color/Transparent"
         android:text="@string/settings"
-        android:textColor="@color/night_blue"
+        android:textColor="@color/white"
         android:textStyle="bold" />
-
+    
 </RelativeLayout>
