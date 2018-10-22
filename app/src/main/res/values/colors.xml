@@ -22,5 +22,6 @@
     <color name="night_blue">#171e2d</color>
     <color name="Transparent">#00000000</color>
     <color name="Transparent80">#80000000</color>
+    <color name="dark_blue">#111724</color>
 
 </resources>

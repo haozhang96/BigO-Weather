@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">WeatherApp</string>
-    <string name="map_view">Map</string>
+    <string name="map_tab">Map</string>
     <string name="settings">Settings</string>
-    <string name="daily_weather">Daily</string>
-    <string name="hourly_weather">Hourly</string>
-    <string name="current_weather">Currently</string>
+    <string name="daily_tab">Daily</string>
+    <string name="hourly_tab">Hourly</string>
+    <string name="current_tab">Currently</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
