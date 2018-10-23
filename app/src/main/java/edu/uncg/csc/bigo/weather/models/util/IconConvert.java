@@ -68,6 +68,12 @@ public class IconConvert {
         }
     }
 
+    /**
+     *
+     * @param pressure
+     * @param sp
+     * @return
+     */
     public static float convertPressure(float pressure, SharedPreferences sp) {
         if (sp.getString("pressure", "hPa").equals("kPa")) {
             return pressure / 10;
@@ -80,6 +86,12 @@ public class IconConvert {
         }
     }
 
+    /**
+     *
+     * @param wind
+     * @param sp
+     * @return
+     */
     public static double convertWind(double wind, SharedPreferences sp) {
         if (sp.getString("windSpeed", "m/s").equals("kph")) {
             return wind * 3.6;
@@ -120,6 +132,11 @@ public class IconConvert {
         }
     }
 
+    /**
+     *
+     * @param wind
+     * @return
+     */
     public static String windStrength(int wind) {
         if (wind == 0) {
             return "Calm";
