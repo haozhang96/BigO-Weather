@@ -43,7 +43,7 @@ public class Conversion {
 
     /**
      *
-     * @param rain
+     * @param rain = Millimeter
      * @param sp
      * @return
      */
@@ -70,15 +70,18 @@ public class Conversion {
 
     /**
      *
-     * @param pressure
+     * @param pressure = High Pressure Air
      * @param sp
      * @return
      */
     public static float convertPressure(float pressure, SharedPreferences sp) {
+        //Kilo Pascal
         if (sp.getString("pressure", "hPa").equals("kPa")) {
             return pressure / 10;
+        //millimeters of Mercury
         } else if (sp.getString("pressure", "hPa").equals("mm Hg")) {
             return (float) (pressure * 0.750061561303);
+        //Mercury
         } else if (sp.getString("pressure", "hPa").equals("in Hg")) {
             return (float) (pressure * 0.0295299830714);
         } else {
@@ -88,17 +91,21 @@ public class Conversion {
 
     /**
      *
-     * @param wind
+     * @param wind = Meters per second
      * @param sp
      * @return
      */
     public static double convertWind(double wind, SharedPreferences sp) {
+        //Kilometer per hour
         if (sp.getString("windSpeed", "m/s").equals("kph")) {
             return wind * 3.6;
+        //Miles per hour
         } else if (sp.getString("windSpeed", "m/s").equals("mph")) {
             return wind * 2.23693629205;
+        //Knots
         } else if (sp.getString("windSpeed", "m/s").equals("kn")) {
             return wind * 1.943844;
+        //Beaufort scale
         } else if (sp.getString("windSpeed", "m/s").equals("bft")) {
             if (wind < 0.3) {
                 // Calm
