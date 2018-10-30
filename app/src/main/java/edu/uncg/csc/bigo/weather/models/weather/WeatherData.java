@@ -3,17 +3,18 @@ package edu.uncg.csc.bigo.weather.models.weather;
  * This class describes weather data at a given location and time.
  * You should NOT construct this directly. Use the WeatherDataBuilder object instead.
  *
- * @updated 2018/09/25
+ * @updated 2018/10/30
  * @authors Hao Zhang
  */
 
 
 import edu.uncg.csc.bigo.weather.models.metrics.*;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
+import edu.uncg.csc.bigo.weather.models.util.caching.TimeExpirable;
 import java.util.Date;
 
 
-public class WeatherData {
+public class WeatherData extends TimeExpirable {
     /**
      * All the properties of WeatherData objects are defined below.
      * Boxed values are used over primitives because some fields are optional.
@@ -42,6 +43,7 @@ public class WeatherData {
      * This constructs an object containing weather data.
      * Most of the logic are actually defined in the WeatherDataBuilder object. Check there for more
      *     details.
+     * @param _timeout The expiration timeout from now in millisecond
      * @param _apparentTemperature The apparent temperature
      * @param _cloudCover The cloud cover in percent ratio
      * @param _dewPoint The dew point
@@ -76,11 +78,13 @@ public class WeatherData {
             String _summary,
             Temperature _temperature,
             Date _time,
+            Long _timeout,
             Integer _uvIndex,
             Distance _visibility,
             Speed _windGust,
             Speed _windSpeed
     ) {
+        super(_timeout);
         this.apparentTemperature = _apparentTemperature;
         this.cloudCover = _cloudCover;
         this.dewPoint = _dewPoint;

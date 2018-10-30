@@ -5,7 +5,7 @@ package edu.uncg.csc.bigo.weather.models.weather;
  *     ugly and confusing to read.
  * Another benefit of this class is that it allows for optional fields in WeatherData.
  *
- * @updated 2018/09/25
+ * @updated 2018/10/30
  * @authors Hao Zhang
  */
 
@@ -33,6 +33,7 @@ public final class WeatherDataBuilder {
     private String summary = null;
     private Temperature temperature = null;
     private Date time = null;
+    private Long timeout = Long.MAX_VALUE;
     private Integer uvIndex = null;
     private Distance visibility = null;
     private Speed windGust = null;
@@ -128,6 +129,12 @@ public final class WeatherDataBuilder {
     }
 
 
+    public WeatherDataBuilder setTimeout(Long _timeout) {
+        this.timeout = _timeout;
+        return this;
+    }
+
+
     public WeatherDataBuilder setUVIndex(int _uvIndex) {
         this.uvIndex = _uvIndex;
         return this;
@@ -181,6 +188,7 @@ public final class WeatherDataBuilder {
                 this.summary,
                 this.temperature,
                 this.time,
+                this.timeout,
                 this.uvIndex,
                 this.visibility,
                 this.windGust,

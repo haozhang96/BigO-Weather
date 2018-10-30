@@ -2,14 +2,18 @@ package edu.uncg.csc.bigo.weather.models.util;
 /**
  * This class defines an immutable object holding the latitude and longitude of a location.
  *
- * @updated 2018/09/25
+ * @updated 2018/10/30
  * @authors Hao Zhang
  */
 
 
-public class LocationCoordinate {
+import edu.uncg.csc.bigo.weather.models.util.caching.TimeExpirable;
+
+
+public class LocationCoordinate extends TimeExpirable {
     private final double latitude;
     private final double longitude;
+
 
     /**
      * This constructs a LocationCoordinate instance holding the latitude and longitude of a
@@ -18,6 +22,13 @@ public class LocationCoordinate {
      * @param _longitude The longitude of the location
      */
     public LocationCoordinate(double _latitude, double _longitude) {
+        this.latitude = _latitude;
+        this.longitude = _longitude;
+    }
+
+
+    public LocationCoordinate(double _latitude, double _longitude, long _timeout) {
+        super(_timeout);
         this.latitude = _latitude;
         this.longitude = _longitude;
     }
