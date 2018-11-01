@@ -10,12 +10,12 @@ import android.webkit.WebView;
 
 public class MapActivity extends AppCompatActivity {
 
-    private BottomBar mBottomBar;
+    private BottomBar _BottomBar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle _savedInstanceState) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        super.onCreate(savedInstanceState);
+        super.onCreate(_savedInstanceState);
         setContentView(R.layout.activity_map);
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
@@ -29,25 +29,25 @@ public class MapActivity extends AppCompatActivity {
         mBottomBar.setItems(R.menu.menu_map_bottom);
         mBottomBar.setOnMenuTabClickListener(new OnMenuTabClickListener() {
             @Override
-            public void onMenuTabSelected(@IdRes int menuItemId) {
-                if (menuItemId == R.id.map_rain) {
+            public void onMenuTabSelected(@IdRes int _menuItemId) {
+                if (_menuItemId == R.id.map_rain) {
                     webView.loadUrl("javascript:map.removeLayer(windLayer);map.removeLayer(tempLayer);map.addLayer(rainLayer);");
-                } else if (menuItemId == R.id.map_wind) {
+                } else if (_menuItemId == R.id.map_wind) {
                     webView.loadUrl("javascript:map.removeLayer(rainLayer);map.removeLayer(tempLayer);map.addLayer(windLayer);");
-                } else if (menuItemId == R.id.map_temperature) {
+                } else if (_menuItemId == R.id.map_temperature) {
                     webView.loadUrl("javascript:map.removeLayer(windLayer);map.removeLayer(rainLayer);map.addLayer(tempLayer);");
                 }
             }
 
             @Override
-            public void onMenuTabReSelected(@IdRes int menuItemId) {
+            public void onMenuTabReSelected(@IdRes int _menuItemId) {
             }
         });
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mBottomBar.onSaveInstanceState(outState);
+    protected void onSaveInstanceState(Bundle _outState) {
+        super.onSaveInstanceState(_outState);
+        _BottomBar.onSaveInstanceState(_outState);
     }
 }
