@@ -2,12 +2,12 @@ package edu.uncg.csc.bigo.weather.models.util.caching;
 /**
  * This class defines an cache object to store expirable objects.
  *
- * @updated 2018/10/25
+ * @updated 2018/10/31
  * @authors Hao Zhang
  */
 
 
-public class TimedCache<K, V extends Expirable> extends Cache<K, V> {
+public class ExpirableCache<K, V extends Expirable> extends Cache<K, V> {
     /**
      * This method flags an object in the cache with a given key as expired.
      * @param _key The key for which the object is stored in the cache as

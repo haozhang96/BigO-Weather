@@ -2,19 +2,19 @@ package edu.uncg.csc.bigo.weather.models.api.location;
 /**
  * This class defines the Geocodio location API.
  *
- * @updated 2018/09/27
+ * @updated 2018/11/01
  * @authors Harman Bains, Hao Zhang
  */
 
 
-import edu.uncg.csc.bigo.weather.models.api.LocationAPI;
+import edu.uncg.csc.bigo.weather.models.api.JSONAPI;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 import java.io.IOException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public final class GeocodioAPI extends LocationAPI {
+public final class GeocodioAPI extends JSONAPI implements LocationAPI {
     public GeocodioAPI(String _apiKey) {
         super(String.format("https://api.geocod.io/v1.3/geocode?q=%%d&api_key=%s", _apiKey));
     }

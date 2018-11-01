@@ -7,19 +7,20 @@ package edu.uncg.csc.bigo.weather.models.api.weather;
  */
 
 
-import edu.uncg.csc.bigo.weather.models.api.WeatherAPI;
+import edu.uncg.csc.bigo.weather.models.api.JSONAPI;
 import edu.uncg.csc.bigo.weather.models.metrics.*;
 import edu.uncg.csc.bigo.weather.models.metrics.units.*;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherData;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherDataBuilder;
+
 import java.io.IOException;
 import java.util.Date;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public final class DarkSkyAPI extends WeatherAPI {
+public final class DarkSkyAPI extends JSONAPI implements WeatherAPI {
     /**
      * This constructs an instance of DarkSkyAPI with a given API key.
      * @param _apiKey The API key to the Dark Sky API service

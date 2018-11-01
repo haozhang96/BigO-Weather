@@ -2,44 +2,51 @@ package edu.uncg.csc.bigo.weather.controllers;
 /**
  * This class handles the API fallback mechanism and caching of weather data.
  *
- * @updated 2018/10/30
+ * @updated 2018/11/01
  * @authors Hao Zhang
  */
 
 
-import edu.uncg.csc.bigo.weather.models.api.WeatherAPI;
-import edu.uncg.csc.bigo.weather.models.util.DynamicPackageLoader;
+import edu.uncg.csc.bigo.weather.models.api.fallback.WeatherAPIFallbackHandler;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
-import edu.uncg.csc.bigo.weather.models.util.caching.TimedCache;
+//import edu.uncg.csc.bigo.weather.models.util.caching.TimeExpirableCache;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherData;
+
+import java.io.IOException;
 
 
 public final class WeatherController {
-    private static final TimedCache<LocationCoordinate, WeatherData>
-            weatherDataCache = new TimedCache();
+    private static WeatherAPIFallbackHandler api = null;
+    //private static final TimeExpirableCache<LocationCoordinate, WeatherData>
+    //        weatherDataCache = new TimeExpirableCache();
 
 
-    private static Class[] apis;
-    static {
-        try {
-            WeatherController.apis = DynamicPackageLoader.loadPackageAs("mypackage", WeatherAPI.class);
-        } catch (Exception e) {
-            WeatherController.apis = null;
-        }
+    public static WeatherData getCurrentWeather(LocationCoordinate _location) throws Exception {
+        return WeatherController.api.getCurrentWeather(_location);
     }
 
 
-    private static final WeatherAPI getApi() {
-        try {
-            Class[] apis = DynamicPackageLoader.loadPackageAs("mypackage", WeatherAPI.class);
+    public static WeatherData getDailyWeather(LocationCoordinate _location) throws Exception {
+        return WeatherController.api.getDailyWeather(_location);
+    }
 
-            for (Object api : apis) {
-                return (WeatherAPI) api;
-            }
-        } catch (Exception e) {
 
-        } finally {
-            return null;
+    public static WeatherData getHourlyWeather(LocationCoordinate _location) throws Exception {
+        return WeatherController.api.getHourlyWeather(_location);
+    }
+
+
+    public static WeatherData getMinutelyWeather(LocationCoordinate _location) throws Exception {
+        return WeatherController.api.getMinutelyWeather(_location);
+    }
+
+
+    private static WeatherAPIFallbackHandler getAPIHandler()
+            throws ClassNotFoundException, IOException
+    {
+        if (WeatherController.api == null) {
+            WeatherController.api = new WeatherAPIFallbackHandler();
         }
+        return WeatherController.api;
     }
 }

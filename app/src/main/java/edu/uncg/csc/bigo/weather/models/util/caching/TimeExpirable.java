@@ -25,7 +25,7 @@ public abstract class TimeExpirable extends Expirable {
 
 
     /**
-     * This constructs a TimeExpirable object that will expire within the given milliseconds from
+     * This constructs a TimeExpirable object that will expire after the given milliseconds from
      *     now.
      * @param _timeout The expiration timeout from now in millisecond
      */
@@ -48,24 +48,6 @@ public abstract class TimeExpirable extends Expirable {
 
 
     /**
-     * This method returns the expiration time.
-     * @return The expiration time as a Date object
-     */
-    public Date getExpiration() {
-        return this.expiration;
-    }
-
-
-    /**
-     * This method returns when the object was "fresh".
-     * @return The time when the object was "fresh" as a Date object
-     */
-    public Date getRefreshTime() {
-        return this.refreshTime;
-    }
-
-
-    /**
      * This method flags the object as expired. Once an object has been flagged as expired, it
      *     cannot be unflagged unless a sub-class overrides the implementation.
      */
@@ -81,6 +63,24 @@ public abstract class TimeExpirable extends Expirable {
      */
     @Override
     public boolean expired() {
-        return new Date().after(this.expiration);
+        return new Date().compareTo(this.expiration) >= 0;
+    }
+
+
+    /**
+     * This method returns the expiration time.
+     * @return The expiration time as a Date object
+     */
+    public Date getExpiration() {
+        return this.expiration;
+    }
+
+
+    /**
+     * This method returns when the object was "fresh".
+     * @return The time when the object was "fresh" as a Date object
+     */
+    public Date getRefreshTime() {
+        return this.refreshTime;
     }
 }

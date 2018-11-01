@@ -27,10 +27,9 @@ public final class DynamicPackageLoader {
      * @return An array of dynamically-loaded classes that are subclasses of the given superclass
      * @throws ClassNotFoundException An exception indicating failure to dynamically load a class
      * @throws IOException An exception indicating that the given package name is invalid
-     * @throws URISyntaxException An exception indicating that there was a failure converting a URI
      */
     public static Class[] loadPackageAs(Class _superClass, String _packageName)
-            throws ClassNotFoundException, IOException, URISyntaxException
+            throws ClassNotFoundException, IOException
     {
         ArrayList<Class> classes = new ArrayList();
         ClassLoader classLoader = DynamicPackageLoader.class.getClassLoader();
@@ -38,22 +37,28 @@ public final class DynamicPackageLoader {
 
         // Make sure the package exists.
         if (resources.hasMoreElements()) {
-            // Iterate through each file in the package.
-            for (File file : new File(resources.nextElement().toURI().getPath()).listFiles()) {
-                // Get the name of the current file.
-                String resourceName = file.getName();
+            try {
+                // Iterate through each file in the package.
+                for (File file : new File(resources.nextElement().toURI().getPath()).listFiles()) {
+                    // Get the name of the current file.
+                    String resourceName = file.getName();
 
-                // Only process class files.
-                if (resourceName.endsWith(".class")) {
-                    // Strip the extension.
-                    String className = resourceName.substring(0, resourceName.length() - 6);
+                    // Only process class files.
+                    if (resourceName.endsWith(".class")) {
+                        // Strip the extension.
+                        String className = resourceName.substring(0, resourceName.length() - 6);
 
-                    // Dynamically load the class.
-                    Class clazz = classLoader.loadClass(_packageName + "." + className);
+                        // Dynamically load the class.
+                        Class clazz = classLoader.loadClass(_packageName + "." + className);
 
-                    // Cast the class to be a subclass of the given superclass and store it.
-                    classes.add(clazz.asSubclass(_superClass));
+                        // Cast the class to be a subclass of the given superclass and store it.
+                        classes.add(clazz.asSubclass(_superClass));
+                    }
                 }
+            } catch (URISyntaxException exception) {
+                // Do nothing for URI exception since Java built the URI, not us.
+                // It *should* therefore always be valid.
+                System.err.println("URI exception: " + exception);
             }
 
             // Return the dynamically-loaded classes in an array.

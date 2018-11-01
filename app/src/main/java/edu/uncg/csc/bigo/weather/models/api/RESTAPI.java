@@ -8,7 +8,7 @@ package edu.uncg.csc.bigo.weather.models.api;
  */
 
 
-public abstract class RESTAPI {
+public abstract class RESTAPI extends API {
     // This field specifies the endpoint URL of the REST API.
     protected final String endpoint;
 
