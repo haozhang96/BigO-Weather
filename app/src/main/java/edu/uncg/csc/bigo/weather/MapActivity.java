@@ -6,6 +6,12 @@ import android.preference.PreferenceManager;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 
 public class MapActivity extends AppCompatActivity {
@@ -43,6 +49,15 @@ public class MapActivity extends AppCompatActivity {
             public void onMenuTabReSelected(@IdRes int _menuItemId) {
             }
         });
+    }
+    
+    public void onMapReady(GoogleMap _googleMap) {
+         mMap = _googleMap;
+
+         // Add a marker in Greensboro and move the camera
+         LatLng greensboro = new LatLng(36.04, -79.9);
+         mMap.addMarker(new MarkerOptions().position(greensboro).title("Marker in Greensboro"));
+         mMap.moveCamera(CameraUpdateFactory.newLatLng(greensboro));
     }
 
     @Override
