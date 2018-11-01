@@ -10,7 +10,7 @@ import android.webkit.WebView;
 
 public class MapActivity extends AppCompatActivity {
 
-    private BottomBar _BottomBar;
+    private BottomBar _bottomBar;
 
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
@@ -25,9 +25,9 @@ public class MapActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("file:///android_asset/map.html?lat=" + prefs.getFloat("latitude", 0) + "&lon=" + prefs.getFloat("longitude", 0) + "&appid=" + apiKey);
 
-        mBottomBar = BottomBar.attach(this, savedInstanceState);
-        mBottomBar.setItems(R.menu.menu_map_bottom);
-        mBottomBar.setOnMenuTabClickListener(new OnMenuTabClickListener() {
+        _bottomBar = BottomBar.attach(this, savedInstanceState);
+        _bottomBar.setItems(R.menu.menu_map_bottom);
+        _bottomBar.setOnMenuTabClickListener(new OnMenuTabClickListener() {
             @Override
             public void onMenuTabSelected(@IdRes int _menuItemId) {
                 if (_menuItemId == R.id.map_rain) {
@@ -48,6 +48,6 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle _outState) {
         super.onSaveInstanceState(_outState);
-        _BottomBar.onSaveInstanceState(_outState);
+        _bottomBar.onSaveInstanceState(_outState);
     }
 }
