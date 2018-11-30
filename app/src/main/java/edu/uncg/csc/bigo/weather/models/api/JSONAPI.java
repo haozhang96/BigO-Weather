@@ -59,7 +59,6 @@ public abstract class JSONAPI extends RESTAPI {
             responseBuffer.append(inputLine);
         }
         inputReader.close();
-        connection.disconnect();
 
         // Convert the response buffer into a JSONObject.
         JSONObject responseJSON = new JSONObject(responseBuffer.toString());

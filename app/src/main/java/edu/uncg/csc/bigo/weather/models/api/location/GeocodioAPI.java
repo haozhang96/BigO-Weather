@@ -33,8 +33,18 @@ public final class GeocodioAPI extends LocationAPI {
                 .getJSONObject("location");
 
         //
-        double  latitude = locationJSON.getDouble("lat"),
+        double latitude = locationJSON.getDouble("lat"),
                 longitude = locationJSON.getDouble("lng");
         return new LocationCoordinate(latitude, longitude);
+    }
+
+    public String getNameOfLocation(int _zipCode) throws IOException, JSONException {
+        JSONObject locationJSON = this.getResponse(_zipCode)
+                .getJSONArray("results")
+                .getJSONObject(0);
+
+
+        String formattedLocation = locationJSON.getString("formatted_address");
+        return formattedLocation;
     }
 }

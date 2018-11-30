@@ -2,10 +2,12 @@ package edu.uncg.csc.bigo.weather.models.api.weather;
 /**
  * This class defines the Dark Sky weather API.
  *
- * @updated 2018/09/27
+ * @updated 11/14/2018
  * @authors John Isaac Wilkinson, Harman Bains, Hao Zhang
  */
 
+
+import android.graphics.drawable.Icon;
 
 import edu.uncg.csc.bigo.weather.models.api.WeatherAPI;
 import edu.uncg.csc.bigo.weather.models.metrics.*;
@@ -74,6 +76,29 @@ public final class DarkSkyAPI extends WeatherAPI {
 
 
     /**
+     *
+     * @param _location
+     * @param _offset
+     * @return A WeatherData instance cantaining the data for the daily weather forecast
+     * @throws IOException An exception indicating a problem with the connection to the API endpoint
+     * @throws JSONException An exception indicating a problem with parsing the API endpoint's
+     *            response as a JSONObject
+     */
+    public WeatherData getDailyWeatherForecast(LocationCoordinate _location, int _offset)
+            throws IOException, JSONException
+    {
+        // Get the daily weather data from the API at the given location.
+        JSONObject apiResponse = this.getResponse(
+                _location.getLatitude(), _location.getLongitude()
+        ).getJSONObject("daily").getJSONArray("data").getJSONObject(_offset);
+
+        // Extract the weather data using the helper method.
+        return this.extractWeatherData(apiResponse, _location);
+    }
+
+
+
+    /**
      * This method returns the hourly weather conditions for a given coordinate.
      * @param _location A LocationCoordinate of the location to get the hourly weather for
      * @return A WeatherData instance containing the data for the hourly weather conditions
@@ -94,27 +119,28 @@ public final class DarkSkyAPI extends WeatherAPI {
         return this.extractWeatherData(apiResponse, _location);
     }
 
-
     /**
-     * This method returns the minutely weather conditions for a given coordinate.
-     * @param _location A LocationCoordinate of the location to get the minutely weather for
-     * @return A WeatherData instance containing the data for the minutely weather conditions
+     * This method returns the hourly weather conditions for a given coordinate, and uses
+     * an offset to determine which hour you would like the data for.
+     * @param _location A LocationCoordinate of the location to get the hourly weather for
+     * @return A WeatherData instance containing the data for the hourly weather conditions
      * @throws IOException An exception indicating a problem with the connection to the API endpoint
      * @throws JSONException An exception indicating a problem with parsing the API endpoint's
      *      response as a JSONObject
      */
     @Override
-    public WeatherData getMinutelyWeather(LocationCoordinate _location)
+    public WeatherData getHourlyWeatherForecast(LocationCoordinate _location, int _offset)
             throws IOException, JSONException
     {
-        // Get the minutely weather data from the API at the given location.
+        // Get the hourly weather data from the API at the given location.
         JSONObject apiResponse = this.getResponse(
                 _location.getLatitude(), _location.getLongitude()
-        ).getJSONObject("minutely").getJSONArray("data").getJSONObject(0);
+        ).getJSONObject("hourly").getJSONArray("data").getJSONObject(_offset);
 
         // Extract the weather data using the helper method.
         return this.extractWeatherData(apiResponse, _location);
     }
+
 
 
     /**
@@ -129,6 +155,14 @@ public final class DarkSkyAPI extends WeatherAPI {
         return new WeatherDataBuilder()
                 .setApparentTemperature(new Temperature(
                         _dataPoint.optDouble("apparentTemperature"),
+                        TemperatureUnit.FAHRENHEIT
+                ))
+                .setTemperatureHigh(new Temperature(
+                        _dataPoint.optDouble("temperatureHigh"),
+                        TemperatureUnit.FAHRENHEIT
+                ))
+                .setTemperatureLow(new Temperature(
+                        _dataPoint.optDouble("temperatureLow"),
                         TemperatureUnit.FAHRENHEIT
                 ))
                 .setCloudCover(new Amount(
@@ -187,6 +221,7 @@ public final class DarkSkyAPI extends WeatherAPI {
                         _dataPoint.optDouble("windSpeed"),
                         SpeedUnit.MILE_PER_HOUR
                 ))
+                .setIcon(_dataPoint.optString("icon"))
                 .build();
     }
 }

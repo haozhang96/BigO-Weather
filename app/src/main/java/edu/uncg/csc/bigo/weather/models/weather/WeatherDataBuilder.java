@@ -19,6 +19,9 @@ public final class WeatherDataBuilder {
     /**
      * All the instance fields of the WeatherData class are replicated here.
      */
+    //ADDED TEMPERATURE HIHG HERE
+    private Temperature temperatureHigh = null;
+    private Temperature temperatureLow = null;
     private Temperature apparentTemperature = null;
     private Amount cloudCover = null;
     private Temperature dewPoint = null;
@@ -37,11 +40,23 @@ public final class WeatherDataBuilder {
     private Distance visibility = null;
     private Speed windGust = null;
     private Speed windSpeed = null;
+    private String icon = null;
 
 
     /**
      * All the builder methods begin here.
      */
+
+    //ADDED TEMPERATURE HIGH HERE
+    public WeatherDataBuilder setTemperatureHigh(Temperature _temperatureHigh){
+        this.temperatureHigh = _temperatureHigh;
+        return this;
+    }
+
+    public WeatherDataBuilder setTemperatureLow(Temperature _temperatureLow){
+        this.temperatureLow = _temperatureLow;
+        return this;
+    }
 
 
     public WeatherDataBuilder setApparentTemperature(Temperature _apparentTemperature) {
@@ -151,6 +166,11 @@ public final class WeatherDataBuilder {
         return this;
     }
 
+    public WeatherDataBuilder setIcon(String _icon) {
+        this.icon = _icon;
+        return this;
+    }
+
 
     /**
      * This method builds a WeatherData object based on the currently-set fields.
@@ -167,6 +187,9 @@ public final class WeatherDataBuilder {
 
         // Return a new immutable WeatherData object (hopefully now you'll know why this is needed).
         return new WeatherData(
+                //ADDED TEMPERATURE HIGH HERE
+                this.temperatureHigh,
+                this.temperatureLow,
                 this.apparentTemperature,
                 this.cloudCover,
                 this.dewPoint,
@@ -184,7 +207,8 @@ public final class WeatherDataBuilder {
                 this.uvIndex,
                 this.visibility,
                 this.windGust,
-                this.windSpeed
+                this.windSpeed,
+                this.icon
         );
     }
 }

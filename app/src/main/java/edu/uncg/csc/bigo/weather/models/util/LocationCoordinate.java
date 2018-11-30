@@ -41,6 +41,8 @@ public class LocationCoordinate {
     }
 
 
+
+
     /**
      * This method overrides Object's toString method for pretty-printing.
      * @return A prettified string

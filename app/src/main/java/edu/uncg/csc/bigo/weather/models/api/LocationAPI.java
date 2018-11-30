@@ -38,3 +38,4 @@ public abstract class LocationAPI extends JSONAPI {
      */
     public abstract LocationCoordinate zipCodeToCoordinate(int _zipCode) throws Exception;
 }
+
