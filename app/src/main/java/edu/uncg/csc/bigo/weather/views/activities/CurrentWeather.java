@@ -26,6 +26,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class CurrentWeather extends Fragment {
 
 
+    private TextView temperature;
     private TextView currentMessage;
     private ImageView image;
     public int zipCode;
@@ -48,22 +49,27 @@ public class CurrentWeather extends Fragment {
         //Initialize the message TextView box
         currentMessage = v.findViewById(R.id.currentMessage);
 
+        temperature = v.findViewById(R.id.temperature);
+
         return v;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         new Test().execute();
     }
 
-    public class Test extends AsyncTask<Void, Void, String> {
+    public class Test extends AsyncTask<Void, Void, Wrapper> {
 
-        protected String doInBackground(Void... nothing) {
+        protected Wrapper doInBackground(Void... nothing) {
+
+            Wrapper w = new Wrapper();
 
             SharedPreferences sp = getActivity().getSharedPreferences("GLOBAL", MODE_PRIVATE);
 
-            zipCode = sp.getInt("ZIP", 0);
+            zipCode = sp.getInt("ZIP", 10001);
 
             try {
 
@@ -72,22 +78,24 @@ public class CurrentWeather extends Fragment {
                 // Store a message buffer to append strings to.
                 StringBuffer message = new StringBuffer();
 
+                String temp = currentWeatherController[18];
 
                 message.append(currentWeatherController[0] + "\n");
-                message.append("Temperature: " + currentWeatherController[18] + "\n");
                 message.append("Summary: " + currentWeatherController[3] + "\n");
                 message.append("Precipitation: " + currentWeatherController[2] + "\n");
                 message.append("Humidity: " + currentWeatherController[7] + "\n");
                 message.append("Wind Speed: " + currentWeatherController[17] + "\n");
                 message.append("Icon: " + currentWeatherController[21] + "\n");
 
-                return message.toString();
+                w.currentMessage = message.toString();
+                w.temperature = temp;
             } catch (Exception exception) {
-                return exception.toString();
+                w.currentMessage = "ERROR";
             }
+            return w;
         }
 
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(Wrapper w) {
 
             switch (currentWeatherController[21]) {
                 case "clear-day":
@@ -140,7 +148,8 @@ public class CurrentWeather extends Fragment {
                     image.setImageResource(wind.getIconResId());
                     break;
             }
-            currentMessage.setText(result);
+            currentMessage.setText(w.currentMessage);
+            temperature.setText(w.temperature);
         }
     }
 }

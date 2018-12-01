@@ -54,28 +54,6 @@ public final class DarkSkyAPI extends WeatherAPI {
 
 
     /**
-     * This method returns the daily weather conditions for a given coordinate.
-     * @param _location A LocationCoordinate of the location to get the daily weather for
-     * @return A WeatherData instance containing the data for the daily weather conditions
-     * @throws IOException An exception indicating a problem with the connection to the API endpoint
-     * @throws JSONException An exception indicating a problem with parsing the API endpoint's
-     *      response as a JSONObject
-     */
-    @Override
-    public WeatherData getDailyWeather(LocationCoordinate _location)
-            throws IOException, JSONException
-    {
-        // Get the daily weather data from the API at the given location.
-        JSONObject apiResponse = this.getResponse(
-                _location.getLatitude(), _location.getLongitude()
-        ).getJSONObject("daily").getJSONArray("data").getJSONObject(0);
-
-        // Extract the weather data using the helper method.
-        return this.extractWeatherData(apiResponse, _location);
-    }
-
-
-    /**
      *
      * @param _location
      * @param _offset
@@ -95,29 +73,7 @@ public final class DarkSkyAPI extends WeatherAPI {
         // Extract the weather data using the helper method.
         return this.extractWeatherData(apiResponse, _location);
     }
-
-
-
-    /**
-     * This method returns the hourly weather conditions for a given coordinate.
-     * @param _location A LocationCoordinate of the location to get the hourly weather for
-     * @return A WeatherData instance containing the data for the hourly weather conditions
-     * @throws IOException An exception indicating a problem with the connection to the API endpoint
-     * @throws JSONException An exception indicating a problem with parsing the API endpoint's
-     *      response as a JSONObject
-     */
-    @Override
-    public WeatherData getHourlyWeather(LocationCoordinate _location)
-            throws IOException, JSONException
-    {
-        // Get the hourly weather data from the API at the given location.
-        JSONObject apiResponse = this.getResponse(
-                _location.getLatitude(), _location.getLongitude()
-        ).getJSONObject("hourly").getJSONArray("data").getJSONObject(0);
-
-        // Extract the weather data using the helper method.
-        return this.extractWeatherData(apiResponse, _location);
-    }
+    
 
     /**
      * This method returns the hourly weather conditions for a given coordinate, and uses

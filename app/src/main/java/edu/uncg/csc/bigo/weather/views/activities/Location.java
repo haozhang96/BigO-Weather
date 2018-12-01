@@ -18,7 +18,7 @@ import edu.uncg.csc.bigo.weather.R;
 public class Location extends AppCompatActivity {
 
     private TextView errorMessage;
-    public EditText editTextZip;
+    public EditText searchBar;
     public static int zipCode;
 
 
@@ -28,25 +28,28 @@ public class Location extends AppCompatActivity {
         setContentView(R.layout.activity_location);
 
         //Initialize the EditText box.
-        editTextZip = findViewById(R.id.editTextZip);
+        searchBar = findViewById(R.id.searchBar);
 
         //Initialize the formatting message TextView box
         errorMessage = findViewById(R.id.errorMessage);
+
 
                 findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         //Make sure the user inputs a properly formatted zip.
-                        if ((editTextZip.getText().toString().length() != 5)) {
+                        if ((searchBar.getText().toString().length() != 5)) {
                             errorMessage.setText("Enter a Properly Formatted Zip");
-                            editTextZip.setText("");
+                            searchBar.setText("");
                         }//If the zip is correctly formatted assign it to zipCode
-                        else if (editTextZip.getText().toString().length() == 5) {
-                            zipCode = Integer.valueOf(editTextZip.getText().toString());
+                        else if (searchBar.getText().toString().length() == 5) {
+                            zipCode = Integer.valueOf(searchBar.getText().toString());
                             SharedPreferences sp = getSharedPreferences("GLOBAL", MODE_PRIVATE);
                             SharedPreferences.Editor editor = sp.edit();
+
                             editor.putInt("ZIP", zipCode);
                             editor.apply();
+                            sp.getInt("ZIP", 0);
 
                             errorMessage.setText("");
                             startActivity(new Intent(Location.this, MainActivity.class));

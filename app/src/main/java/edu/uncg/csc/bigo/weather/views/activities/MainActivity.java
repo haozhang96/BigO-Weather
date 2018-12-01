@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
-    public int zipCode;
 
 
     //The first three lines of this are by default in the MainActivity class.
@@ -58,12 +57,17 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        boolean firstRun = getSharedPreferences("BOOT", MODE_PRIVATE).getBoolean("firstRun", true);
+        SharedPreferences sp = getSharedPreferences("BOOT", Context.MODE_PRIVATE);
+
+
+        boolean firstRun = sp.getBoolean("run", true);
+
 
         if (firstRun) {
             startActivity(new Intent(MainActivity.this, Location.class));
         }
-        getSharedPreferences("BOOT", MODE_PRIVATE).edit().putBoolean("firstRun", false).apply();
+        sp.edit().putBoolean("run", false).apply();
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

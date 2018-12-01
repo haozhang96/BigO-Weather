@@ -8,11 +8,11 @@
     android:background="@color/night_blue">
 
     <EditText
-        android:id="@+id/editTextZip"
-        android:layout_width="wrap_content"
+        android:id="@+id/searchBar"
+        android:layout_width="300dp"
         android:layout_height="48dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:background="@color/white"
         android:ems="10"
         android:hint="Enter Zip Code"
@@ -22,17 +22,19 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="250dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginLeft="317dp"
+        android:layout_marginTop="10dp"
         android:text="Go"
-        android:background="@color/gray"/>
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:background="@color/white"/>
 
     <TextView
         android:id="@+id/errorMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="250dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="70dp"
         android:textColor="@color/white"/>
 
 </FrameLayout>

@@ -142,7 +142,7 @@ public class WeatherDataStringFormatter {
             hourlyStringArray[i][Globals.VISIBILITY] = weatherHourly.getVisibility().toString();
             hourlyStringArray[i][Globals.WIND_GUST] = weatherHourly.getWindGust().toString();
             hourlyStringArray[i][Globals.WIND_SPEED] = weatherHourly.getWindSpeed().toString();
-            hourlyStringArray[i][Globals.ICON] = weatherHourly.getIcon().toString();
+            hourlyStringArray[i][Globals.ICON] = weatherHourly.getIcon();
         }
         return hourlyStringArray;
     }

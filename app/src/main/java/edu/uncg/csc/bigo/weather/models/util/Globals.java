@@ -9,7 +9,7 @@ package edu.uncg.csc.bigo.weather.models.util;
  */
 public class Globals {
     public static final String APIKEY_GEOCODIO = "f0905446086d00db93d937b64d0e999b3b45d5d";
-    public static final String APIKEY_DARKSKY = "7936c853b8a9c4dbf579d81eaf44ce04";
+    public static final String APIKEY_DARKSKY = "a5602804cc03fcde3ea1633c5487cc43";
     public static final int CITY_STATE_ZIP = 0;
     public static final int PRECIP_INTENSITY = 1;
     public static final int PRECIP_PROBABILITY = 2;

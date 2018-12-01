@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/advent_pro</item>
+        <item>@font/amiko</item>
+        <item>@font/anton</item>
+        <item>@font/cousine</item>
+        <item>@font/doppio_one</item>
+        <item>@font/quicksand_light</item>
+        <item>@font/roboto</item>
+        <item>@font/roboto_condensed_light</item>
+    </array>
+</resources>

@@ -23,7 +23,11 @@
         <activity android:name=".views.activities.Settings" />
         <activity android:name=".views.activities.Location" />
         <activity android:name=".views.activities.About" />
-        <activity android:name=".views.activities.TimeDate"></activity>
+        <activity android:name=".views.activities.TimeDate" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
