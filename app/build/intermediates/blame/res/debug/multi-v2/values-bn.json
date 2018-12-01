@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Steven Tran\\Desktop\\BigO-Weather-Isaac\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-bn\\values-bn.xml",
+            "outputFile": "C:\\Users\\Steven Tran\\Desktop\\BigO-Weather\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-bn\\values-bn.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Steven Tran\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\19e90d1b90d6697827f2b2c7ad00cd71\\res\\values-bn\\values-bn.xml",
