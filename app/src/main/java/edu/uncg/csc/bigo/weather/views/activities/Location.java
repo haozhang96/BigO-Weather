@@ -21,7 +21,6 @@ public class Location extends AppCompatActivity {
     public EditText searchBar;
     public static int zipCode;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +48,7 @@ public class Location extends AppCompatActivity {
 
                             editor.putInt("ZIP", zipCode);
                             editor.apply();
-                            sp.getInt("ZIP", 0);
+                            sp.getInt("ZIP", 10001);
 
                             errorMessage.setText("");
                             startActivity(new Intent(Location.this, MainActivity.class));
@@ -60,6 +59,7 @@ public class Location extends AppCompatActivity {
     public static int getZipCode() {
         return zipCode;
     }
+
 }
 
 

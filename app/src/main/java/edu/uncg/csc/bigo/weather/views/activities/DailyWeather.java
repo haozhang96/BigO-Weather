@@ -113,7 +113,7 @@ public class DailyWeather extends Fragment {
                         message6, message7};
 
                 //Get the zipcode entered by the user.
-                zipCode = sp.getInt("ZIP", -1);
+                zipCode = sp.getInt("ZIP", 10001);
 
                 //Testing the WeatherController methods
                 dailyWeatherForecastController = WeatherController.getWeatherDailyForecast(zipCode);

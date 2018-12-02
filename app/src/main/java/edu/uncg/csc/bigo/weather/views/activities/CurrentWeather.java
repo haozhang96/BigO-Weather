@@ -69,12 +69,11 @@ public class CurrentWeather extends Fragment {
 
             SharedPreferences sp = getActivity().getSharedPreferences("GLOBAL", MODE_PRIVATE);
 
-            zipCode = sp.getInt("ZIP", 10001);
+            sp.getInt("ZIP", 10001);
 
             try {
 
                 currentWeatherController = WeatherController.getWeatherCurrent(zipCode);
-
                 // Store a message buffer to append strings to.
                 StringBuffer message = new StringBuffer();
 
