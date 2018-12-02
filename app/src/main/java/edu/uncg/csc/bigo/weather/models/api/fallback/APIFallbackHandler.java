@@ -13,6 +13,7 @@ import edu.uncg.csc.bigo.weather.models.api.APIResponse;
 import edu.uncg.csc.bigo.weather.models.util.ClassSingletonPair;
 import edu.uncg.csc.bigo.weather.models.util.DynamicPackageLoader;
 
+import android.util.Log;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -31,7 +32,7 @@ public abstract class APIFallbackHandler<T extends API> {
      * @throws IOException An exception indicating that the given package name is invalid
      *
      */
-    protected APIFallbackHandler(Class<? extends API> _baseAPIClass, String _fallbackPackageName)
+    protected APIFallbackHandler(Class<T> _baseAPIClass, String _fallbackPackageName)
             throws ClassNotFoundException, IOException
     {
         // Dynamically load all the classes in the given package
@@ -110,6 +111,7 @@ public abstract class APIFallbackHandler<T extends API> {
     )
             throws NoWorkingAPIAvailableException, NoSuchMethodException
     {
+        Log.d("Hao", "In APIFallbackHandler.apiCallInstanceMethod");
         // Go through each of the available APIs and try to call its method until successful.
         for (ClassSingletonPair<Class<T>, T> api : this.apis) {
             try {
@@ -162,7 +164,7 @@ public abstract class APIFallbackHandler<T extends API> {
      * @throws InvocationTargetException An exception indicating a problem with the method call
      */
     private final APIResponse<Object> callClassMethod(
-            ClassSingletonPair<Class<T>, T> _api, // Class<? extends API> _api,
+            ClassSingletonPair<Class<T>, T> _api,
             String _methodName,
             Class[] _argumentTypes,
             Object[] _arguments

@@ -1,6 +1,8 @@
 package edu.uncg.csc.bigo.weather.models.api.fallback;
 
 
+import android.util.Log;
+
 import edu.uncg.csc.bigo.weather.models.api.weather.WeatherAPI;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherData;
@@ -15,6 +17,7 @@ public final class WeatherAPIFallbackHandler extends APIFallbackHandler implemen
 
 
     public WeatherData getCurrentWeather(LocationCoordinate _location) throws Exception {
+        Log.d("Hao", "In APIFallbackHandler.apiCallInstanceMethod");
         return (WeatherData) this.apiCallInstanceMethod(
                 "getCurrentWeather",
                 new Class[] { LocationCoordinate.class },

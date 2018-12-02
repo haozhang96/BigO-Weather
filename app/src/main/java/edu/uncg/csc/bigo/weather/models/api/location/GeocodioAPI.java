@@ -25,6 +25,11 @@ public final class GeocodioAPI extends JSONAPI implements LocationAPI {
     }
 
 
+    public boolean isZipCodeValid(int _zipCode) throws IOException, JSONException {
+        return this.getResponse(_zipCode).getJSONArray("results").length() > 0;
+    }
+
+
     public LocationCoordinate zipCodeToCoordinate(int _zipCode) throws IOException, JSONException {
         //
         JSONObject locationJSON = this.getResponse(_zipCode)

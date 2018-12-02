@@ -12,8 +12,8 @@ import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherData;
 
 
-public abstract class WeatherAPI extends JSONAPI {
-    protected WeatherAPI(String _endpoint) {
+public abstract class WeatherAPI_old extends JSONAPI {
+    protected WeatherAPI_old(String _endpoint) {
         super(_endpoint);
     }
 

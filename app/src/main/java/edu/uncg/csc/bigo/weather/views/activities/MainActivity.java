@@ -9,14 +9,17 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 
-import edu.uncg.csc.bigo.weather.models.api.LocationAPI;
-import edu.uncg.csc.bigo.weather.models.api.WeatherAPI;
+import android.util.Log;
+import edu.uncg.csc.bigo.weather.controllers.WeatherController;
+import edu.uncg.csc.bigo.weather.models.api.location.LocationAPI;
+import edu.uncg.csc.bigo.weather.models.api.weather.WeatherAPI;
 import edu.uncg.csc.bigo.weather.models.api.weather.DarkSkyAPI;
 import edu.uncg.csc.bigo.weather.models.api.location.GeocodioAPI;
 import edu.uncg.csc.bigo.weather.models.metrics.units.TemperatureUnit;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherData;
 import edu.uncg.csc.bigo.weather.R;
+import java.util.Objects;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -81,7 +84,14 @@ public class MainActivity extends AppCompatActivity {
                 ));
 
                 // Get the current weather data for the ZIP code.
-                WeatherData testCurrent = darkSky.getCurrentWeather(location);
+
+                Log.d("Hao", getApplicationContext().getPackageResourcePath());
+                // "edu/uncg/csc/bigo/weather/models/api/weather"
+                Log.d("Hao", Objects.toString(ClassLoader.getSystemClassLoader().loadClass("models.api.weather.DarkSkyAPI")));
+                Log.d("Hao",
+                        Objects.toString(this.getClass().getClassLoader().getResources(".").hasMoreElements())
+                );
+                WeatherData testCurrent = WeatherController.getCurrentWeather(location); // darkSky.getCurrentWeather(location);
                 message.append("\n\nCurrently:\n" + testCurrent);
                 message.append("\nTemperature in C: " + testCurrent.getTemperature().convertTo(TemperatureUnit.CELSIUS));
 

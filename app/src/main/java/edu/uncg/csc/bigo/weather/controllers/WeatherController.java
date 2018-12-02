@@ -12,11 +12,19 @@ import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 //import edu.uncg.csc.bigo.weather.models.util.caching.TimeExpirableCache;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherData;
 
+import android.util.Log;
 import java.io.IOException;
 
 
 public final class WeatherController {
     private static WeatherAPIFallbackHandler api = null;
+    static {
+        try {
+            WeatherController.api = new WeatherAPIFallbackHandler();
+        } catch (Exception e) {
+            Log.d("Hao", e.getMessage());
+        }
+    }
     //private static final TimeExpirableCache<LocationCoordinate, WeatherData>
     //        weatherDataCache = new TimeExpirableCache();
 
