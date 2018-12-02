@@ -7,6 +7,8 @@ package edu.uncg.csc.bigo.weather.models.api.location;
  */
 
 
+import android.util.Log;
+
 import edu.uncg.csc.bigo.weather.models.api.LocationAPI;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 import java.io.IOException;
@@ -36,6 +38,17 @@ public final class GeocodioAPI extends LocationAPI {
         double latitude = locationJSON.getDouble("lat"),
                 longitude = locationJSON.getDouble("lng");
         return new LocationCoordinate(latitude, longitude);
+    }
+
+    public boolean isZipCodeValid(int _zipCode) throws IOException, JSONException {
+        try {
+            Log.d("Test", "In");
+            Log.d("Test", this.getResponse(_zipCode).toString());
+            this.getResponse(_zipCode);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public String getNameOfLocation(int _zipCode) throws IOException, JSONException {

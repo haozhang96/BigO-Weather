@@ -8,11 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
-
 import edu.uncg.csc.bigo.weather.R;
-import edu.uncg.csc.bigo.weather.data.DataInterface;
-import edu.uncg.csc.bigo.weather.data.DataStore;
-
+import edu.uncg.csc.bigo.weather.controllers.DataController;
 
 public class Settings extends AppCompatActivity {
 
@@ -32,22 +29,21 @@ public class Settings extends AppCompatActivity {
         findViewById(R.id.eraseLocationButton).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 // This is used for CRUD operations.
-                DataInterface dataModifier = new DataStore();
+                DataController controller = new DataController();
+                controller.removeController();
 
-                dataModifier.remove();
-
-                // Displays a confirmation message when deletion is complete.
-                CharSequence textMessage = "Deletion Complete!";
-                int textLength = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(getApplicationContext(), textMessage, textLength);
+                // Display a confirmation message when removal is done.
+                CharSequence text = "Deletion Complete!";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(getApplicationContext(), text, duration);
                 toast.show();
             }
         });
         {
 
         }
-        ;
     }
 
     public void Navigation(View View) {
@@ -67,7 +63,6 @@ public class Settings extends AppCompatActivity {
     }
 
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -77,5 +72,4 @@ public class Settings extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

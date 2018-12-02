@@ -22,6 +22,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import edu.uncg.csc.bigo.weather.R;
+import edu.uncg.csc.bigo.weather.controllers.DataController;
 import edu.uncg.csc.bigo.weather.data.CreateFile;
 import edu.uncg.csc.bigo.weather.data.DataInterface;
 import edu.uncg.csc.bigo.weather.data.DataStore;
@@ -41,7 +42,7 @@ public class Location extends AppCompatActivity {
         setContentView(R.layout.activity_location);
 
         //Initialize the EditText box.
-       // searchBar = findViewById(R.id.searchBar);
+        // searchBar = findViewById(R.id.searchBar);
 
         //Initialize the formatting message TextView box
         errorMessage = findViewById(R.id.errorMessage);
@@ -54,10 +55,13 @@ public class Location extends AppCompatActivity {
 
         try{
             // This is used for CRUD operations.
-            DataInterface dataModifier = new DataStore();
+            //        DataInterface dataModifier = new DataStore();
 
             // Returns all of the stored locations from the file.
-            String[] zipArray = dataModifier.returnLocation();
+            //      String[] zipArray = dataModifier.returnLocation();
+
+            DataController dataController = new DataController();
+            String[] zipArray = dataController.returnLocation();
 
             // Create an adapter that connects the context, AutoCompleteTextView and the saved locations
             // array together.
@@ -115,40 +119,39 @@ public class Location extends AppCompatActivity {
         }
 
 */
-                findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //Make sure the user inputs a properly formatted zip.
-                        if ((autoView.getText().toString().length() != 5)) {
-                            errorMessage.setText("Enter a Properly Formatted Zip");
-                            autoView.setText("");
-                        }//If the zip is correctly formatted assign it to zipCode
-                        else if (autoView.getText().toString().length() == 5) {
-                            zipCode = Integer.valueOf(autoView.getText().toString());
-                            SharedPreferences sp = getSharedPreferences("GLOBAL", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = sp.edit();
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Make sure the user inputs a properly formatted zip.
+                if ((autoView.getText().toString().length() != 5)) {
+                    errorMessage.setText("Enter a Properly Formatted Zip");
+                    autoView.setText("");
+                }//If the zip is correctly formatted assign it to zipCode
+                else if (autoView.getText().toString().length() == 5) {
+                    zipCode = Integer.valueOf(autoView.getText().toString());
+                    SharedPreferences sp = getSharedPreferences("GLOBAL", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sp.edit();
 
-                            try {
-                                // Using the CreateFile class.
-                                CreateFile.createFile(context);
+                    try {
+                        // Using the CreateFile class.
+                        CreateFile.createFile(context);
 
-                                // This is used for CRUD operations.
-                                DataInterface dataModifier = new DataStore();
+                        // This is used for CRUD operations.
+                        DataController dataController = new DataController();
+                        dataController.insert(zipCode, context);
 
-                                dataModifier.insert(zipCode, context);
-
-                            } catch (Exception exception) {
-                                exception.toString();
-                            }
-
-                            editor.putInt("ZIP", zipCode);
-                            editor.apply();
-
-                            errorMessage.setText("");
-                            startActivity(new Intent(Location.this, MainActivity.class));
-                        }
+                    } catch (Exception exception) {
+                        exception.toString();
                     }
-                });
+
+                    editor.putInt("ZIP", zipCode);
+                    editor.apply();
+
+                    errorMessage.setText("");
+                    startActivity(new Intent(Location.this, MainActivity.class));
+                }
+            }
+        });
     }
     public static int getZipCode() {
         return zipCode;

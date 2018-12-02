@@ -29,6 +29,16 @@ public abstract class LocationAPI extends JSONAPI {
 
 
     /**
+     * This method defines a way of checking whether a ZIP code is valid based on the API sub-class'
+     *     implementation.
+     * @return A boolean indicating whether the given ZIP code is valid
+     * @throws Exception An exception of any arbitrary type that was thrown from the API sub-class
+     *     based on its implementation
+     */
+    public abstract boolean isZipCodeValid(int _zipCode) throws Exception;
+
+
+    /**
      * This method defines a way of converting a ZIP code to a coordinate based on the API
      *     sub-class' implementation.
      * @param _zipCode A ZIP code to get the coordinate of
