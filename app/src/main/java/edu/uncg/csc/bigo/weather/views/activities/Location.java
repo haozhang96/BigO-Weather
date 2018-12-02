@@ -48,7 +48,6 @@ public class Location extends AppCompatActivity {
 
                             editor.putInt("ZIP", zipCode);
                             editor.apply();
-                            sp.getInt("ZIP", 10001);
 
                             errorMessage.setText("");
                             startActivity(new Intent(Location.this, MainActivity.class));

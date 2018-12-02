@@ -15,6 +15,7 @@ import java.util.Locale;
 
 import edu.uncg.csc.bigo.weather.R;
 import edu.uncg.csc.bigo.weather.controllers.WeatherController;
+import edu.uncg.csc.bigo.weather.models.util.Globals;
 import edu.uncg.csc.bigo.weather.models.weather.Icons;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -67,26 +68,26 @@ public class CurrentWeather extends Fragment {
 
             Wrapper w = new Wrapper();
 
-            SharedPreferences sp = getActivity().getSharedPreferences("GLOBAL", MODE_PRIVATE);
-
-            sp.getInt("ZIP", 10001);
-
             try {
 
-                currentWeatherController = WeatherController.getWeatherCurrent(zipCode);
+                SharedPreferences sp = getActivity().getSharedPreferences("GLOBAL", MODE_PRIVATE);
+
+                sp.getInt("ZIP", 10001);
+
+                currentWeatherController = WeatherController.getWeatherCurrent(sp.getInt("ZIP", 10001));
                 // Store a message buffer to append strings to.
-                StringBuffer message = new StringBuffer();
+                StringBuffer StringBuffer = new StringBuffer();
 
-                String temp = currentWeatherController[18];
+                String temp = currentWeatherController[Globals.APPARENT_TEMPERATURE];
 
-                message.append(currentWeatherController[0] + "\n");
-                message.append("Summary: " + currentWeatherController[3] + "\n");
-                message.append("Precipitation: " + currentWeatherController[2] + "\n");
-                message.append("Humidity: " + currentWeatherController[7] + "\n");
-                message.append("Wind Speed: " + currentWeatherController[17] + "\n");
-                message.append("Icon: " + currentWeatherController[21] + "\n");
+                StringBuffer.append(currentWeatherController[Globals.CITY_STATE_ZIP] + "\n");
+                StringBuffer.append("Summary: " + currentWeatherController[Globals.SUMMARY] + "\n");
+                StringBuffer.append("Precipitation: " + currentWeatherController[Globals.PRECIP_PROBABILITY] + "\n");
+                StringBuffer.append("Humidity: " + currentWeatherController[Globals.HUMIDITY] + "\n");
+                StringBuffer.append("Wind Speed: " + currentWeatherController[Globals.WIND_SPEED] + "\n");
+                StringBuffer.append("Icon: " + currentWeatherController[Globals.ICON] + "\n");
 
-                w.currentMessage = message.toString();
+                w.currentMessage = StringBuffer.toString();
                 w.temperature = temp;
             } catch (Exception exception) {
                 w.currentMessage = "ERROR";
@@ -95,8 +96,7 @@ public class CurrentWeather extends Fragment {
         }
 
         protected void onPostExecute(Wrapper w) {
-
-            switch (currentWeatherController[21]) {
+            switch (currentWeatherController[Globals.ICON]) {
                 case "clear-day":
                     Icons clear_day = Icons.valueOf("Clear_day".toUpperCase(Locale.ENGLISH));
                     image.setImageResource(clear_day.getIconResId());

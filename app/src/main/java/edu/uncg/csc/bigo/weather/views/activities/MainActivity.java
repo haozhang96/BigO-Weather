@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        SharedPreferences sp = getSharedPreferences("BOOT", Context.MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("GLOBAL", Context.MODE_PRIVATE);
 
 
         boolean firstRun = sp.getBoolean("run", true);
