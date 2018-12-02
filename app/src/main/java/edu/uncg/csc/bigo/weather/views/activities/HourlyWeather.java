@@ -147,7 +147,7 @@ public class HourlyWeather extends Fragment {
                     StringBuffer[i].append("   " + hourlyWeatherForecastController[i][Globals.SUMMARY] + "\n");
                     StringBuffer[i].append("   " + hourlyWeatherForecastController[i][Globals.TEMPERATURE] + "\n\n");
                     StringBuffer[i].append("   " + hourlyWeatherForecastController[i][Globals.ICON] + "\n\n");
-                    w.messages[i] = StringBuffer[i].toString();
+                    w.hourlyMessages[i] = StringBuffer[i].toString();
                 }
 
             } catch (Exception exception) {
@@ -213,7 +213,7 @@ public class HourlyWeather extends Fragment {
             }
 
             for(int i = 0; i < 12; i++) {
-                textViews[i].setText(w.messages[i]);
+                textViews[i].setText(w.hourlyMessages[i]);
             }
         }
     }

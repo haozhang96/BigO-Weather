@@ -124,7 +124,7 @@ public class DailyWeather extends Fragment {
                     StringBuffer[i].append("   High: " + dailyWeatherForecastController[i][Globals.TEMP_HIGH]);
                     StringBuffer[i].append("   , Low: " + dailyWeatherForecastController[i][Globals.TEMP_LOW] + "\n\n");
                     StringBuffer[i].append("   Icon: " + dailyWeatherForecastController[i][Globals.ICON] + "\n\n");
-                    w.messages[i] = StringBuffer[i].toString();
+                    w.dailyMessages[i] = StringBuffer[i].toString();
                 }
 
             } catch (Exception exception) {
@@ -189,7 +189,7 @@ public class DailyWeather extends Fragment {
                 }
             }
             for (int i = 0; i < 7; i++) {
-                textViews[i].setText(w.messages[i]);
+                textViews[i].setText(w.dailyMessages[i]);
             }
 
         }

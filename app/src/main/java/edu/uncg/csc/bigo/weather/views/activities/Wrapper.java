@@ -15,8 +15,11 @@ public class Wrapper {
     public String messageEleven;
     public String messageTwelve;
 
-    public String[] messages = {messageOne, messageTwo, messageThree, messageFour, messageFive,
+    public String[] hourlyMessages = {messageOne, messageTwo, messageThree, messageFour, messageFive,
             messageSix, messageSeven, messageEight, messageNine, messageTen, messageEleven, messageTwelve};
+
+    public String[] dailyMessages = {messageOne, messageTwo, messageThree, messageFour, messageFive,
+            messageSix, messageSeven};
 
     public String currentMessage;
     public String temperature;
