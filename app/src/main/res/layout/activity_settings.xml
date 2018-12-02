@@ -42,4 +42,14 @@
         android:text="About"
         android:textColor="@color/white" />
 
+    <Button
+        android:id="@+id/eraseLocationButton"
+        android:layout_width="133dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="400dp"
+        android:background="@color/white"
+        android:text="Erase All Locations"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 </RelativeLayout>

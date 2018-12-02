@@ -7,16 +7,17 @@
     tools:context=".views.activities.Location"
     android:background="@color/night_blue">
 
-    <EditText
-        android:id="@+id/searchBar"
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="300dp"
         android:layout_height="48dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:hint="Enter Zip Code"
         android:background="@color/white"
         android:ems="10"
-        android:hint="Enter Zip Code"
-        android:inputType="number" />
+        android:inputType="number"
+        />
 
     <Button
         android:id="@+id/button"
