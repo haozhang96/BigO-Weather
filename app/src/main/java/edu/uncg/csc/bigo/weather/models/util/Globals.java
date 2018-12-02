@@ -1,4 +1,5 @@
 package edu.uncg.csc.bigo.weather.models.util;
+import java.util.Random;
 
 /**
  * The Globals class lists the enumerations of the global variables needed across the project
@@ -9,7 +10,6 @@ package edu.uncg.csc.bigo.weather.models.util;
  */
 public class Globals {
     public static final String APIKEY_GEOCODIO = "f0905446086d00db93d937b64d0e999b3b45d5d";
-    public static final String APIKEY_DARKSKY = "3f857381963a6e37ba93de4537d5ce96";
     public static final int CITY_STATE_ZIP = 0;
     public static final int PRECIP_INTENSITY = 1;
     public static final int PRECIP_PROBABILITY = 2;
@@ -32,4 +32,22 @@ public class Globals {
     public static final int TEMPERATURE = 19;
     public static final int NEAREST_STORM = 20;
     public static final int ICON = 21;
+
+    public static String getGlobalDarksky(){
+        Random myRand = new Random();
+        int n = myRand.nextInt(5)+1;
+        String s ="";
+        switch(n){
+            case 1: s = "1fffd54fe65a40d92a13eb5d7e3e1fee";
+                break;
+            case 2: s = "3f857381963a6e37ba93de4537d5ce96";
+                break;
+            case 3: s = "de51f1525e57f278daac806ea16bb8a9";
+                break;
+            case 4: s = "7936c853b8a9c4dbf579d81eaf44ce04";
+                break;
+            case 5: s= "26ca455c16f60c0dc9f5c7e1af1d428d";
+        }
+        return s;
+    }
 }

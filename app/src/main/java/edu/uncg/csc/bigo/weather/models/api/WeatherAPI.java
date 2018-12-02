@@ -39,7 +39,7 @@ public abstract class WeatherAPI extends JSONAPI {
      */
 
     //NEEDS COMMENTS
-    public abstract WeatherData getDailyWeatherForecast(LocationCoordinate _location, int _offset) throws Exception;
+    public abstract WeatherData[] getDailyWeatherForecast(LocationCoordinate _location) throws Exception;
 
 
     /**
@@ -50,6 +50,6 @@ public abstract class WeatherAPI extends JSONAPI {
      * @throws Exception An exception of any arbitrary type that was thrown from the API sub-class
      *                   based on its implementation
      */
-    public abstract WeatherData getHourlyWeatherForecast(LocationCoordinate _location, int _offset) throws Exception;
+    public abstract WeatherData[] getHourlyWeatherForecast(LocationCoordinate _location) throws Exception;
 }
 

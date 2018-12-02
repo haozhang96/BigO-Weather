@@ -17,6 +17,8 @@ import edu.uncg.csc.bigo.weather.models.weather.WeatherData;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherDataBuilder;
 import java.io.IOException;
 import java.util.Date;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -56,22 +58,26 @@ public final class DarkSkyAPI extends WeatherAPI {
     /**
      *
      * @param _location
-     * @param _offset
      * @return A WeatherData instance cantaining the data for the daily weather forecast
      * @throws IOException An exception indicating a problem with the connection to the API endpoint
      * @throws JSONException An exception indicating a problem with parsing the API endpoint's
      *            response as a JSONObject
      */
-    public WeatherData getDailyWeatherForecast(LocationCoordinate _location, int _offset)
+    public WeatherData[] getDailyWeatherForecast(LocationCoordinate _location)
             throws IOException, JSONException
     {
-        // Get the daily weather data from the API at the given location.
-        JSONObject apiResponse = this.getResponse(
+        // Get the hourly weather data from the API at the given location.
+        JSONArray apiResponse = this.getResponse(
                 _location.getLatitude(), _location.getLongitude()
-        ).getJSONObject("daily").getJSONArray("data").getJSONObject(_offset);
+        ).getJSONObject("daily").getJSONArray("data");
+
+        WeatherData[] dataPoints = new WeatherData[apiResponse.length()];
+        for (int index = 0; index < apiResponse.length(); index++) {
+            dataPoints[index] = this.extractWeatherData(apiResponse.getJSONObject(index), _location);
+        }
 
         // Extract the weather data using the helper method.
-        return this.extractWeatherData(apiResponse, _location);
+        return dataPoints;
     }
     
 
@@ -85,16 +91,21 @@ public final class DarkSkyAPI extends WeatherAPI {
      *      response as a JSONObject
      */
     @Override
-    public WeatherData getHourlyWeatherForecast(LocationCoordinate _location, int _offset)
+    public WeatherData[] getHourlyWeatherForecast(LocationCoordinate _location)
             throws IOException, JSONException
     {
         // Get the hourly weather data from the API at the given location.
-        JSONObject apiResponse = this.getResponse(
+        JSONArray apiResponse = this.getResponse(
                 _location.getLatitude(), _location.getLongitude()
-        ).getJSONObject("hourly").getJSONArray("data").getJSONObject(_offset);
+        ).getJSONObject("hourly").getJSONArray("data");
+
+        WeatherData[] dataPoints = new WeatherData[apiResponse.length()];
+        for (int index = 0; index < apiResponse.length(); index++) {
+            dataPoints[index] = this.extractWeatherData(apiResponse.getJSONObject(index), _location);
+        }
 
         // Extract the weather data using the helper method.
-        return this.extractWeatherData(apiResponse, _location);
+        return dataPoints;
     }
 
 

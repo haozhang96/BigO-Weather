@@ -11,12 +11,14 @@ package edu.uncg.csc.bigo.weather.models.weather;
 import org.json.JSONException;
 
 import java.io.IOException;
+import android.util.Log;
 
 import javax.microedition.khronos.opengles.GL;
 
 import edu.uncg.csc.bigo.weather.models.api.WeatherAPI;
 import edu.uncg.csc.bigo.weather.models.api.location.GeocodioAPI;
 import edu.uncg.csc.bigo.weather.models.api.weather.DarkSkyAPI;
+import edu.uncg.csc.bigo.weather.models.metrics.units.AmountUnit;
 import edu.uncg.csc.bigo.weather.models.util.Globals;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 import edu.uncg.csc.bigo.weather.views.activities.MainActivity;
@@ -54,14 +56,14 @@ public class WeatherDataStringFormatter {
      */
     static public String[] formatCurrentWeather(int _zip) throws Exception {
         String[] currentStringArray = new String[25];
-        WeatherAPI darkSkyCurrent = new DarkSkyAPI(Globals.APIKEY_DARKSKY);
+        WeatherAPI darkSkyCurrent = new DarkSkyAPI(Globals.getGlobalDarksky());
         GeocodioAPI geoCurrent = new GeocodioAPI(Globals.APIKEY_GEOCODIO);
         LocationCoordinate location = geoCurrent.zipCodeToCoordinate(_zip);
         WeatherData weatherCurrent = darkSkyCurrent.getCurrentWeather(location);
 
         currentStringArray[Globals.CITY_STATE_ZIP] = geoCurrent.getNameOfLocation(_zip);
         currentStringArray[Globals.PRECIP_INTENSITY] = weatherCurrent.getPrecipitationIntensity().toString();
-        currentStringArray[Globals.PRECIP_PROBABILITY] = weatherCurrent.getPrecipitationProbability().toString();
+        currentStringArray[Globals.PRECIP_PROBABILITY] = weatherCurrent.getPrecipitationProbability().convertTo(AmountUnit.PERCENTAGE).toString();
         currentStringArray[Globals.SUMMARY] = weatherCurrent.getSummary();
         currentStringArray[Globals.TIME] = weatherCurrent.getTime().toString();
         currentStringArray[Globals.MOON_PHASE] = weatherCurrent.getMoonPhase().toString();
@@ -69,7 +71,7 @@ public class WeatherDataStringFormatter {
         currentStringArray[Globals.CLOUD_COVER] = weatherCurrent.getCloudCover().toString();
         currentStringArray[Globals.DEW_POINT] = weatherCurrent.getDewPoint().toString();
         currentStringArray[Globals.PRESSURE] = weatherCurrent.getPressure().toString();
-        currentStringArray[Globals.HUMIDITY] = weatherCurrent.getHumidity().toString();
+        currentStringArray[Globals.HUMIDITY] = weatherCurrent.getHumidity().convertTo(AmountUnit.PERCENTAGE).toString();
         currentStringArray[Globals.LAT_LONG] = weatherCurrent.getLocation().toString();
         currentStringArray[Globals.APPARENT_TEMPERATURE] = weatherCurrent.getApparentTemperature().toString();
         currentStringArray[Globals.TEMPERATURE] = weatherCurrent.getTemperature().toString();
@@ -118,22 +120,22 @@ public class WeatherDataStringFormatter {
      */
     static public String[][] formatHourlyWeatherForecast(int _zip) throws Exception {
         String[][] hourlyStringArray = new String[24][25];
-        WeatherAPI darkSkyHourly = new DarkSkyAPI(Globals.APIKEY_DARKSKY);
+        WeatherAPI darkSkyHourly = new DarkSkyAPI(Globals.getGlobalDarksky());
         GeocodioAPI geoHourly = new GeocodioAPI(Globals.APIKEY_GEOCODIO);
         LocationCoordinate location = geoHourly.zipCodeToCoordinate(_zip);
+        String locationName = geoHourly.getNameOfLocation(_zip);
+        WeatherData[] weatherHourlyDataPoints = darkSkyHourly.getHourlyWeatherForecast(location);
 
         for(int i = 0; i<24;i++) {
-            WeatherData weatherHourly = darkSkyHourly.getHourlyWeatherForecast(location, i);
-
-
-            hourlyStringArray[i][Globals.CITY_STATE_ZIP] = geoHourly.getNameOfLocation(_zip);
+            WeatherData weatherHourly = weatherHourlyDataPoints[i];
+            hourlyStringArray[i][Globals.CITY_STATE_ZIP] = locationName;
             hourlyStringArray[i][Globals.PRECIP_INTENSITY] = weatherHourly.getPrecipitationIntensity().toString();
             hourlyStringArray[i][Globals.APPARENT_TEMPERATURE] = weatherHourly.getApparentTemperature().toString();
             hourlyStringArray[i][Globals.DEW_POINT] = weatherHourly.getDewPoint().toString();
-            hourlyStringArray[i][Globals.HUMIDITY] = weatherHourly.getHumidity().toString();
+            hourlyStringArray[i][Globals.HUMIDITY] = weatherHourly.getHumidity().convertTo(AmountUnit.PERCENTAGE).toString();
             hourlyStringArray[i][Globals.LAT_LONG] = weatherHourly.getLocation().toString();
             hourlyStringArray[i][Globals.OZONE] = weatherHourly.getOzone().toString();
-            hourlyStringArray[i][Globals.PRECIP_PROBABILITY] = weatherHourly.getPrecipitationProbability().toString();
+            hourlyStringArray[i][Globals.PRECIP_PROBABILITY] = weatherHourly.getPrecipitationProbability().convertTo(AmountUnit.PERCENTAGE).toString();
             hourlyStringArray[i][Globals.PRESSURE] = weatherHourly.getPressure().toString();
             hourlyStringArray[i][Globals.SUMMARY] = weatherHourly.getSummary();
             hourlyStringArray[i][Globals.TEMPERATURE] = weatherHourly.getTemperature().toString();
@@ -182,14 +184,16 @@ public class WeatherDataStringFormatter {
      */
     static public String[][] formatDailyWeatherForecast(int _zip) throws Exception {
         String[][] dailyForecastStringArray = new String[7][25];
-        WeatherAPI  darkSkyDailyForecast = new DarkSkyAPI(Globals.APIKEY_DARKSKY);
+        WeatherAPI  darkSkyDailyForecast = new DarkSkyAPI(Globals.getGlobalDarksky());
         GeocodioAPI geoDaily = new GeocodioAPI(Globals.APIKEY_GEOCODIO);
         LocationCoordinate location = geoDaily.zipCodeToCoordinate(_zip);
+        String locationName = geoDaily.getNameOfLocation(_zip);
+        WeatherData[] weatherDailyDataPoints = darkSkyDailyForecast.getDailyWeatherForecast(location);
 
         for(int i = 0; i<7; i++) {
-            WeatherData weatherDailyForecast0 = ((DarkSkyAPI) darkSkyDailyForecast).getDailyWeatherForecast(location, i);
+            WeatherData weatherDailyForecast0 = weatherDailyDataPoints[i];
 
-            dailyForecastStringArray[i][Globals.CITY_STATE_ZIP] = geoDaily.getNameOfLocation(_zip);
+            dailyForecastStringArray[i][Globals.CITY_STATE_ZIP] = locationName;
             dailyForecastStringArray[i][Globals.PRECIP_INTENSITY] = weatherDailyForecast0.getPrecipitationIntensity().toString();
             dailyForecastStringArray[i][Globals.PRECIP_PROBABILITY] = weatherDailyForecast0.getPrecipitationProbability().toString();
             dailyForecastStringArray[i][Globals.SUMMARY] = weatherDailyForecast0.getSummary();
