@@ -82,10 +82,6 @@ public class DailyWeather extends Fragment {
     private Integer[] buttonID = {R.id.detailedOne, R.id.detailedTwo, R.id.detailedThree,
             R.id.detailedFour, R.id.detailedFive, R.id.detailedSix, R.id.detailedSeven};
 
-    private TextView details;
-
-    private static String test;
-
     /**
      * After onCreate method, this method handles executing the data retrieval and creating a saved
      * instance.
@@ -134,7 +130,6 @@ public class DailyWeather extends Fragment {
      * @Author Steven Tran
      */
     protected class DailyDataRetrieval extends AsyncTask<Void, Void, Wrapper> {
-
 
 
         /**
@@ -258,9 +253,7 @@ public class DailyWeather extends Fragment {
             for (int i = 0; i < 7; i++) {
                 textViews[i].setText(w.dailyMessages[i]);
             }
-
         }
-
     }
 }
 
