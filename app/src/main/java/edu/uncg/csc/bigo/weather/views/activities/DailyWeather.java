@@ -1,5 +1,6 @@
 package edu.uncg.csc.bigo.weather.views.activities;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -74,6 +75,17 @@ public class DailyWeather extends Fragment {
 
     private String[][] dailyWeatherForecastController;
 
+    private Button[] buttons = {detailedOne, detailedTwo, detailedThree, detailedFour,
+            detailedFive, detailedSix, detailedSeven};
+
+
+    private Integer[] buttonID = {R.id.detailedOne, R.id.detailedTwo, R.id.detailedThree,
+            R.id.detailedFour, R.id.detailedFive, R.id.detailedSix, R.id.detailedSeven};
+
+    private TextView details;
+
+    private static String test;
+
     /**
      * After onCreate method, this method handles executing the data retrieval and creating a saved
      * instance.
@@ -83,6 +95,8 @@ public class DailyWeather extends Fragment {
     @Override
     public void onActivityCreated(Bundle _savedInstanceState) {
         super.onActivityCreated(_savedInstanceState);
+
+
         new DailyDataRetrieval().execute();
     }
 
@@ -104,8 +118,8 @@ public class DailyWeather extends Fragment {
         for (int i = 0; i < 7; i++) {
             textViews[i] = v.findViewById(textViewID[i]);
             imageViews[i] = v.findViewById(imageViewID[i]);
+            buttons[i] = v.findViewById(buttonID[i]);
         }
-
         return v;
     }
 
@@ -120,6 +134,7 @@ public class DailyWeather extends Fragment {
      * @Author Steven Tran
      */
     protected class DailyDataRetrieval extends AsyncTask<Void, Void, Wrapper> {
+
 
 
         /**
@@ -160,6 +175,7 @@ public class DailyWeather extends Fragment {
                     StringBuffer[i].append(", Low: " + dailyWeatherForecastController[i][Globals.TEMP_LOW] + "\n\n");
                     w.dailyMessages[i] = StringBuffer[i].toString();
                 }
+
 
             } catch (Exception exception) {
                 exception.getMessage();
@@ -227,14 +243,24 @@ public class DailyWeather extends Fragment {
                         imageViews[i].setImageResource(wind.getIconResID());
                         break;
                 }
+            }
 
+            for (int i = 0; i < 7; i++) {
+                getActivity().findViewById(buttonID[i]).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(getActivity(), DailyDetailed.class));
+                    }
+                });
             }
 
             //Displays the message to view output
             for (int i = 0; i < 7; i++) {
                 textViews[i].setText(w.dailyMessages[i]);
             }
+
         }
+
     }
 }
 

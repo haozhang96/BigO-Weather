@@ -190,7 +190,7 @@ public class WeatherDataStringFormatter {
         String locationName = geoDaily.getNameOfLocation(_zip);
         WeatherData[] weatherDailyDataPoints = darkSkyDailyForecast.getDailyWeatherForecast(location);
 
-        for(int i = 0; i<7; i++) {
+        for(int i = 0; i < 7; i++) {
             WeatherData weatherDailyForecast0 = weatherDailyDataPoints[i];
 
             dailyForecastStringArray[i][Globals.CITY_STATE_ZIP] = locationName;

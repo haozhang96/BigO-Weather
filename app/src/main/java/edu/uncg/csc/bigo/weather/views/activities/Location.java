@@ -15,7 +15,7 @@ import edu.uncg.csc.bigo.weather.controllers.DataController;
 import edu.uncg.csc.bigo.weather.data.CreateFile;
 
 /**
- * 
+ *
  */
 public class Location extends AppCompatActivity {
 
@@ -26,9 +26,13 @@ public class Location extends AppCompatActivity {
     AutoCompleteTextView autoView;
 
 
+    /**
+     *
+     * @param _savedInstanceState
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle _savedInstanceState) {
+        super.onCreate(_savedInstanceState);
         setContentView(R.layout.activity_location);
 
         //Initialize the formatting message TextView box
@@ -41,12 +45,6 @@ public class Location extends AppCompatActivity {
         final Context context = getApplicationContext();
 
         try {
-            // This is used for CRUD operations.
-            //        DataInterface dataModifier = new DataStore();
-
-            // Returns all of the stored locations from the file.
-            //      String[] zipArray = dataModifier.returnLocation();
-
             DataController dataController = new DataController();
             String[] zipArray = dataController.returnLocation();
 
@@ -65,8 +63,12 @@ public class Location extends AppCompatActivity {
         }
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param _v
+             */
             @Override
-            public void onClick(View v) {
+            public void onClick(View _v) {
                 //Make sure the user inputs a properly formatted zip.
                 if ((autoView.getText().toString().length() != 5)) {
                     errorMessage.setText("Enter a Properly Formatted Zip");
