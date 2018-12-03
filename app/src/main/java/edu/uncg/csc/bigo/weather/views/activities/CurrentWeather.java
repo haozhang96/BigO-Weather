@@ -1,6 +1,5 @@
 package edu.uncg.csc.bigo.weather.views.activities;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,130 +21,172 @@ import static android.content.Context.MODE_PRIVATE;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * The first fragment activity that represents the current weather view. This fragment is made from
+ * the MainActivity class. It shows the current temperature, city name, weather summary, precipitation,
+ * humidity, wind speed, and weather icon.
+ *
+ * @Updated 12/2/2018
+ * @Author Steven Tran
  */
 public class CurrentWeather extends Fragment {
 
-
     private TextView temperature;
     private TextView currentMessage;
-    private ImageView image;
-    public int zipCode;
 
-    private static String[] currentWeatherController;
+    private ImageView weatherIcon;
 
-    public CurrentWeather() {
-        // Required empty public constructor
+    private String[] currentWeatherController;
+
+
+    /**
+     * After onCreate method, this method handles executing the data retrieval and creating a saved
+     * instance.
+     *
+     * @param _savedInstanceState
+     */
+    @Override
+    public void onActivityCreated(Bundle _savedInstanceState) {
+        super.onActivityCreated(_savedInstanceState);
+
+        new CurrentDataRetrieval().execute();
     }
 
+    /**
+     * The initial startup loading from the view to handle the initializations.
+     *
+     * @param _inflater
+     * @param _container
+     * @param _savedInstanceState
+     * @return v = Current Fragment Layout View
+     */
+    public View onCreateView(LayoutInflater _inflater, ViewGroup _container,
+                             Bundle _savedInstanceState) {
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+        //Initializing the view to the current weather fragment.
+        View v = _inflater.inflate(R.layout.fragment_current_weather, _container, false);
 
-        View v = inflater.inflate(R.layout.fragment_current_weather, container, false);
+        //Initializing the weather icon.
+        weatherIcon = v.findViewById(R.id.imageView);
 
-        //Initialize the image box
-        image = v.findViewById(R.id.imageView);
-
-        //Initialize the message TextView box
+        //Initializing the current message.
         currentMessage = v.findViewById(R.id.currentMessage);
 
+        //Initializing the temperature message.
         temperature = v.findViewById(R.id.temperature);
 
         return v;
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    /**
+     * This class is used for retrieving (CURRENT WEATHER) data from the Weather Controllers
+     * to obtain the requested data for the user. It works in the background to handle problems
+     * with running in the main thread. This allows the app to perform long/background operations
+     * and show the results on the UI thread without having to manipulate threads.
+     *
+     * @Updated: 12/2/2018
+     * @Author Steven Tran
+     */
+    private class CurrentDataRetrieval extends AsyncTask<Void, Void, Wrapper> {
 
-        new Test().execute();
-    }
+        /**
+         * @param _nothing
+         * @return w = Wrapper of String data.
+         */
+        protected Wrapper doInBackground(Void... _nothing) {
 
-    public class Test extends AsyncTask<Void, Void, Wrapper> {
-
-        protected Wrapper doInBackground(Void... nothing) {
-
+            //Obtaining instance of Wrapper object to retrieve more than one string
             Wrapper w = new Wrapper();
 
             try {
-
+                //This is used to retrieve the zipCode data from the Location class.
                 SharedPreferences sp = getActivity().getSharedPreferences("GLOBAL", MODE_PRIVATE);
 
-                sp.getInt("ZIP", 10001);
+                //This is used to initialize the weather controller with the zip code input.
+                currentWeatherController = WeatherController.getWeatherCurrent(sp.getInt("ZIP", 27403));
 
-                currentWeatherController = WeatherController.getWeatherCurrent(sp.getInt("ZIP", 10001));
-                // Store a message buffer to append strings to.
+                //This stores a message buffer to append strings to.
                 StringBuffer StringBuffer = new StringBuffer();
 
+                //This will pass the current temperature to a string for message output.
                 String temp = currentWeatherController[Globals.APPARENT_TEMPERATURE];
 
+                //This will pass the city, summary, precipitation, humidity, and wind speed
                 StringBuffer.append(currentWeatherController[Globals.CITY_STATE_ZIP] + "\n");
                 StringBuffer.append("Summary: " + currentWeatherController[Globals.SUMMARY] + "\n");
                 StringBuffer.append("Precipitation: " + currentWeatherController[Globals.PRECIP_PROBABILITY] + "\n");
                 StringBuffer.append("Humidity: " + currentWeatherController[Globals.HUMIDITY] + "\n");
                 StringBuffer.append("Wind Speed: " + currentWeatherController[Globals.WIND_SPEED] + "\n");
 
+                //This will set the two wrapper variables from the String/StringBuffer.
                 w.currentMessage = StringBuffer.toString();
                 w.temperature = temp;
             } catch (Exception exception) {
-                w.currentMessage = "ERROR";
+                exception.getMessage();
             }
             return w;
         }
 
+        /**
+         * This method will display the results to the views and be called after everything is done.
+         *
+         * @param w = Wrapper of string data.
+         */
         protected void onPostExecute(Wrapper w) {
+
+            //This will choose the correct weather icon for the ImageView.
             switch (currentWeatherController[Globals.ICON]) {
                 case "clear-day":
                     Icons clear_day = Icons.valueOf("Clear_day".toUpperCase(Locale.ENGLISH));
-                    image.setImageResource(clear_day.getIconResId());
+                    weatherIcon.setImageResource(clear_day.getIconResID());
                     break;
 
                 case "clear-night":
                     Icons clear_night = Icons.valueOf("Clear_night".toUpperCase(Locale.ENGLISH));
-                    image.setImageResource(clear_night.getIconResId());
+                    weatherIcon.setImageResource(clear_night.getIconResID());
                     break;
 
                 case "cloudy":
                     Icons cloudy = Icons.valueOf("Cloudy".toUpperCase(Locale.ENGLISH));
-                    image.setImageResource(cloudy.getIconResId());
+                    weatherIcon.setImageResource(cloudy.getIconResID());
                     break;
 
                 case "fog":
                     Icons fog = Icons.valueOf("Fog".toUpperCase(Locale.ENGLISH));
-                    image.setImageResource(fog.getIconResId());
+                    weatherIcon.setImageResource(fog.getIconResID());
                     break;
 
                 case "partly-cloudy-day":
                     Icons partly_cloudy_day = Icons.valueOf("Partly_cloudy_day".toUpperCase(Locale.ENGLISH));
-                    image.setImageResource(partly_cloudy_day.getIconResId());
+                    weatherIcon.setImageResource(partly_cloudy_day.getIconResID());
                     break;
 
                 case "partly-cloudy-night":
                     Icons partly_cloudy_night = Icons.valueOf("Partly_cloudy_night".toUpperCase(Locale.ENGLISH));
-                    image.setImageResource(partly_cloudy_night.getIconResId());
+                    weatherIcon.setImageResource(partly_cloudy_night.getIconResID());
                     break;
 
                 case "rain":
                     Icons rain = Icons.valueOf("Rain".toUpperCase(Locale.ENGLISH));
-                    image.setImageResource(rain.getIconResId());
+                    weatherIcon.setImageResource(rain.getIconResID());
                     break;
 
                 case "sleet":
                     Icons sleet = Icons.valueOf("Sleet".toUpperCase(Locale.ENGLISH));
-                    image.setImageResource(sleet.getIconResId());
+                    weatherIcon.setImageResource(sleet.getIconResID());
                     break;
 
                 case "snow":
                     Icons snow = Icons.valueOf("Snow".toUpperCase(Locale.ENGLISH));
-                    image.setImageResource(snow.getIconResId());
+                    weatherIcon.setImageResource(snow.getIconResID());
                     break;
 
                 case "wind":
                     Icons wind = Icons.valueOf("Wind".toUpperCase(Locale.ENGLISH));
-                    image.setImageResource(wind.getIconResId());
+                    weatherIcon.setImageResource(wind.getIconResID());
                     break;
             }
+
+            //Sets the TextViews with the String data for view output.
             currentMessage.setText(w.currentMessage);
             temperature.setText(w.temperature);
         }

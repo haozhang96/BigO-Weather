@@ -5,32 +5,23 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 import edu.uncg.csc.bigo.weather.R;
 import edu.uncg.csc.bigo.weather.controllers.DataController;
 import edu.uncg.csc.bigo.weather.data.CreateFile;
-import edu.uncg.csc.bigo.weather.data.DataInterface;
-import edu.uncg.csc.bigo.weather.data.DataStore;
 
+/**
+ * 
+ */
 public class Location extends AppCompatActivity {
 
     private TextView errorMessage;
-    public static int zipCode;
+
+    private int zipCode;
 
     AutoCompleteTextView autoView;
 
@@ -44,12 +35,12 @@ public class Location extends AppCompatActivity {
         errorMessage = findViewById(R.id.errorMessage);
 
         //Initialize the AutoCompleteTextBox which gets data from the saved text file.
-        autoView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        autoView = findViewById(R.id.autoCompleteTextView);
 
         // Declare the context of the app.
         final Context context = getApplicationContext();
 
-        try{
+        try {
             // This is used for CRUD operations.
             //        DataInterface dataModifier = new DataStore();
 
@@ -69,7 +60,7 @@ public class Location extends AppCompatActivity {
             autoView.setThreshold(1);
             autoView.setAdapter(adapter);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.toString();
         }
 

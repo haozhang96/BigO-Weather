@@ -1,7 +1,6 @@
 package edu.uncg.csc.bigo.weather.controllers;
 
 import android.content.Context;
-
 import edu.uncg.csc.bigo.weather.data.DataInterface;
 import edu.uncg.csc.bigo.weather.data.DataStore;
 

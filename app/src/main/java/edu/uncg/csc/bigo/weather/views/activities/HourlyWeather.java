@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,13 +22,14 @@ import static android.content.Context.MODE_PRIVATE;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * The third fragment activity that represents the hourly weather view. This fragment is made from
+ * the MainActivity class. It shows the date, apparent temperature, summary, and weather icon.
+ *
+ * @Updated 12/2/2018
+ * @Author Steven Tran
  */
 public class HourlyWeather extends Fragment {
 
-
-    public int zipCode;
-    String[][] hourlyWeatherForecastController;
 
     private TextView hourOneMessage;
     private TextView hourTwoMessage;
@@ -78,17 +78,36 @@ public class HourlyWeather extends Fragment {
             R.id.hourEightImage, R.id.hourNineImage, R.id.hourTenImage, R.id.hourElevenImage,
             R.id.hourTwelveImage};
 
+    String[][] hourlyWeatherForecastController;
 
-    public HourlyWeather() {
-        // Required empty public constructor
+    /**
+     * After onCreate method, this method handles executing the data retrieval and creating a saved
+     * instance.
+     *
+     * @param _savedInstanceState
+     */
+    @Override
+    public void onActivityCreated(Bundle _savedInstanceState) {
+        super.onActivityCreated(_savedInstanceState);
+
+        new HourlyDataRetrieval().execute();
     }
 
+    /**
+     * The initial startup loading from the view to handle the initializations.
+     *
+     * @param _inflater
+     * @param _container
+     * @param _savedInstanceState
+     * @return v = Hourly Fragment Layout View
+     */
+    public View onCreateView(LayoutInflater _inflater, ViewGroup _container,
+                             Bundle _savedInstanceState) {
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+        //Initializing the view to the hourly weather fragment
+        View v = _inflater.inflate(R.layout.fragment_hourly_weather, _container, false);
 
-        View v = inflater.inflate(R.layout.fragment_hourly_weather, container, false);
-
+        //Initializing the hourly messages and images
         for (int i = 0; i < 12; i++) {
             textViews[i] = v.findViewById(textViewID[i]);
             imageViews[i] = v.findViewById(imageViewID[i]);
@@ -97,28 +116,33 @@ public class HourlyWeather extends Fragment {
         return v;
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        new Test().execute();
-    }
-
 
     /**
-     * This is where we will test things
+     * This class is used for retrieving (HOURLY WEATHER) data from the Weather Controllers
+     * to obtain the requested data for the user. It works in the background to handle problems
+     * with running in the main thread. This allows the app to perform long/background operations
+     * and show the results on the UI thread without having to manipulate threads.
+     *
+     * @Updated: 12/2/2018
+     * @Author Steven Tran
      */
-    public class Test extends AsyncTask<Void, Void, Wrapper> {
+    protected class HourlyDataRetrieval extends AsyncTask<Void, Void, Wrapper> {
 
-        protected Wrapper doInBackground(Void... nothing) {
+        /**
+         * @param _nothing
+         * @return w = Wrapper of String data.
+         */
+        protected Wrapper doInBackground(Void... _nothing) {
+
+            //Obtaining instance of Wrapper object to retrieve more than one string.
             Wrapper w = new Wrapper();
 
             try {
 
+                //This is used to retrieve the zipCode data from the Location class.
                 SharedPreferences sp = getActivity().getSharedPreferences("GLOBAL", MODE_PRIVATE);
 
-                // Store a message buffer to append strings to.
-
+                // This stores a string buffer to append strings to.
                 StringBuffer message = new StringBuffer();
                 StringBuffer message2 = new StringBuffer();
                 StringBuffer message3 = new StringBuffer();
@@ -132,16 +156,14 @@ public class HourlyWeather extends Fragment {
                 StringBuffer message11 = new StringBuffer();
                 StringBuffer message12 = new StringBuffer();
 
-                StringBuffer[] StringBuffer = {message, message2, message3, message4, message5, message6, message7, message8, message9, message10, message11, message12};
+                //StringBuffer array to pass the StringBuffer data to each of the hours.
+                StringBuffer[] StringBuffer = {message, message2, message3, message4, message5,
+                        message6, message7, message8, message9, message10, message11, message12};
 
+                //This is used to initialize the weather controller with the zip code input.
+                hourlyWeatherForecastController = WeatherController.getWeatherHourlyForecast(sp.getInt("ZIP", 27403));
 
-                //Get the zipcode entered by the user.
-                zipCode = sp.getInt("ZIP", 10001);;
-
-
-                //Testing the WeatherController methods
-                hourlyWeatherForecastController = WeatherController.getWeatherHourlyForecast(zipCode);
-
+                //This will pass the time, summary, and temperature
                 for (int i = 0; i < 12; i++) {
                     StringBuffer[i].append("\n   " + hourlyWeatherForecastController[i][Globals.TIME] + "\n");
                     StringBuffer[i].append("   " + hourlyWeatherForecastController[i][Globals.SUMMARY] + "\n");
@@ -155,63 +177,70 @@ public class HourlyWeather extends Fragment {
             return w;
         }
 
+        /**
+         * This method will display the results to the views and be called after everything is done.
+         *
+         * @param w = Wrapper of string data.
+         */
         protected void onPostExecute(Wrapper w) {
 
+            //Iterates through the hours to add the correct weather icon.
             for (int i = 0; i < 12; i++) {
                 switch (hourlyWeatherForecastController[i][Globals.ICON]) {
                     case "clear-day":
                         Icons clear_day = Icons.valueOf("Clear_day".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(clear_day.getIconResId());
+                        imageViews[i].setImageResource(clear_day.getIconResID());
                         break;
 
                     case "clear-night":
                         Icons clear_night = Icons.valueOf("Clear_night".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(clear_night.getIconResId());
+                        imageViews[i].setImageResource(clear_night.getIconResID());
                         break;
 
                     case "cloudy":
                         Icons cloudy = Icons.valueOf("Cloudy".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(cloudy.getIconResId());
+                        imageViews[i].setImageResource(cloudy.getIconResID());
                         break;
 
                     case "fog":
                         Icons fog = Icons.valueOf("Fog".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(fog.getIconResId());
+                        imageViews[i].setImageResource(fog.getIconResID());
                         break;
 
                     case "partly-cloudy-day":
                         Icons partly_cloudy_day = Icons.valueOf("Partly_cloudy_day".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(partly_cloudy_day.getIconResId());
+                        imageViews[i].setImageResource(partly_cloudy_day.getIconResID());
                         break;
 
                     case "partly-cloudy-night":
                         Icons partly_cloudy_night = Icons.valueOf("Partly_cloudy_night".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(partly_cloudy_night.getIconResId());
+                        imageViews[i].setImageResource(partly_cloudy_night.getIconResID());
                         break;
 
                     case "rain":
                         Icons rain = Icons.valueOf("Rain".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(rain.getIconResId());
+                        imageViews[i].setImageResource(rain.getIconResID());
                         break;
 
                     case "sleet":
                         Icons sleet = Icons.valueOf("Sleet".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(sleet.getIconResId());
+                        imageViews[i].setImageResource(sleet.getIconResID());
                         break;
 
                     case "snow":
                         Icons snow = Icons.valueOf("Snow".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(snow.getIconResId());
+                        imageViews[i].setImageResource(snow.getIconResID());
                         break;
 
                     case "wind":
                         Icons wind = Icons.valueOf("Wind".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(wind.getIconResId());
+                        imageViews[i].setImageResource(wind.getIconResID());
                         break;
                 }
             }
 
-            for(int i = 0; i < 12; i++) {
+            //Displays the message to view output
+            for (int i = 0; i < 12; i++) {
                 textViews[i].setText(w.hourlyMessages[i]);
             }
         }
