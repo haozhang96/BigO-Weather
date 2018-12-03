@@ -85,7 +85,6 @@ public class CurrentWeather extends Fragment {
                 StringBuffer.append("Precipitation: " + currentWeatherController[Globals.PRECIP_PROBABILITY] + "\n");
                 StringBuffer.append("Humidity: " + currentWeatherController[Globals.HUMIDITY] + "\n");
                 StringBuffer.append("Wind Speed: " + currentWeatherController[Globals.WIND_SPEED] + "\n");
-                StringBuffer.append("Icon: " + currentWeatherController[Globals.ICON] + "\n");
 
                 w.currentMessage = StringBuffer.toString();
                 w.temperature = temp;

@@ -27,8 +27,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import edu.uncg.csc.bigo.weather.R;
+import edu.uncg.csc.bigo.weather.controllers.DataController;
 import edu.uncg.csc.bigo.weather.controllers.WeatherController;
 
 public class MainActivity extends AppCompatActivity {
@@ -83,11 +85,24 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            startActivity(new Intent(this, Settings.class));
+        if (id == R.id.action_location) {
+            startActivity(new Intent(this, Location.class));
             return true;
         }
+
+        if (id == R.id.action_clear) {
+            // This is used for CRUD operations.
+            DataController controller = new DataController();
+            controller.removeController();
+
+            // Display a confirmation message when removal is done.
+            CharSequence text = "Deletion Complete!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+            toast.show();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

@@ -119,11 +119,10 @@ public class DailyWeather extends Fragment {
                 dailyWeatherForecastController = WeatherController.getWeatherDailyForecast(zipCode);
 
                 for (int i = 0; i < 7; i++) {
-                    StringBuffer[i].append("   " + dailyWeatherForecastController[i][Globals.TIME].replaceAll("00:00:00 EST 2018", "") + "\n");
+                    StringBuffer[i].append("\n   " + dailyWeatherForecastController[i][Globals.TIME].replaceAll("00:00:00 EST 2018", "") + "\n\n");
                     StringBuffer[i].append("   " + dailyWeatherForecastController[i][Globals.SUMMARY] + "\n");
                     StringBuffer[i].append("   High: " + dailyWeatherForecastController[i][Globals.TEMP_HIGH]);
-                    StringBuffer[i].append("   , Low: " + dailyWeatherForecastController[i][Globals.TEMP_LOW] + "\n\n");
-                    StringBuffer[i].append("   Icon: " + dailyWeatherForecastController[i][Globals.ICON] + "\n\n");
+                    StringBuffer[i].append(", Low: " + dailyWeatherForecastController[i][Globals.TEMP_LOW] + "\n\n");
                     w.dailyMessages[i] = StringBuffer[i].toString();
                 }
 

@@ -20,20 +20,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="0dp"
-                android:textAlignment="viewStart"
-                android:textSize="10dp"
                 android:background="@drawable/button_border"
-                android:fontFamily="advent_pro"/>
+                android:fontFamily="@font/hammersmith_one"
+                android:textAlignment="viewStart"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/dayTwoMessage"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="100dp"
-                android:textAlignment="textStart"
-                android:textSize="10dp"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textAllCaps="true"
+                android:textStyle="bold"
                 android:background="@drawable/button_border"
-                android:fontFamily="advent_pro"/>
+                android:fontFamily="@font/hammersmith_one"/>
 
             <TextView
                 android:id="@+id/dayThreeMessage"
@@ -41,9 +46,12 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="200dp"
                 android:textAlignment="textStart"
-                android:textSize="10dp"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textAllCaps="true"
+                android:textStyle="bold"
                 android:background="@drawable/button_border"
-                android:fontFamily="advent_pro"/>
+                android:fontFamily="@font/hammersmith_one"/>
 
             <TextView
                 android:id="@+id/dayFourMessage"
@@ -51,9 +59,12 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="300dp"
                 android:textAlignment="textStart"
-                android:textSize="10dp"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textAllCaps="true"
+                android:textStyle="bold"
                 android:background="@drawable/button_border"
-                android:fontFamily="advent_pro"/>
+                android:fontFamily="@font/hammersmith_one"/>
 
             <TextView
                 android:id="@+id/dayFiveMessage"
@@ -61,9 +72,12 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="400dp"
                 android:textAlignment="textStart"
-                android:textSize="10dp"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textAllCaps="true"
+                android:textStyle="bold"
                 android:background="@drawable/button_border"
-                android:fontFamily="advent_pro"/>
+                android:fontFamily="@font/hammersmith_one"/>
 
             <TextView
                 android:id="@+id/daySixMessage"
@@ -71,9 +85,12 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="500dp"
                 android:textAlignment="textStart"
-                android:textSize="10dp"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textAllCaps="true"
+                android:textStyle="bold"
                 android:background="@drawable/button_border"
-                android:fontFamily="advent_pro"/>
+                android:fontFamily="@font/hammersmith_one"/>
 
             <TextView
                 android:id="@+id/daySevenMessage"
@@ -81,9 +98,12 @@
                 android:layout_height="100dp"
                 android:layout_marginTop="600dp"
                 android:textAlignment="textStart"
-                android:textSize="10dp"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:textAllCaps="true"
+                android:textStyle="bold"
                 android:background="@drawable/button_border"
-                android:fontFamily="advent_pro"/>
+                android:fontFamily="@font/hammersmith_one"/>
 
             <ImageView
                 android:id="@+id/dayOneImage"

@@ -143,10 +143,9 @@ public class HourlyWeather extends Fragment {
                 hourlyWeatherForecastController = WeatherController.getWeatherHourlyForecast(zipCode);
 
                 for (int i = 0; i < 12; i++) {
-                    StringBuffer[i].append("   " + hourlyWeatherForecastController[i][Globals.TIME] + "\n");
+                    StringBuffer[i].append("\n   " + hourlyWeatherForecastController[i][Globals.TIME] + "\n");
                     StringBuffer[i].append("   " + hourlyWeatherForecastController[i][Globals.SUMMARY] + "\n");
                     StringBuffer[i].append("   " + hourlyWeatherForecastController[i][Globals.TEMPERATURE] + "\n\n");
-                    StringBuffer[i].append("   " + hourlyWeatherForecastController[i][Globals.ICON] + "\n\n");
                     w.hourlyMessages[i] = StringBuffer[i].toString();
                 }
 

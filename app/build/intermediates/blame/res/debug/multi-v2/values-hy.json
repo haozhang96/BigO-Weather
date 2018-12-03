@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\jiwilkin\\Documents\\GitHub\\BigO-Weather\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hy\\values-hy.xml",
+            "outputFile": "C:\\Users\\Steven Tran\\Documents\\GitHub\\BigO-Weather\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hy\\values-hy.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\jiwilkin\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0-rc01.aar\\78fff37ab71c1a66aa2f45da1a9c6d75\\res\\values-hy\\values-hy.xml",
+                    "source": "C:\\Users\\Steven Tran\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0-rc01.aar\\dbccf84b1a58ec63a79c37ee89947946\\res\\values-hy\\values-hy.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\jiwilkin\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\bafa6952269c3ad51e4c8437317fc8ea\\res\\values-hy\\values-hy.xml",
+                    "source": "C:\\Users\\Steven Tran\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\19e90d1b90d6697827f2b2c7ad00cd71\\res\\values-hy\\values-hy.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

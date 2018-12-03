@@ -30,7 +30,6 @@ import edu.uncg.csc.bigo.weather.data.DataStore;
 public class Location extends AppCompatActivity {
 
     private TextView errorMessage;
-    public EditText searchBar;
     public static int zipCode;
 
     AutoCompleteTextView autoView;
@@ -40,9 +39,6 @@ public class Location extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
-
-        //Initialize the EditText box.
-        // searchBar = findViewById(R.id.searchBar);
 
         //Initialize the formatting message TextView box
         errorMessage = findViewById(R.id.errorMessage);
@@ -73,52 +69,10 @@ public class Location extends AppCompatActivity {
             autoView.setThreshold(1);
             autoView.setAdapter(adapter);
 
-
         }catch (Exception e){
             e.toString();
         }
 
-   /*     // This generates the drop down list from the text file for the view.
-        try {
-            // Pass in the directory and file name to be read.
-            File loadFile = new File(CreateFile.sortedFilePath);
-
-            // Create ArrayList and Array that will hold the saved locations.
-            ArrayList<String> zipList = new ArrayList<String>();
-            String[] zipArray = null;
-
-            try (Scanner scanner = new Scanner(loadFile)) {
-
-                // Clear the arrayList.
-                zipList.clear();
-
-                while (scanner.hasNext()) {
-                    // Add each location that is saved in the file to the arrayList.
-                    zipList.add(scanner.next());
-                }
-
-                // Transfer the locations from the ArrayList to an Array so they can be used in the
-                // AutoCompleteTextView.
-                zipArray = (String[]) zipList.toArray(new String[zipList.size()]);
-
-                // Create an adapter that connects the context, AutoCompleteTextView and the saved locations
-                // array together.
-                final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
-                        R.layout.support_simple_spinner_dropdown_item, zipArray);
-
-                // Begin displaying the saved locations after the first number has been entered and set
-                // the adapter.
-                autoView.setThreshold(1);
-                autoView.setAdapter(adapter);
-
-            } catch (FileNotFoundException | InputMismatchException e) {
-                e.printStackTrace();
-            }
-        } catch (Exception e) {
-            e.toString();
-        }
-
-*/
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,10 +107,6 @@ public class Location extends AppCompatActivity {
             }
         });
     }
-    public static int getZipCode() {
-        return zipCode;
-    }
-
 }
 
 
