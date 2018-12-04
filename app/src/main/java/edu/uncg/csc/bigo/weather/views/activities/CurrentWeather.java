@@ -88,6 +88,7 @@ public class CurrentWeather extends Fragment {
      * @Author Steven Tran
      */
     private class CurrentDataRetrieval extends AsyncTask<Void, Void, Wrapper> {
+        SharedPreferences sp;
 
         /**
          * @param _nothing
@@ -100,7 +101,7 @@ public class CurrentWeather extends Fragment {
 
             try {
                 //This is used to retrieve the zipCode data from the Location class.
-                SharedPreferences sp = getActivity().getSharedPreferences("GLOBAL", MODE_PRIVATE);
+                sp = getActivity().getSharedPreferences("GLOBAL", MODE_PRIVATE);
 
                 //This is used to initialize the weather controller with the zip code input.
                 currentWeatherController = WeatherController.getWeatherCurrent(sp.getInt("ZIP", 27403));
@@ -200,7 +201,10 @@ public class CurrentWeather extends Fragment {
 
                 // Erase invalid inputs from the file.
                 DataController controller = new DataController();
-                controller.removeController();
+//                controller.removeController();
+                // Retrieve the zip code from SharedPreference and default to 27403 if an error occurs.
+                controller.removeInvalidZipCodeController(sp.getInt("ZIP", 27403), getContext());
+
             }
 
 

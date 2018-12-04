@@ -28,8 +28,14 @@ public final class DataController {
         return interfaceController.checkFile(_zipCode, _context);
     }
 
+    // Clear all the saved locations.
     public void removeController() {
         interfaceController.remove();
+    }
+
+    // Clear an invalid zip code from the file.
+    public void removeInvalidZipCodeController (int _zipCode, Context _context){
+        interfaceController.removeInvalidZipCode(_zipCode, _context);
     }
 
 }

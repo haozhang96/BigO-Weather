@@ -188,7 +188,7 @@ public class DailyWeather extends Fragment {
      * @Author Steven Tran
      */
     protected class DailyDataRetrieval extends AsyncTask<Void, Void, Wrapper> {
-
+        SharedPreferences sp;
 
         /**
          * @param _nothing
@@ -202,7 +202,7 @@ public class DailyWeather extends Fragment {
             try {
 
                 //This is used to retrieve the zipCode data from the Location class.
-                SharedPreferences sp = getActivity().getSharedPreferences("GLOBAL", MODE_PRIVATE);
+                sp = getActivity().getSharedPreferences("GLOBAL", MODE_PRIVATE);
 
                 // This stores a string buffer to append strings to.
                 StringBuffer dayOne = new StringBuffer();
@@ -303,9 +303,6 @@ public class DailyWeather extends Fragment {
             } catch (Exception e) {
                 textViews[0].setText(w.dailyMessages[0] = "DAILY: Invalid Zip Code. Please Try Again.");
 
-                // Erase invalid inputs from the file.
-                DataController controller = new DataController();
-                controller.removeController();
             }
 
             //Displays the message to view output

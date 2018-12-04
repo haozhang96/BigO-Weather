@@ -25,4 +25,8 @@ public interface DataInterface {
     //Currently not in use.
     public abstract void remove();
 
+    // Remove the invalid zip code from the text file.
+    public abstract void removeInvalidZipCode (int _zipCode, Context _context);
+
+
 }

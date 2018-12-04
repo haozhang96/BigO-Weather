@@ -219,69 +219,51 @@ public class DataStore implements DataInterface {
         } catch (Exception e) {
             e.toString();
         }
+    }
 
+    /**
+     * Removal an invalid zip code from the text file.
+     *
+     * @param _zipCode
+     */
+    public void removeInvalidZipCode(int _zipCode, Context _context) {
 
+        try {
 
+            // Load the file for reading.
+            File loadFile = new File(CreateFile.sortedFilePath);
 
-        /*
-        int removeZipCode = Integer.parseInt(_zipCode);
-        int removeIndex = 0;
+            // ArrayList to hold the locations.
+            ArrayList<String> zipList = new ArrayList<String>();
 
-        ArrayList<String> removeArray = new ArrayList<String>();
+            Scanner scanner = new Scanner(loadFile);
 
-        File loadFile;
+            while (scanner.hasNextInt()) {
 
-        // Only continue if the zip code is saved in the file.
-        if (checkFile(removeZipCode)) {
+                int zip = scanner.nextInt();
 
-            try {
-                // Load the file where the deletion will occur.
-                loadFile = new File(CreateFile.txtDir, "test.txt");
-                Scanner scanner = new Scanner(loadFile);
-
-                while (scanner.hasNext()) {
-
-                    // Add each location to the ArrayList.
-                    removeArray.add(scanner.next());
-                }
-
-                // Get the index of the zip code to be deleted in the arrayList.
-                removeIndex = removeArray.indexOf(String.valueOf(_zipCode));
-
-                // Delete the same index three times because the position of the coordinates
-                // will shift left each time.
-                removeArray.remove(removeIndex);
-                removeArray.remove(removeIndex);
-                removeArray.remove(removeIndex);
-
-                // Create a new file with the saved locations except the deleted location.
-                File updatedFile = new File(CreateFile.txtDir, "AfterRemoval.txt");
-
-                FileWriter removeFileWriter = new FileWriter(updatedFile, true);
-
-                int count = 0;
-
-                // Write the locations to the file.
-                for (String line : removeArray) {
-                    removeFileWriter.append(line + " ");
-                    count++;
-
-                    // Create a new line after writing the zip code and coordinates.
-                    if (count % 3 == 0) {
-                        removeFileWriter.append("\n");
-                    }
-                }
-
-                removeFileWriter.close();
-
-
-            } catch (Exception e) {
-                Log.e("Could not", " load file");
+                // Add each location that is saved in the file to the arrayList.
+                zipList.add(String.valueOf(zip));
             }
-        } else {
-            Log.e("Zip Code", " was not found.");
+
+            // Get the index of the invalid zip code.
+            int removeIndex = zipList.indexOf(String.valueOf(_zipCode));
+
+            // Wipe the files so they can be rewritten without the invalid zip code.
+            remove();
+
+            // Remove the invalid zip code from the ArrayList.
+            zipList.remove(removeIndex);
+
+            // Write the ArrayList back to the files.
+            for (int i = 0; i < zipList.size(); i++) {
+                int zipCode = Integer.valueOf(zipList.get(i));
+                insert(zipCode, _context);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-  */
     }
 }
