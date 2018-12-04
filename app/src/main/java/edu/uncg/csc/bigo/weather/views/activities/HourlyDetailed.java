@@ -95,63 +95,54 @@ public class HourlyDetailed extends AppCompatActivity {
                 test.append("Wind Speed: " + detailedWeatherForecastController[0][Globals.WIND_SPEED] + "\n");
                 test.append("Wind Gust: " + detailedWeatherForecastController[0][Globals.WIND_GUST] + "\n");
                 test.append("Humidity: " + detailedWeatherForecastController[0][Globals.HUMIDITY] + "\n");
-                test.append("Moon Phase: " + detailedWeatherForecastController[0][Globals.MOON_PHASE] + "\n");
                 test.append("Ozone: " + detailedWeatherForecastController[0][Globals.OZONE] + "\n");
             } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "1")) {
                 test.append("Precipitation: " + detailedWeatherForecastController[1][Globals.PRECIP_PROBABILITY] + "\n");
                 test.append("Wind Speed: " + detailedWeatherForecastController[1][Globals.WIND_SPEED] + "\n");
                 test.append("Wind Gust: " + detailedWeatherForecastController[1][Globals.WIND_GUST] + "\n");
                 test.append("Humidity: " + detailedWeatherForecastController[1][Globals.HUMIDITY] + "\n");
-                test.append("Moon Phase: " + detailedWeatherForecastController[1][Globals.MOON_PHASE] + "\n");
                 test.append("Ozone: " + detailedWeatherForecastController[1][Globals.OZONE] + "\n");
             } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "2")) {
                 test.append("Precipitation: " + detailedWeatherForecastController[2][Globals.PRECIP_PROBABILITY] + "\n");
                 test.append("Wind Speed: " + detailedWeatherForecastController[2][Globals.WIND_SPEED] + "\n");
                 test.append("Wind Gust: " + detailedWeatherForecastController[2][Globals.WIND_GUST] + "\n");
                 test.append("Humidity: " + detailedWeatherForecastController[2][Globals.HUMIDITY] + "\n");
-                test.append("Moon Phase: " + detailedWeatherForecastController[2][Globals.MOON_PHASE] + "\n");
                 test.append("Ozone: " + detailedWeatherForecastController[2][Globals.OZONE] + "\n");
             } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "3")) {
                 test.append("Precipitation: " + detailedWeatherForecastController[3][Globals.PRECIP_PROBABILITY] + "\n");
                 test.append("Wind Speed: " + detailedWeatherForecastController[3][Globals.WIND_SPEED] + "\n");
                 test.append("Wind Gust: " + detailedWeatherForecastController[3][Globals.WIND_GUST] + "\n");
                 test.append("Humidity: " + detailedWeatherForecastController[3][Globals.HUMIDITY] + "\n");
-                test.append("Moon Phase: " + detailedWeatherForecastController[3][Globals.MOON_PHASE] + "\n");
                 test.append("Ozone: " + detailedWeatherForecastController[3][Globals.OZONE] + "\n");
             } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "4")) {
                 test.append("Precipitation: " + detailedWeatherForecastController[4][Globals.PRECIP_PROBABILITY] + "\n");
                 test.append("Wind Speed: " + detailedWeatherForecastController[4][Globals.WIND_SPEED] + "\n");
                 test.append("Wind Gust: " + detailedWeatherForecastController[4][Globals.WIND_GUST] + "\n");
                 test.append("Humidity: " + detailedWeatherForecastController[4][Globals.HUMIDITY] + "\n");
-                test.append("Moon Phase: " + detailedWeatherForecastController[4][Globals.MOON_PHASE] + "\n");
                 test.append("Ozone: " + detailedWeatherForecastController[4][Globals.OZONE] + "\n");
             } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "5")) {
                 test.append("Precipitation: " + detailedWeatherForecastController[5][Globals.PRECIP_PROBABILITY] + "\n");
                 test.append("Wind Speed: " + detailedWeatherForecastController[5][Globals.WIND_SPEED] + "\n");
                 test.append("Wind Gust: " + detailedWeatherForecastController[5][Globals.WIND_GUST] + "\n");
                 test.append("Humidity: " + detailedWeatherForecastController[5][Globals.HUMIDITY] + "\n");
-                test.append("Moon Phase: " + detailedWeatherForecastController[5][Globals.MOON_PHASE] + "\n");
                 test.append("Ozone: " + detailedWeatherForecastController[5][Globals.OZONE] + "\n");
             } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "6")) {
                 test.append("Precipitation: " + detailedWeatherForecastController[6][Globals.PRECIP_PROBABILITY] + "\n");
                 test.append("Wind Speed: " + detailedWeatherForecastController[6][Globals.WIND_SPEED] + "\n");
                 test.append("Wind Gust: " + detailedWeatherForecastController[6][Globals.WIND_GUST] + "\n");
                 test.append("Humidity: " + detailedWeatherForecastController[6][Globals.HUMIDITY] + "\n");
-                test.append("Moon Phase: " + detailedWeatherForecastController[6][Globals.MOON_PHASE] + "\n");
                 test.append("Ozone: " + detailedWeatherForecastController[6][Globals.OZONE] + "\n");
             } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "7")) {
                 test.append("Precipitation: " + detailedWeatherForecastController[6][Globals.PRECIP_PROBABILITY] + "\n");
                 test.append("Wind Speed: " + detailedWeatherForecastController[6][Globals.WIND_SPEED] + "\n");
                 test.append("Wind Gust: " + detailedWeatherForecastController[6][Globals.WIND_GUST] + "\n");
                 test.append("Humidity: " + detailedWeatherForecastController[6][Globals.HUMIDITY] + "\n");
-                test.append("Moon Phase: " + detailedWeatherForecastController[6][Globals.MOON_PHASE] + "\n");
                 test.append("Ozone: " + detailedWeatherForecastController[6][Globals.OZONE] + "\n");
             } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "8")) {
                 test.append("Precipitation: " + detailedWeatherForecastController[6][Globals.PRECIP_PROBABILITY] + "\n");
                 test.append("Wind Speed: " + detailedWeatherForecastController[6][Globals.WIND_SPEED] + "\n");
                 test.append("Wind Gust: " + detailedWeatherForecastController[6][Globals.WIND_GUST] + "\n");
                 test.append("Humidity: " + detailedWeatherForecastController[6][Globals.HUMIDITY] + "\n");
-                test.append("Moon Phase: " + detailedWeatherForecastController[6][Globals.MOON_PHASE] + "\n");
                 test.append("Ozone: " + detailedWeatherForecastController[6][Globals.OZONE] + "\n");
 
             } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "9")) {
@@ -159,7 +150,6 @@ public class HourlyDetailed extends AppCompatActivity {
                 test.append("Wind Speed: " + detailedWeatherForecastController[6][Globals.WIND_SPEED] + "\n");
                 test.append("Wind Gust: " + detailedWeatherForecastController[6][Globals.WIND_GUST] + "\n");
                 test.append("Humidity: " + detailedWeatherForecastController[6][Globals.HUMIDITY] + "\n");
-                test.append("Moon Phase: " + detailedWeatherForecastController[6][Globals.MOON_PHASE] + "\n");
                 test.append("Ozone: " + detailedWeatherForecastController[6][Globals.OZONE] + "\n");
 
             } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "10")) {
@@ -167,14 +157,12 @@ public class HourlyDetailed extends AppCompatActivity {
                 test.append("Wind Speed: " + detailedWeatherForecastController[6][Globals.WIND_SPEED] + "\n");
                 test.append("Wind Gust: " + detailedWeatherForecastController[6][Globals.WIND_GUST] + "\n");
                 test.append("Humidity: " + detailedWeatherForecastController[6][Globals.HUMIDITY] + "\n");
-                test.append("Moon Phase: " + detailedWeatherForecastController[6][Globals.MOON_PHASE] + "\n");
                 test.append("Ozone: " + detailedWeatherForecastController[6][Globals.OZONE] + "\n");
             } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "11")) {
                 test.append("Precipitation: " + detailedWeatherForecastController[6][Globals.PRECIP_PROBABILITY] + "\n");
                 test.append("Wind Speed: " + detailedWeatherForecastController[6][Globals.WIND_SPEED] + "\n");
                 test.append("Wind Gust: " + detailedWeatherForecastController[6][Globals.WIND_GUST] + "\n");
                 test.append("Humidity: " + detailedWeatherForecastController[6][Globals.HUMIDITY] + "\n");
-                test.append("Moon Phase: " + detailedWeatherForecastController[6][Globals.MOON_PHASE] + "\n");
                 test.append("Ozone: " + detailedWeatherForecastController[6][Globals.OZONE] + "\n");
             }
 
