@@ -86,13 +86,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginTop="400dp"
-                android:textAlignment="textStart"
-                android:textSize="12sp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textAllCaps="true"
+                android:background="@drawable/button_border"
                 android:fontFamily="@font/hammersmith_one"
-                android:background="@drawable/button_border" />
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/hourSevenMessage"
@@ -171,8 +171,6 @@
                 android:textAllCaps="true"
                 android:fontFamily="@font/hammersmith_one"
                 android:background="@drawable/button_border" />
-
-
 
             <ImageView
                 android:id="@+id/hourOneImage"
@@ -282,6 +280,89 @@
                 android:layout_marginHorizontal="315dp"
                 android:layout_marginTop="890dp"
                 android:src="@color/Transparent" />
+
+            <Button
+                android:id="@+id/hourDetailOne"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:background="@color/Transparent" />
+
+            <Button
+                android:id="@+id/hourDetailTwo"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="80dp"
+                android:background="@color/Transparent" />
+
+            <Button
+                android:id="@+id/hourDetailThree"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="160dp"
+                android:background="@color/Transparent" />
+
+            <Button
+                android:id="@+id/hourDetailFour"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="240dp"
+                android:background="@color/Transparent" />
+
+            <Button
+                android:id="@+id/hourDetailFive"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="320dp"
+                android:background="@color/Transparent" />
+
+            <Button
+                android:id="@+id/hourDetailSix"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="400dp"
+                android:background="@color/Transparent" />
+
+            <Button
+                android:id="@+id/hourDetailSeven"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="480dp"
+                android:background="@color/Transparent" />
+
+            <Button
+                android:id="@+id/hourDetailEight"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="560dp"
+                android:background="@color/Transparent" />
+
+            <Button
+                android:id="@+id/hourDetailNine"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="640dp"
+                android:background="@color/Transparent" />
+
+            <Button
+                android:id="@+id/hourDetailTen"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="720dp"
+                android:background="@color/Transparent" />
+
+            <Button
+                android:id="@+id/hourDetailEleven"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="800dp"
+                android:background="@color/Transparent" />
+
+            <Button
+                android:id="@+id/hourDetailTwelve"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="880dp"
+                android:background="@color/Transparent" />
 
         </FrameLayout>
     </ScrollView>

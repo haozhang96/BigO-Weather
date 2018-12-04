@@ -1,6 +1,7 @@
 package edu.uncg.csc.bigo.weather.views.activities;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -58,6 +60,19 @@ public class HourlyWeather extends Fragment {
     private ImageView hourElevenImage;
     private ImageView hourTwelveImage;
 
+    private Button hourDetailOne;
+    private Button hourDetailTwo;
+    private Button hourDetailThree;
+    private Button hourDetailFour;
+    private Button hourDetailFive;
+    private Button hourDetailSix;
+    private Button hourDetailSeven;
+    private Button hourDetailEight;
+    private Button hourDetailNine;
+    private Button hourDetailTen;
+    private Button hourDetailEleven;
+    private Button hourDetailTwelve;
+
 
     private TextView[] textViews = {hourOneMessage, hourTwoMessage, hourThreeMessage,
             hourFourMessage, hourFiveMessage, hourSixMessage, hourSevenMessage, hourEightMessage,
@@ -79,6 +94,16 @@ public class HourlyWeather extends Fragment {
             R.id.hourEightImage, R.id.hourNineImage, R.id.hourTenImage, R.id.hourElevenImage,
             R.id.hourTwelveImage};
 
+    private Button[] buttons = {hourDetailOne, hourDetailTwo, hourDetailThree, hourDetailFour,
+            hourDetailFive, hourDetailSix, hourDetailSeven, hourDetailEight, hourDetailNine,
+            hourDetailTen, hourDetailEleven, hourDetailTwelve};
+
+
+    private Integer[] buttonID = {R.id.hourDetailOne, R.id.hourDetailTwo, R.id.detailedThree,
+            R.id.hourDetailFour, R.id.hourDetailFive, R.id.hourDetailSix, R.id.hourDetailSeven,
+            R.id.hourDetailEight, R.id.hourDetailNine, R.id.hourDetailTen, R.id.hourDetailEleven,
+            R.id.hourDetailTwelve};
+
     String[][] hourlyWeatherForecastController;
 
     /**
@@ -90,6 +115,86 @@ public class HourlyWeather extends Fragment {
     @Override
     public void onActivityCreated(Bundle _savedInstanceState) {
         super.onActivityCreated(_savedInstanceState);
+
+        SharedPreferences preferences = getActivity().getSharedPreferences("HOURLY", MODE_PRIVATE);
+
+        final SharedPreferences.Editor editor = preferences.edit();
+
+        for (int i = 0; i < 12; i++) {
+            final int finalI = i;
+            getActivity().findViewById(buttonID[i]).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    switch (finalI) {
+                        case 0:
+                            editor.putString("HourlyDetails", "0");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), HourlyDetailed.class));
+                            break;
+                        case 1:
+                            editor.putString("HourlyDetails", "1");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), HourlyDetailed.class));
+                            break;
+                        case 2:
+                            editor.putString("HourlyDetails", "2");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), HourlyDetailed.class));
+                            break;
+                        case 3:
+                            editor.putString("HourlyDetails", "3");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), HourlyDetailed.class));
+                            break;
+                        case 4:
+                            editor.putString("HourlyDetails", "4");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), HourlyDetailed.class));
+                            break;
+                        case 5:
+                            editor.putString("HourlyDetails", "5");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), HourlyDetailed.class));
+                            break;
+                        case 6:
+                            editor.putString("HourlyDetails", "6");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), HourlyDetailed.class));
+                            break;
+
+                        case 7:
+                            editor.putString("HourlyDetails", "7");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), HourlyDetailed.class));
+                            break;
+                        case 8:
+                            editor.putString("HourlyDetails", "8");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), HourlyDetailed.class));
+                            break;
+                        case 9:
+                            editor.putString("HourlyDetails", "9");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), HourlyDetailed.class));
+                            break;
+                        case 10:
+                            editor.putString("HourlyDetails", "10");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), HourlyDetailed.class));
+                            break;
+                        case 11:
+                            editor.putString("HourlyDetails", "11");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), HourlyDetailed.class));
+                            break;
+                    }
+
+                }
+            });
+        }
+
+        //
+        new HourlyDataRetrieval().execute();
 
         new HourlyDataRetrieval().execute();
     }
