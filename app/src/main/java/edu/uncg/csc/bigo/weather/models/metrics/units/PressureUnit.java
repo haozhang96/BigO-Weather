@@ -2,10 +2,9 @@ package edu.uncg.csc.bigo.weather.models.metrics.units;
 /**
  * This enumeration lists all the possible units for pressure.
  *
- * @updated 2018/09/26
+ * @updated 09/27/2018
  * @authors Hao Zhang
  */
-
 
 public enum PressureUnit {
     ATMOSPHERE,

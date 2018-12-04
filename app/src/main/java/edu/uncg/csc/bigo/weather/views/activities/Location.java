@@ -1,4 +1,10 @@
 package edu.uncg.csc.bigo.weather.views.activities;
+/**
+ * This class is responsible for setting the app off to choose a location for their weather.
+ *
+ * @Updated: 12/4/2018
+ * @Authors: Steven Tran, Harmain Bains
+ */
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,29 +15,26 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
-
 import edu.uncg.csc.bigo.weather.R;
 import edu.uncg.csc.bigo.weather.controllers.DataController;
 import edu.uncg.csc.bigo.weather.data.CreateFile;
 
-/**
- * This class is responsible for setting the app off to choose a location for their weather.
- *
- * @Updated: 12/4/2018
- * @Authors: Steven Tran, Harmain Bains
- */
 public class Location extends AppCompatActivity {
 
-    //Textview for error message (wrong zip code).
+    // Textview for error message (wrong zip code).
     private TextView errorMessage;
 
-    //Int used to store zip code.
+    // Int used to store zip code.
     private int zipCode;
 
-    //Autocomplete view for search bar.
+    // Autocomplete view for search bar.
     AutoCompleteTextView autoView;
 
-
+    /**
+     * This begins the fragment.
+     *
+     * @param _savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
@@ -73,15 +76,15 @@ public class Location extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View _v) {
-                //Make sure the user inputs a properly formatted zip.
+                // Make sure the user inputs a properly formatted zip.
                 if ((autoView.getText().toString().length() != 5)) {
                     errorMessage.setText("Enter a Properly Formatted Zip");
                     autoView.setText("");
-                }//If the zip is correctly formatted assign it to zipCode
-                else if (autoView.getText().toString().length() == 5) {
+                } else if (autoView.getText().toString().length() == 5) {
+                    // If the zip is correctly formatted assign it to zipCode.
                     zipCode = Integer.valueOf(autoView.getText().toString());
 
-                    //Shared preference for storing the zip code.
+                    // Shared preference for storing the zip code.
                     SharedPreferences sp = getSharedPreferences("GLOBAL", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sp.edit();
 
@@ -97,18 +100,16 @@ public class Location extends AppCompatActivity {
                         exception.toString();
                     }
 
-                    //Actually storing the int into shared preference editor.
+                    // Actually storing the int into shared preference editor.
                     editor.putInt("ZIP", zipCode);
                     editor.apply();
 
                     errorMessage.setText("");
 
-                    //Switching from location view to Main activity.
+                    // Switching from location view to Main activity.
                     startActivity(new Intent(Location.this, MainActivity.class));
                 }
             }
         });
     }
 }
-
-

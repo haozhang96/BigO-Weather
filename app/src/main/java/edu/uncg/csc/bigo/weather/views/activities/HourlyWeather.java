@@ -1,5 +1,11 @@
 package edu.uncg.csc.bigo.weather.views.activities;
-
+/**
+ * The third fragment activity that represents the hourly weather view. This fragment is made from
+ * the MainActivity class. It shows the date, apparent temperature, summary, and weather icon.
+ *
+ * @Updated 12/2/2018
+ * @Author Steven Tran
+ */
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,28 +18,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.Locale;
-
 import edu.uncg.csc.bigo.weather.R;
 import edu.uncg.csc.bigo.weather.controllers.DataController;
 import edu.uncg.csc.bigo.weather.controllers.WeatherController;
 import edu.uncg.csc.bigo.weather.models.util.Globals;
 import edu.uncg.csc.bigo.weather.views.Icons;
-
 import static android.content.Context.MODE_PRIVATE;
 
-
-/**
- * The third fragment activity that represents the hourly weather view. This fragment is made from
- * the MainActivity class. It shows the date, apparent temperature, summary, and weather icon.
- *
- * @Updated 12/2/2018
- * @Author Steven Tran
- */
 public class HourlyWeather extends Fragment {
-
-
     //The textviews for each hour.
     private TextView hourOneMessage;
     private TextView hourTwoMessage;
@@ -76,7 +69,6 @@ public class HourlyWeather extends Fragment {
     private Button hourDetailEleven;
     private Button hourDetailTwelve;
 
-
     //The array for the textviews.
     private TextView[] textViews = {hourOneMessage, hourTwoMessage, hourThreeMessage,
             hourFourMessage, hourFiveMessage, hourSixMessage, hourSevenMessage, hourEightMessage,
@@ -88,12 +80,10 @@ public class HourlyWeather extends Fragment {
             R.id.hourEightMessage, R.id.hourNineMessage, R.id.hourTenMessage, R.id.hourElevenMessage,
             R.id.hourTwelveMessage};
 
-
     //The array for the imageviews.
     private ImageView[] imageViews = {hourOneImage, hourTwoImage, hourThreeImage, hourFourImage,
             hourFiveImage, hourSixImage, hourSevenImage, hourEightImage, hourNineImage,
             hourTenImage, hourElevenImage, hourTwelveImage};
-
 
     //The array for the integer that represents the image ID.
     private Integer[] imageViewID = {R.id.hourOneImage, R.id.hourTwoImage, R.id.hourThreeImage,
@@ -106,7 +96,6 @@ public class HourlyWeather extends Fragment {
             hourDetailFive, hourDetailSix, hourDetailSeven, hourDetailEight, hourDetailNine,
             hourDetailTen, hourDetailEleven, hourDetailTwelve};
 
-
     //The array of integers that represent the button IDs.
     private Integer[] buttonID = {R.id.hourDetailOne, R.id.hourDetailTwo, R.id.detailedThree,
             R.id.hourDetailFour, R.id.hourDetailFive, R.id.hourDetailSix, R.id.hourDetailSeven,
@@ -115,6 +104,7 @@ public class HourlyWeather extends Fragment {
 
     //The 2D array for the controller.
     String[][] hourlyWeatherForecastController;
+
 
     /**
      * After onCreate method, this method handles executing the data retrieval and creating a saved
@@ -201,15 +191,13 @@ public class HourlyWeather extends Fragment {
                             startActivity(new Intent(getActivity(), HourlyDetailed.class));
                             break;
                     }
-
                 }
             });
         }
-
         //Executing the hourly data.
         new HourlyDataRetrieval().execute();
-
     }
+
 
     /**
      * The initial startup loading from the view to handle the initializations.
@@ -217,20 +205,19 @@ public class HourlyWeather extends Fragment {
      * @param _inflater
      * @param _container
      * @param _savedInstanceState
-     * @return v = Hourly Fragment Layout View
+     * @return v = Hourly Fragment Layout View.
      */
     public View onCreateView(LayoutInflater _inflater, ViewGroup _container,
                              Bundle _savedInstanceState) {
 
-        //Initializing the view to the hourly weather fragment
+        //Initializing the view to the hourly weather fragment.
         View v = _inflater.inflate(R.layout.fragment_hourly_weather, _container, false);
 
-        //Initializing the hourly messages and images
+        //Initializing the hourly messages and images.
         for (int i = 0; i < 12; i++) {
             textViews[i] = v.findViewById(textViewID[i]);
             imageViews[i] = v.findViewById(imageViewID[i]);
         }
-
         return v;
     }
 
@@ -281,16 +268,15 @@ public class HourlyWeather extends Fragment {
                 //This is used to initialize the weather controller with the zip code input.
                 hourlyWeatherForecastController = WeatherController.getWeatherHourlyForecast(sp.getInt("ZIP", 27403));
 
-                //This will pass the time, summary, and temperature
+                //This will pass the time, summary, and temperature.
                 for (int i = 0; i < 12; i++) {
                     StringBuffer[i].append("\n   " + hourlyWeatherForecastController[i][Globals.TIME] + "\n");
                     StringBuffer[i].append("   " + hourlyWeatherForecastController[i][Globals.SUMMARY] + "\n");
                     StringBuffer[i].append("   " + hourlyWeatherForecastController[i][Globals.TEMPERATURE] + "\n\n");
                     w.hourlyMessages[i] = StringBuffer[i].toString();
                 }
-
             } catch (Exception _exception) {
-
+                _exception.toString();
             }
             return w;
         }
@@ -365,11 +351,10 @@ public class HourlyWeather extends Fragment {
                 DataController controller = new DataController();
                 controller.removeController();
             }
-            //Displays the message to view output
+            // Displays the message to view output.
             for (int i = 0; i < 12; i++) {
                 textViews[i].setText(_w.hourlyMessages[i]);
             }
         }
     }
-
 }

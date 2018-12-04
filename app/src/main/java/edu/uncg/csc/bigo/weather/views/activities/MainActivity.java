@@ -1,10 +1,15 @@
 package edu.uncg.csc.bigo.weather.views.activities;
-
+/**
+ * The MainActivity class controls the 3 fragments: Current, Daily, Hourly. The backbone of the
+ * views.
+ *
+ * @Updated: 12/4/2018
+ * @Author Steven Tran
+ **/
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -15,26 +20,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import android.widget.Toast;
-
 import edu.uncg.csc.bigo.weather.R;
 import edu.uncg.csc.bigo.weather.controllers.DataController;
 
-
-/**
- * The MainActivity class controls the 3 fragments: Current, Daily, Hourly. The backbone of the
- * views.
- *
- * @Updated: 12/4/2018
- * @Author Steven Tran
- **/
 public class MainActivity extends AppCompatActivity {
-
-    //This manages the fragments.
+    // This manages the fragments.
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
-    //This viewpager allows for view changing.
+    // This viewpager allows for view changing.
     private ViewPager mViewPager;
 
 
@@ -49,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         //Sets the view to Main Activity.
         setContentView(R.layout.activity_main);
-
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -68,17 +61,15 @@ public class MainActivity extends AppCompatActivity {
         //Shared preference to manage if zipcode was already entered initially.
         SharedPreferences sp = getSharedPreferences("GLOBAL", Context.MODE_PRIVATE);
 
-
         boolean firstRun = sp.getBoolean("run", true);
 
-
-        //If zipcode was not an input yet, then the location view will start up.
+        // If zipcode was not an input yet, then the location view will start up.
         if (firstRun) {
             startActivity(new Intent(MainActivity.this, Location.class));
         }
         sp.edit().putBoolean("run", false).apply();
-
     }
+
 
     /**
      * This allows for the top right navigation bar.
@@ -91,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_main, _menu);
         return true;
     }
+
 
     /**
      * This defines what the options in the top right navigation bar do.
@@ -122,9 +114,9 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
             return true;
         }
-
         return super.onOptionsItemSelected(_item);
     }
+
 
     /**
      * A FragmentPager Adapter that returns a fragment corresponding to
@@ -134,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
      * @Author: Steven Tran
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
         /**
          * Creating the sections pager adapter.
          *
@@ -167,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
             return fragment;
         }
 
+
         /**
          * Gets the count of how many fragments.
          *
@@ -177,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
             // Show 3 total pages.
             return 3;
         }
+
 
         /**
          * Titles the fragments for declaration.

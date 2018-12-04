@@ -1,19 +1,12 @@
 package edu.uncg.csc.bigo.weather.models.weather;
 /**
  * The WeatherDataStringFormatter class takes the weather data from DarkSkyAPI and GeocodioAPI and places
- * the individual pieces of Current, Hourly, Daily, and Minutely weather data into String arrays. The WeatherController
- * class can take these String arrays and give them to view files to display weather data to the user.
+ * the individual pieces of Current, Hourly, and Daily weather data into String arrays. The WeatherController
+ * class can take these String arrays and pass them to view files to display weather data to the user.
  *
- * @updated 11/14/2018
- * @author John Isaac Wilkinson
+ * @updated 12/4/2018
+ * @author John Isaac Wilkinson, Hao Zhang
  */
-
-import org.json.JSONException;
-
-import java.io.IOException;
-import android.util.Log;
-
-import javax.microedition.khronos.opengles.GL;
 
 import edu.uncg.csc.bigo.weather.models.api.WeatherAPI;
 import edu.uncg.csc.bigo.weather.models.api.location.GeocodioAPI;
@@ -21,7 +14,6 @@ import edu.uncg.csc.bigo.weather.models.api.weather.DarkSkyAPI;
 import edu.uncg.csc.bigo.weather.models.metrics.units.AmountUnit;
 import edu.uncg.csc.bigo.weather.models.util.Globals;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
-import edu.uncg.csc.bigo.weather.views.activities.MainActivity;
 
 public class WeatherDataStringFormatter {
     /**
@@ -29,26 +21,28 @@ public class WeatherDataStringFormatter {
      * for the zipcode provided, and places the individual pieces of data into a String array to be
      * passed around by the Weather Controller. The indexes are organized as follows:
      *
-     * 0 - The city, state, and zipcode
-     * 1 - The precipitation intensity
-     * 2 - The precipitation probability
-     * 3 - The summary of the current weather
-     * 4 - The time
-     * 5 - The percentage of cloud coverage
-     * 6 - The dew point
-     * 7 - The humidity
-     * 8 - The latitude and longitude
-     * 9 - The moon phase
-     * 10 - The ozone
-     * 11 - The pressure
-     * 12 - empty
-     * 13 - empty
-     * 14 - The UV index
-     * 15 - The the distance of visibility
-     * 16 - The speed of the wind gust
-     * 17 - The speed of the wind
-     * 18 - The apparent temperature
-     * 19 - icon
+     * 0 - The city, state, and zipcode.
+     * 1 - The precipitation intensity.
+     * 2 - The precipitation probability.
+     * 3 - The summary of the current weather.
+     * 4 - The time.
+     * 5 - The percentage of cloud coverage.
+     * 6 - The dew point.
+     * 7 - The humidity.
+     * 8 - The latitude and longitude.
+     * 9 - The moon phase.
+     * 10 - The ozone.
+     * 11 - The pressure.
+     * 12 - Empty.
+     * 13 - Empty.
+     * 14 - The UV index.
+     * 15 - The the distance of visibility.
+     * 16 - The speed of the wind gust.
+     * 17 - The speed of the wind.
+     * 18 - The apparent temperature.
+     * 19 - Empty.
+     * 20 - Empty.
+     * 21 - Icon representing current weather condition.
      *
      * @param _zip The Zipcode of the location to check the weather of.
      * @return currentStringArray The array of Strings containing the current weather information.
@@ -92,26 +86,28 @@ public class WeatherDataStringFormatter {
      * passed around by the Weather Controller. The first index determines which hour you want out of the
      * next 24 hours, and the second indexes are organized as follows:
      *
-     * 0 - The city, state, and zipcode
-     * 1 - The precipitation intensity
-     * 2 - The precipitation probability
-     * 3 - The summary of the current weather
-     * 4 - The time
-     * 5 - The percentage of cloud coverage
-     * 6 - The dew point
-     * 7 - The humidity
-     * 8 - The latitude and longitude
-     * 9 - The moon phase
-     * 10 - The ozone
-     * 11 - The pressure
-     * 12 - empty
-     * 13 - empty
-     * 14 - The UV index
-     * 15 - The the distance of visibility
-     * 16 - The speed of the wind gust
-     * 17 - The speed of the wind
-     * 18 - The apparent temperature
-     * 19 - The temperature
+     * 0 - The city, state, and zipcode.
+     * 1 - The precipitation intensity.
+     * 2 - The precipitation probability.
+     * 3 - The summary of the current weather.
+     * 4 - The time.
+     * 5 - The percentage of cloud coverage.
+     * 6 - The dew point.
+     * 7 - The humidity.
+     * 8 - The latitude and longitude.
+     * 9 - The moon phase.
+     * 10 - The ozone.
+     * 11 - The pressure.
+     * 12 - Empty.
+     * 13 - Empty.
+     * 14 - The UV index.
+     * 15 - The the distance of visibility.
+     * 16 - The speed of the wind gust.
+     * 17 - The speed of the wind.
+     * 18 - The apparent temperature.
+     * 19 - The temperature.
+     * 20 - Empty.
+     * 21 - Icon representing the weather.
      *
      * @param _zip The Zipcode of the location to check the weather of.
      * @return currentStringArray The 2D array of Strings containing the hourly weather information
@@ -126,7 +122,7 @@ public class WeatherDataStringFormatter {
         String locationName = geoHourly.getNameOfLocation(_zip);
         WeatherData[] weatherHourlyDataPoints = darkSkyHourly.getHourlyWeatherForecast(location);
 
-        for(int i = 0; i<24;i++) {
+        for (int i = 0; i < 24; i++) {
             WeatherData weatherHourly = weatherHourlyDataPoints[i];
             hourlyStringArray[i][Globals.CITY_STATE_ZIP] = locationName;
             hourlyStringArray[i][Globals.PRECIP_INTENSITY] = weatherHourly.getPrecipitationIntensity().toString();
@@ -157,40 +153,42 @@ public class WeatherDataStringFormatter {
      * The first index determines the offset of the day. (i.e. 0th index is today, 1st index is tomorrow, ect)
      * The second index determines the actual piece of weather data as follows:
      *
-     * 0 - The city, state, and zipcode
-     * 1 - The precipitation intensity
-     * 2 - The precipitation probability
-     * 3 - The summary of the current weather
-     * 4 - The time
-     * 5 - The percentage of cloud coverage
-     * 6 - The dew point
-     * 7 - The humidity
-     * 8 - The latitude and longitude
-     * 9 - The moon phase
-     * 10 - The ozone
-     * 11 - The pressure
-     * 12 - The daily high temperature
-     * 13 - The daily low temperature
-     * 14 - The UV index
-     * 15 - The the distance of visibility
-     * 16 - The speed of the wind gust
-     * 17 - The speed of the wind
-     * 18 - The apparent temperature
-     * 19 - The icon
+     * 0 - The city, state, and zipcode.
+     * 1 - The precipitation intensity.
+     * 2 - The precipitation probability.
+     * 3 - The summary of the current weather.
+     * 4 - The time.
+     * 5 - The percentage of cloud coverage.
+     * 6 - The dew point.
+     * 7 - The humidity.
+     * 8 - The latitude and longitude.
+     * 9 - The moon phase.
+     * 10 - The ozone.
+     * 11 - The pressure.
+     * 12 - The daily high temperature.
+     * 13 - The daily low temperature.
+     * 14 - The UV index.
+     * 15 - The the distance of visibility.
+     * 16 - The speed of the wind gust.
+     * 17 - The speed of the wind.
+     * 18 - The apparent temperature.
+     * 19 - Empty.
+     * 20 - Empty.
+     * 21 - Icon representing the weather.
      *
      * @param _zip the zipcode of the location to check the weather of.
-     * @return dailyForecastStringArray the 2D array containing the daily weather data for the next 7 days
+     * @return dailyForecastStringArray the 2D array containing the daily weather data for the next 7 days.
      * @throws Exception
      */
     static public String[][] formatDailyWeatherForecast(int _zip) throws Exception {
         String[][] dailyForecastStringArray = new String[7][25];
-        WeatherAPI  darkSkyDailyForecast = new DarkSkyAPI(Globals.getGlobalDarksky());
+        WeatherAPI darkSkyDailyForecast = new DarkSkyAPI(Globals.getGlobalDarksky());
         GeocodioAPI geoDaily = new GeocodioAPI(Globals.APIKEY_GEOCODIO);
         LocationCoordinate location = geoDaily.zipCodeToCoordinate(_zip);
         String locationName = geoDaily.getNameOfLocation(_zip);
         WeatherData[] weatherDailyDataPoints = darkSkyDailyForecast.getDailyWeatherForecast(location);
 
-        for(int i = 0; i < 7; i++) {
+        for (int i = 0; i < 7; i++) {
             WeatherData weatherDailyForecast0 = weatherDailyDataPoints[i];
 
             dailyForecastStringArray[i][Globals.CITY_STATE_ZIP] = locationName;
@@ -213,7 +211,6 @@ public class WeatherDataStringFormatter {
             dailyForecastStringArray[i][Globals.WIND_SPEED] = weatherDailyForecast0.getWindSpeed().toString();
             dailyForecastStringArray[i][Globals.ICON] = weatherDailyForecast0.getIcon().toString();
         }
-
         return dailyForecastStringArray;
     }
 }

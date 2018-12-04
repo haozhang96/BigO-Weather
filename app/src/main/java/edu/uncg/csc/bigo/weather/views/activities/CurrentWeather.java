@@ -1,4 +1,12 @@
 package edu.uncg.csc.bigo.weather.views.activities;
+/**
+ * The first fragment activity that represents the current weather view. This fragment is made from
+ * the MainActivity class. It shows the current temperature, city name, weather summary, precipitation,
+ * humidity, wind speed, and weather icon.
+ *
+ * @Updated 12/2/2018
+ * @Author Steven Tran
+ */
 
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -9,33 +17,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.Locale;
-
 import edu.uncg.csc.bigo.weather.R;
 import edu.uncg.csc.bigo.weather.controllers.DataController;
 import edu.uncg.csc.bigo.weather.controllers.WeatherController;
 import edu.uncg.csc.bigo.weather.models.util.Globals;
 import edu.uncg.csc.bigo.weather.views.Icons;
-
 import static android.content.Context.MODE_PRIVATE;
 
-
-/**
- * The first fragment activity that represents the current weather view. This fragment is made from
- * the MainActivity class. It shows the current temperature, city name, weather summary, precipitation,
- * humidity, wind speed, and weather icon.
- *
- * @Updated 12/2/2018
- * @Author Steven Tran
- */
 public class CurrentWeather extends Fragment {
-
     private TextView temperature;
     private TextView currentMessage;
-
     private ImageView weatherIcon;
-
     private String[] currentWeatherController;
 
 
@@ -58,7 +51,7 @@ public class CurrentWeather extends Fragment {
      * @param _inflater
      * @param _container
      * @param _savedInstanceState
-     * @return v = Current Fragment Layout View
+     * @return v = Current Fragment Layout View.
      */
     public View onCreateView(LayoutInflater _inflater, ViewGroup _container,
                              Bundle _savedInstanceState) {
@@ -77,6 +70,7 @@ public class CurrentWeather extends Fragment {
 
         return v;
     }
+
 
     /**
      * This class is used for retrieving (CURRENT WEATHER) data from the Weather Controllers
@@ -128,6 +122,7 @@ public class CurrentWeather extends Fragment {
             return w;
         }
 
+
         /**
          * This method will display the results to the views and be called after everything is done.
          *
@@ -135,7 +130,6 @@ public class CurrentWeather extends Fragment {
          */
         protected void onPostExecute(Wrapper _w) {
             try {
-
                 //This will choose the correct weather icon for the ImageView.
                 switch (currentWeatherController[Globals.ICON]) {
                     case "clear-day":
@@ -206,4 +200,3 @@ public class CurrentWeather extends Fragment {
         }
     }
 }
-

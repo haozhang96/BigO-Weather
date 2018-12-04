@@ -3,19 +3,17 @@ package edu.uncg.csc.bigo.weather.models.metrics;
  * This class defines a columnar density object with a columnar density unit attached to it.
  * The conversion formulas were derived from https://en.wikipedia.org/wiki/Dobson_unit.
  *
- * @updated 2018/09/27
+ * @updated 09/27/2018
  * @authors Hao Zhang
  */
 
-
 import edu.uncg.csc.bigo.weather.models.metrics.units.ColumnarDensityUnit;
-
 
 public final class ColumnarDensity extends UnitTaggedValue<Double, ColumnarDensityUnit> {
     /**
      * This constructs a ColumnarDensity object with a value and a unit.
-     * @param _value The columnar density's value
-     * @param _unit The columnar density's unit
+     * @param _value The columnar density's value.
+     * @param _unit The columnar density's unit.
      */
     public ColumnarDensity(double _value, ColumnarDensityUnit _unit) {
         super(_value, _unit);
@@ -24,8 +22,8 @@ public final class ColumnarDensity extends UnitTaggedValue<Double, ColumnarDensi
 
     /**
      * This method returns a new columnar density converted to the given unit.
-     * @param _unit The columnar density unit to convert to
-     * @return A new ColumnarDensity object with the converted value and unit
+     * @param _unit The columnar density unit to convert to.
+     * @return A new ColumnarDensity object with the converted value and unit.
      */
     @Override
     public ColumnarDensity convertTo(ColumnarDensityUnit _unit) {
@@ -75,7 +73,7 @@ public final class ColumnarDensity extends UnitTaggedValue<Double, ColumnarDensi
 
     /**
      * This method overrides Object's toString method for pretty-printing.
-     * @return A prettified string
+     * @return A prettified string.
      */
     @Override
     public String toString() {

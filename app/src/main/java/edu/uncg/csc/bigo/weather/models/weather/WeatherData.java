@@ -1,25 +1,20 @@
 package edu.uncg.csc.bigo.weather.models.weather;
 /**
  * This class describes weather data at a given location and time.
- * You should NOT construct this directly. Use the WeatherDataBuilder object instead.
  *
- * @updated 11/14/2018
+ * @updated 9/25/2018
  * @authors Hao Zhang, John Isaac Wilkinson
  */
 
-
 import edu.uncg.csc.bigo.weather.models.metrics.*;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
-
 import java.util.Date;
-
 
 public class WeatherData {
     /**
      * All the properties of WeatherData objects are defined below.
      * Boxed values are used over primitives because some fields are optional.
      */
-
     private final Temperature apparentTemperature;
     private final Amount cloudCover;
     private final Temperature dewPoint;
@@ -42,7 +37,6 @@ public class WeatherData {
     private final Speed windSpeed;
     private final String icon;
 
-    //ADD COMMENT @PARAM FOR TEMPERATURE HIGH HERE VVVVVVVV
 
     /**
      * This constructs an object containing weather data.
@@ -120,113 +114,198 @@ public class WeatherData {
 
 
     /**
-     * All the field getters are defined below this comment.
+     * Returns the apparent temperature.
+     * @return Apparent temperature.
      */
-
-    //ADDED TEMPERATURE HIGH HERE
     public Temperature getApparentTemperature() {
         return this.apparentTemperature;
     }
 
 
+    /**
+     * Returns the cloud cover.
+     * @return Cloud cover.
+     */
     public Amount getCloudCover() {
         return this.cloudCover;
     }
 
 
+    /**
+     * Returns the dew point.
+     * @return Dew point.
+     */
     public Temperature getDewPoint() {
         return this.dewPoint;
     }
 
 
+    /**
+     * Returns the humidity.
+     * @return Humity.
+     */
     public Amount getHumidity() {
         return this.humidity;
     }
 
 
-    public LocationCoordinate getLocation() {
-        return this.location;
-    }
-
-
-    public Amount getMoonPhase() {
-        return this.moonPhase;
-    }
-
-
-    public Distance getNearestStormDistance() {
-        return this.nearestStormDistance;
-    }
-
-
-    public ColumnarDensity getOzone() {
-        return this.ozone;
-    }
-
-
-    public Speed getPrecipitationIntensity() {
-        return this.precipitationIntensity;
-    }
-
-
-    public Amount getPrecipitationProbability() {
-        return this.precipitationProbability;
-    }
-
-
-    public Pressure getPressure() {
-        return this.pressure;
-    }
-
-
-    public String getSummary() {
-        return this.summary;
-    }
-
-    public Temperature getTemperature() {
-        return this.temperature;
-    }
-
-
-    public Temperature getTemperatureHigh() {
-        return this.temperatureHigh;
-    }
-
-
-    public Temperature getTemperatureLow() {
-        return this.temperatureLow;
-    }
-
-
-    public Date getTime() {
-        return this.time;
-    }
-
-
-    public Integer getUVIndex() {
-        return this.uvIndex;
-    }
-
-
-    public Distance getVisibility() {
-        return this.visibility;
-    }
-
-
-    public Speed getWindGust() {
-        return this.windGust;
-    }
-
-
-    public Speed getWindSpeed() {
-        return this.windSpeed;
-    }
-
+    /**
+     * Returns the icon describing the weather conditions.
+     * @return Icon.
+     */
     public String getIcon() {
         return this.icon;
     }
 
 
+    /**
+     * Returns the location.
+     * @return Location.
+     */
+    public LocationCoordinate getLocation() {
+        return this.location;
+    }
+
+
+    /**
+     * Returns the moon phase.
+     * @return Moon phase.
+     */
+    public Amount getMoonPhase() {
+        return this.moonPhase;
+    }
+
+
+    /**
+     * Returns the nearest storm distance.
+     * @return Nearest storm distance.
+     */
+    public Distance getNearestStormDistance() {
+        return this.nearestStormDistance;
+    }
+
+
+    /**
+     * Returns the ozone.
+     * @return Ozone.
+     */
+    public ColumnarDensity getOzone() {
+        return this.ozone;
+    }
+
+
+    /**
+     * Returns the Speed.
+     * @return Speed.
+     */
+    public Speed getPrecipitationIntensity() {
+        return this.precipitationIntensity;
+    }
+
+
+    /**
+     * Returns the probability of precipitation.
+     * @return Precipitation probability.
+     */
+    public Amount getPrecipitationProbability() {
+        return this.precipitationProbability;
+    }
+
+
+    /**
+     * Returns the pressure.
+     * @return Pressure.
+     */
+    public Pressure getPressure() {
+        return this.pressure;
+    }
+
+
+    /**
+     * Returns the summary describing the weather conditions.
+     * @return Summary.
+     */
+    public String getSummary() {
+        return this.summary;
+    }
+
+
+    /**
+     * Returns the temperature.
+     * @return Temperature.
+     */
+    public Temperature getTemperature() {
+        return this.temperature;
+    }
+
+
+    /**
+     * Returns the temperature high.
+     * @return Temperature high.
+     */
+    public Temperature getTemperatureHigh() {
+        return this.temperatureHigh;
+    }
+
+
+    /**
+     * Returns the temperature low.
+     * @return Temperature low.
+     */
+    public Temperature getTemperatureLow() {
+        return this.temperatureLow;
+    }
+
+
+    /**
+     * Returns the time.
+     * @return Time.
+     */
+    public Date getTime() {
+        return this.time;
+    }
+
+
+    /**
+     * Returns the UV index.
+     * @return UV index.
+     */
+    public Integer getUVIndex() {
+        return this.uvIndex;
+    }
+
+
+    /**
+     * Returns the distance of visibility.
+     * @return Visibility.
+     */
+    public Distance getVisibility() {
+        return this.visibility;
+    }
+
+
+    /**
+     * Returns the wind gust speed.
+     * @return Wind gust.
+     */
+    public Speed getWindGust() {
+        return this.windGust;
+    }
+
+
+    /**
+     * Returns the speed of the wind.
+     * @return Wind speed.
+     */
+    public Speed getWindSpeed() {
+        return this.windSpeed;
+    }
+
+
+    /**
+     * The toString method returns all the weather data as a string.
+     * @return The formatted String containing the weather data.
+     */
     @Override
     public String toString() {
         return String.format(

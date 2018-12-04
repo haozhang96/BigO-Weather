@@ -1,11 +1,11 @@
 package edu.uncg.csc.bigo.weather.views.activities;
-
 /**
  * Wrapper class for multiple strings passes.
  *
  * @Updated: 12/4/2018
  * @Author: Steven Tran
  */
+
 public class Wrapper {
 
     //Strings that will be converted to the String Messages.
@@ -33,5 +33,4 @@ public class Wrapper {
     //Strings for the current message and temperature.
     public String currentMessage;
     public String temperature;
-
 }

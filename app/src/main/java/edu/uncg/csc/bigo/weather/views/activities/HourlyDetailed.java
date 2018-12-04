@@ -1,4 +1,11 @@
 package edu.uncg.csc.bigo.weather.views.activities;
+/**
+ * This class shows the detailed version of Hourly Weather. It shows precipitation, wind speed, wind
+ * gust, humidity, and ozone.
+ *
+ * @Updated: 12/3/2018
+ * @Author: Steven Tran
+ */
 
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -7,23 +14,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
-
 import java.util.Objects;
-
 import edu.uncg.csc.bigo.weather.R;
 import edu.uncg.csc.bigo.weather.controllers.WeatherController;
 import edu.uncg.csc.bigo.weather.models.util.Globals;
 
-/**
- * This class shows the detailed version of Hourly Weather. It shows precipitation, wind speed, wind
- * gust, humidity, and ozone.
- *
- *
- * @Updated: 12/3/2018
- * @Author: Steven Tran
- */
 public class HourlyDetailed extends AppCompatActivity {
-
     //The buttons that represent the hours.
     private Button hourDetailOne;
     private Button hourDetailTwo;
@@ -48,7 +44,6 @@ public class HourlyDetailed extends AppCompatActivity {
     private Button[] buttons = {hourDetailOne, hourDetailTwo, hourDetailThree, hourDetailFour,
             hourDetailFive, hourDetailSix, hourDetailSeven, hourDetailEight, hourDetailNine,
             hourDetailTen, hourDetailEleven, hourDetailTwelve};
-
 
     //The array of the integers for button ID.
     private Integer[] buttonID = {R.id.hourDetailOne, R.id.hourDetailTwo, R.id.detailedThree,
@@ -85,6 +80,7 @@ public class HourlyDetailed extends AppCompatActivity {
         new DetailedDataRetrieval().execute();
     }
 
+
     /**
      * This method is responsible for allowing the back button to go back.
      *
@@ -100,6 +96,7 @@ public class HourlyDetailed extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(_item);
     }
+
 
     /**
      * This class retrieves the data through the controller to append the messages into the textview.
@@ -120,118 +117,118 @@ public class HourlyDetailed extends AppCompatActivity {
 
             //Shared preference for hourly detail.
             SharedPreferences global = getSharedPreferences("GLOBAL", MODE_PRIVATE);
+            //StringBuffer to append the data for display.
+            StringBuffer StringBuffer = new StringBuffer();
 
             try {
                 //Initialize the controller to get the weather hourly forecast.
                 detailedWeatherForecastController = WeatherController.getWeatherHourlyForecast(global.getInt("ZIP", 27403));
+
+                //Shared preference for matching the buttons to the right data.
+                SharedPreferences sp = getSharedPreferences("HOURLY", MODE_PRIVATE);
+                if (Objects.equals(sp.getString("HourlyDetails", "null"), "0")) {
+                    StringBuffer.append(detailedWeatherForecastController[0][Globals.TIME] + "\n\n");
+                    StringBuffer.append("Precipitation: " + detailedWeatherForecastController[0][Globals.PRECIP_PROBABILITY] + "\n");
+                    StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[0][Globals.WIND_SPEED] + "\n");
+                    StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[0][Globals.WIND_GUST] + "\n");
+                    StringBuffer.append("Humidity: " + detailedWeatherForecastController[0][Globals.HUMIDITY] + "\n");
+                    StringBuffer.append("Ozone: " + detailedWeatherForecastController[0][Globals.OZONE] + "\n");
+
+                } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "1")) {
+                    StringBuffer.append(detailedWeatherForecastController[1][Globals.TIME] + "\n\n");
+                    StringBuffer.append("Precipitation: " + detailedWeatherForecastController[1][Globals.PRECIP_PROBABILITY] + "\n");
+                    StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[1][Globals.WIND_SPEED] + "\n");
+                    StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[1][Globals.WIND_GUST] + "\n");
+                    StringBuffer.append("Humidity: " + detailedWeatherForecastController[1][Globals.HUMIDITY] + "\n");
+                    StringBuffer.append("Ozone: " + detailedWeatherForecastController[1][Globals.OZONE] + "\n");
+
+                } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "2")) {
+                    StringBuffer.append(detailedWeatherForecastController[2][Globals.TIME] + "\n\n");
+                    StringBuffer.append("Precipitation: " + detailedWeatherForecastController[2][Globals.PRECIP_PROBABILITY] + "\n");
+                    StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[2][Globals.WIND_SPEED] + "\n");
+                    StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[2][Globals.WIND_GUST] + "\n");
+                    StringBuffer.append("Humidity: " + detailedWeatherForecastController[2][Globals.HUMIDITY] + "\n");
+                    StringBuffer.append("Ozone: " + detailedWeatherForecastController[2][Globals.OZONE] + "\n");
+
+                } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "3")) {
+                    StringBuffer.append(detailedWeatherForecastController[3][Globals.TIME] + "\n\n");
+                    StringBuffer.append("Precipitation: " + detailedWeatherForecastController[3][Globals.PRECIP_PROBABILITY] + "\n");
+                    StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[3][Globals.WIND_SPEED] + "\n");
+                    StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[3][Globals.WIND_GUST] + "\n");
+                    StringBuffer.append("Humidity: " + detailedWeatherForecastController[3][Globals.HUMIDITY] + "\n");
+                    StringBuffer.append("Ozone: " + detailedWeatherForecastController[3][Globals.OZONE] + "\n");
+
+                } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "4")) {
+                    StringBuffer.append(detailedWeatherForecastController[4][Globals.TIME] + "\n\n");
+                    StringBuffer.append("Precipitation: " + detailedWeatherForecastController[4][Globals.PRECIP_PROBABILITY] + "\n");
+                    StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[4][Globals.WIND_SPEED] + "\n");
+                    StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[4][Globals.WIND_GUST] + "\n");
+                    StringBuffer.append("Humidity: " + detailedWeatherForecastController[4][Globals.HUMIDITY] + "\n");
+                    StringBuffer.append("Ozone: " + detailedWeatherForecastController[4][Globals.OZONE] + "\n");
+
+                } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "5")) {
+                    StringBuffer.append(detailedWeatherForecastController[5][Globals.TIME] + "\n\n");
+                    StringBuffer.append("Precipitation: " + detailedWeatherForecastController[5][Globals.PRECIP_PROBABILITY] + "\n");
+                    StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[5][Globals.WIND_SPEED] + "\n");
+                    StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[5][Globals.WIND_GUST] + "\n");
+                    StringBuffer.append("Humidity: " + detailedWeatherForecastController[5][Globals.HUMIDITY] + "\n");
+                    StringBuffer.append("Ozone: " + detailedWeatherForecastController[5][Globals.OZONE] + "\n");
+
+                } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "6")) {
+                    StringBuffer.append(detailedWeatherForecastController[6][Globals.TIME] + "\n\n");
+                    StringBuffer.append("Precipitation: " + detailedWeatherForecastController[6][Globals.PRECIP_PROBABILITY] + "\n");
+                    StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[6][Globals.WIND_SPEED] + "\n");
+                    StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[6][Globals.WIND_GUST] + "\n");
+                    StringBuffer.append("Humidity: " + detailedWeatherForecastController[6][Globals.HUMIDITY] + "\n");
+                    StringBuffer.append("Ozone: " + detailedWeatherForecastController[6][Globals.OZONE] + "\n");
+
+                } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "7")) {
+                    StringBuffer.append(detailedWeatherForecastController[7][Globals.TIME] + "\n\n");
+                    StringBuffer.append("Precipitation: " + detailedWeatherForecastController[7][Globals.PRECIP_PROBABILITY] + "\n");
+                    StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[7][Globals.WIND_SPEED] + "\n");
+                    StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[7][Globals.WIND_GUST] + "\n");
+                    StringBuffer.append("Humidity: " + detailedWeatherForecastController[7][Globals.HUMIDITY] + "\n");
+                    StringBuffer.append("Ozone: " + detailedWeatherForecastController[7][Globals.OZONE] + "\n");
+
+                } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "8")) {
+                    StringBuffer.append(detailedWeatherForecastController[8][Globals.TIME] + "\n\n");
+                    StringBuffer.append("Precipitation: " + detailedWeatherForecastController[8][Globals.PRECIP_PROBABILITY] + "\n");
+                    StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[8][Globals.WIND_SPEED] + "\n");
+                    StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[8][Globals.WIND_GUST] + "\n");
+                    StringBuffer.append("Humidity: " + detailedWeatherForecastController[8][Globals.HUMIDITY] + "\n");
+                    StringBuffer.append("Ozone: " + detailedWeatherForecastController[8][Globals.OZONE] + "\n");
+
+                } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "9")) {
+                    StringBuffer.append(detailedWeatherForecastController[9][Globals.TIME] + "\n\n");
+                    StringBuffer.append("Precipitation: " + detailedWeatherForecastController[9][Globals.PRECIP_PROBABILITY] + "\n");
+                    StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[9][Globals.WIND_SPEED] + "\n");
+                    StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[9][Globals.WIND_GUST] + "\n");
+                    StringBuffer.append("Humidity: " + detailedWeatherForecastController[9][Globals.HUMIDITY] + "\n");
+                    StringBuffer.append("Ozone: " + detailedWeatherForecastController[9][Globals.OZONE] + "\n");
+
+                } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "10")) {
+                    StringBuffer.append(detailedWeatherForecastController[10][Globals.TIME] + "\n\n");
+                    StringBuffer.append("Precipitation: " + detailedWeatherForecastController[10][Globals.PRECIP_PROBABILITY] + "\n");
+                    StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[10][Globals.WIND_SPEED] + "\n");
+                    StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[10][Globals.WIND_GUST] + "\n");
+                    StringBuffer.append("Humidity: " + detailedWeatherForecastController[10][Globals.HUMIDITY] + "\n");
+                    StringBuffer.append("Ozone: " + detailedWeatherForecastController[10][Globals.OZONE] + "\n");
+
+                } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "11")) {
+                    StringBuffer.append(detailedWeatherForecastController[11][Globals.TIME] + "\n\n");
+                    StringBuffer.append("Precipitation: " + detailedWeatherForecastController[11][Globals.PRECIP_PROBABILITY] + "\n");
+                    StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[11][Globals.WIND_SPEED] + "\n");
+                    StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[11][Globals.WIND_GUST] + "\n");
+                    StringBuffer.append("Humidity: " + detailedWeatherForecastController[11][Globals.HUMIDITY] + "\n");
+                    StringBuffer.append("Ozone: " + detailedWeatherForecastController[11][Globals.OZONE] + "\n");
+                }
+                return StringBuffer.toString();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-            //Shared preference for matching the buttons to the right data.
-            SharedPreferences sp = getSharedPreferences("HOURLY", MODE_PRIVATE);
-
-            //StringBuffer to append the data for display.
-            StringBuffer StringBuffer = new StringBuffer();
-            if (Objects.equals(sp.getString("HourlyDetails", "null"), "0")) {
-                StringBuffer.append(detailedWeatherForecastController[0][Globals.TIME] + "\n\n");
-                StringBuffer.append("Precipitation: " + detailedWeatherForecastController[0][Globals.PRECIP_PROBABILITY] + "\n");
-                StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[0][Globals.WIND_SPEED] + "\n");
-                StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[0][Globals.WIND_GUST] + "\n");
-                StringBuffer.append("Humidity: " + detailedWeatherForecastController[0][Globals.HUMIDITY] + "\n");
-                StringBuffer.append("Ozone: " + detailedWeatherForecastController[0][Globals.OZONE] + "\n");
-
-            } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "1")) {
-                StringBuffer.append(detailedWeatherForecastController[1][Globals.TIME] + "\n\n");
-                StringBuffer.append("Precipitation: " + detailedWeatherForecastController[1][Globals.PRECIP_PROBABILITY] + "\n");
-                StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[1][Globals.WIND_SPEED] + "\n");
-                StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[1][Globals.WIND_GUST] + "\n");
-                StringBuffer.append("Humidity: " + detailedWeatherForecastController[1][Globals.HUMIDITY] + "\n");
-                StringBuffer.append("Ozone: " + detailedWeatherForecastController[1][Globals.OZONE] + "\n");
-
-            } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "2")) {
-                StringBuffer.append(detailedWeatherForecastController[2][Globals.TIME] + "\n\n");
-                StringBuffer.append("Precipitation: " + detailedWeatherForecastController[2][Globals.PRECIP_PROBABILITY] + "\n");
-                StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[2][Globals.WIND_SPEED] + "\n");
-                StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[2][Globals.WIND_GUST] + "\n");
-                StringBuffer.append("Humidity: " + detailedWeatherForecastController[2][Globals.HUMIDITY] + "\n");
-                StringBuffer.append("Ozone: " + detailedWeatherForecastController[2][Globals.OZONE] + "\n");
-
-            } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "3")) {
-                StringBuffer.append(detailedWeatherForecastController[3][Globals.TIME] + "\n\n");
-                StringBuffer.append("Precipitation: " + detailedWeatherForecastController[3][Globals.PRECIP_PROBABILITY] + "\n");
-                StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[3][Globals.WIND_SPEED] + "\n");
-                StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[3][Globals.WIND_GUST] + "\n");
-                StringBuffer.append("Humidity: " + detailedWeatherForecastController[3][Globals.HUMIDITY] + "\n");
-                StringBuffer.append("Ozone: " + detailedWeatherForecastController[3][Globals.OZONE] + "\n");
-
-            } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "4")) {
-                StringBuffer.append(detailedWeatherForecastController[4][Globals.TIME] + "\n\n");
-                StringBuffer.append("Precipitation: " + detailedWeatherForecastController[4][Globals.PRECIP_PROBABILITY] + "\n");
-                StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[4][Globals.WIND_SPEED] + "\n");
-                StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[4][Globals.WIND_GUST] + "\n");
-                StringBuffer.append("Humidity: " + detailedWeatherForecastController[4][Globals.HUMIDITY] + "\n");
-                StringBuffer.append("Ozone: " + detailedWeatherForecastController[4][Globals.OZONE] + "\n");
-
-            } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "5")) {
-                StringBuffer.append(detailedWeatherForecastController[5][Globals.TIME] + "\n\n");
-                StringBuffer.append("Precipitation: " + detailedWeatherForecastController[5][Globals.PRECIP_PROBABILITY] + "\n");
-                StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[5][Globals.WIND_SPEED] + "\n");
-                StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[5][Globals.WIND_GUST] + "\n");
-                StringBuffer.append("Humidity: " + detailedWeatherForecastController[5][Globals.HUMIDITY] + "\n");
-                StringBuffer.append("Ozone: " + detailedWeatherForecastController[5][Globals.OZONE] + "\n");
-
-            } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "6")) {
-                StringBuffer.append(detailedWeatherForecastController[6][Globals.TIME] + "\n\n");
-                StringBuffer.append("Precipitation: " + detailedWeatherForecastController[6][Globals.PRECIP_PROBABILITY] + "\n");
-                StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[6][Globals.WIND_SPEED] + "\n");
-                StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[6][Globals.WIND_GUST] + "\n");
-                StringBuffer.append("Humidity: " + detailedWeatherForecastController[6][Globals.HUMIDITY] + "\n");
-                StringBuffer.append("Ozone: " + detailedWeatherForecastController[6][Globals.OZONE] + "\n");
-
-            } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "7")) {
-                StringBuffer.append(detailedWeatherForecastController[7][Globals.TIME] + "\n\n");
-                StringBuffer.append("Precipitation: " + detailedWeatherForecastController[7][Globals.PRECIP_PROBABILITY] + "\n");
-                StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[7][Globals.WIND_SPEED] + "\n");
-                StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[7][Globals.WIND_GUST] + "\n");
-                StringBuffer.append("Humidity: " + detailedWeatherForecastController[7][Globals.HUMIDITY] + "\n");
-                StringBuffer.append("Ozone: " + detailedWeatherForecastController[7][Globals.OZONE] + "\n");
-
-            } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "8")) {
-                StringBuffer.append(detailedWeatherForecastController[8][Globals.TIME] + "\n\n");
-                StringBuffer.append("Precipitation: " + detailedWeatherForecastController[8][Globals.PRECIP_PROBABILITY] + "\n");
-                StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[8][Globals.WIND_SPEED] + "\n");
-                StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[8][Globals.WIND_GUST] + "\n");
-                StringBuffer.append("Humidity: " + detailedWeatherForecastController[8][Globals.HUMIDITY] + "\n");
-                StringBuffer.append("Ozone: " + detailedWeatherForecastController[8][Globals.OZONE] + "\n");
-
-            } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "9")) {
-                StringBuffer.append(detailedWeatherForecastController[9][Globals.TIME] + "\n\n");
-                StringBuffer.append("Precipitation: " + detailedWeatherForecastController[9][Globals.PRECIP_PROBABILITY] + "\n");
-                StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[9][Globals.WIND_SPEED] + "\n");
-                StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[9][Globals.WIND_GUST] + "\n");
-                StringBuffer.append("Humidity: " + detailedWeatherForecastController[9][Globals.HUMIDITY] + "\n");
-                StringBuffer.append("Ozone: " + detailedWeatherForecastController[9][Globals.OZONE] + "\n");
-
-            } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "10")) {
-                StringBuffer.append(detailedWeatherForecastController[10][Globals.TIME] + "\n\n");
-                StringBuffer.append("Precipitation: " + detailedWeatherForecastController[10][Globals.PRECIP_PROBABILITY] + "\n");
-                StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[10][Globals.WIND_SPEED] + "\n");
-                StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[10][Globals.WIND_GUST] + "\n");
-                StringBuffer.append("Humidity: " + detailedWeatherForecastController[10][Globals.HUMIDITY] + "\n");
-                StringBuffer.append("Ozone: " + detailedWeatherForecastController[10][Globals.OZONE] + "\n");
-
-            } else if (Objects.equals(sp.getString("HourlyDetails", "null"), "11")) {
-                StringBuffer.append(detailedWeatherForecastController[11][Globals.TIME] + "\n\n");
-                StringBuffer.append("Precipitation: " + detailedWeatherForecastController[11][Globals.PRECIP_PROBABILITY] + "\n");
-                StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[11][Globals.WIND_SPEED] + "\n");
-                StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[11][Globals.WIND_GUST] + "\n");
-                StringBuffer.append("Humidity: " + detailedWeatherForecastController[11][Globals.HUMIDITY] + "\n");
-                StringBuffer.append("Ozone: " + detailedWeatherForecastController[11][Globals.OZONE] + "\n");
-            }
-
             return StringBuffer.toString();
         }
+
 
         /**
          * The final method that gets called to display the String into the textview.

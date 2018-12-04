@@ -1,4 +1,11 @@
 package edu.uncg.csc.bigo.weather.views.activities;
+/**
+ * The second fragment activity that represents the daily weather view. This fragment is made from
+ * the MainActivity class. It shows the date, high/low temperatures, summary, and weather icon.
+ *
+ * @Updated 12/2/2018
+ * @Author Steven Tran
+ */
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,27 +18,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.Locale;
-
 import edu.uncg.csc.bigo.weather.R;
-import edu.uncg.csc.bigo.weather.controllers.DataController;
 import edu.uncg.csc.bigo.weather.controllers.WeatherController;
 import edu.uncg.csc.bigo.weather.models.util.Globals;
 import edu.uncg.csc.bigo.weather.views.Icons;
-
 import static android.content.Context.MODE_PRIVATE;
 
-
-/**
- * The second fragment activity that represents the daily weather view. This fragment is made from
- * the MainActivity class. It shows the date, high/low temperatures, summary, and weather icon.
- *
- * @Updated 12/2/2018
- * @Author Steven Tran
- */
 public class DailyWeather extends Fragment {
-
     private TextView dayOneMessage;
     private TextView dayTwoMessage;
     private TextView dayThreeMessage;
@@ -39,7 +33,6 @@ public class DailyWeather extends Fragment {
     private TextView dayFiveMessage;
     private TextView daySixMessage;
     private TextView daySevenMessage;
-
     private ImageView dayOneImage;
     private ImageView dayTwoImage;
     private ImageView dayThreeImage;
@@ -47,7 +40,6 @@ public class DailyWeather extends Fragment {
     private ImageView dayFiveImage;
     private ImageView daySixImage;
     private ImageView daySevenImage;
-
     private Button detailedOne;
     private Button detailedTwo;
     private Button detailedThree;
@@ -56,21 +48,19 @@ public class DailyWeather extends Fragment {
     private Button detailedSix;
     private Button detailedSeven;
 
-    //TextView array for the 7 TextViews that represent the days
+    //TextView array for the 7 TextViews that represent the days.
     private TextView[] textViews = {dayOneMessage, dayTwoMessage, dayThreeMessage,
             dayFourMessage, dayFiveMessage, daySixMessage, daySevenMessage};
 
-    //Integer array for the 7 TextViews that represent their xml ID
+    //Integer array for the 7 TextViews that represent their xml ID.
     private Integer[] textViewID = {R.id.dayOneMessage, R.id.dayTwoMessage, R.id.dayThreeMessage,
             R.id.dayFourMessage, R.id.dayFiveMessage, R.id.daySixMessage, R.id.daySevenMessage};
 
-
-    //ImageView array for the 7 ImageViews that represent the days
+    //ImageView array for the 7 ImageViews that represent the days.
     private ImageView[] imageViews = {dayOneImage, dayTwoImage, dayThreeImage, dayFourImage,
             dayFiveImage, daySixImage, daySevenImage};
 
-
-    //Integer array for the 7 ImageViews that represent their xml ID
+    //Integer array for the 7 ImageViews that represent their xml ID.
     private Integer[] imageViewID = {R.id.dayOneImage, R.id.dayTwoImage, R.id.dayThreeImage,
             R.id.dayFourImage, R.id.dayFiveImage, R.id.daySixImage, R.id.daySevenImage};
 
@@ -78,7 +68,6 @@ public class DailyWeather extends Fragment {
 
     private Button[] buttons = {detailedOne, detailedTwo, detailedThree, detailedFour,
             detailedFive, detailedSix, detailedSeven};
-
 
     private Integer[] buttonID = {R.id.detailedOne, R.id.detailedTwo, R.id.detailedThree,
             R.id.detailedFour, R.id.detailedFive, R.id.detailedSix, R.id.detailedSeven};
@@ -94,11 +83,9 @@ public class DailyWeather extends Fragment {
     public void onActivityCreated(Bundle _savedInstanceState) {
         super.onActivityCreated(_savedInstanceState);
 
-
         SharedPreferences preferences = getActivity().getSharedPreferences("DAILY", MODE_PRIVATE);
 
         final SharedPreferences.Editor editor = preferences.edit();
-
 
         for (int i = 0; i < 7; i++) {
             final int finalI = i;
@@ -145,11 +132,10 @@ public class DailyWeather extends Fragment {
                 }
             });
         }
-
         //Executing the data retrieval.
         new DailyDataRetrieval().execute();
-
     }
+
 
     /**
      * The initial startup loading from the view to handle the initializations.
@@ -157,23 +143,21 @@ public class DailyWeather extends Fragment {
      * @param _inflater
      * @param _container
      * @param _savedInstanceState
-     * @return v = Daily Fragment Layout View
+     * @return v = Daily Fragment Layout View.
      */
     public View onCreateView(LayoutInflater _inflater, ViewGroup _container,
                              Bundle _savedInstanceState) {
 
-        //Initializing the view to the daily weather fragment
+        //Initializing the view to the daily weather fragment.
         View v = _inflater.inflate(R.layout.fragment_daily_weather, _container, false);
 
-        //Initializing the daily messages and images
+        //Initializing the daily messages and images.
         for (int i = 0; i < 7; i++) {
             textViews[i] = v.findViewById(textViewID[i]);
             imageViews[i] = v.findViewById(imageViewID[i]);
             buttons[i] = v.findViewById(buttonID[i]);
         }
-
         return v;
-
     }
 
 
@@ -199,7 +183,6 @@ public class DailyWeather extends Fragment {
             Wrapper w = new Wrapper();
 
             try {
-
                 //This is used to retrieve the zipCode data from the Location class.
                 sp = getActivity().getSharedPreferences("GLOBAL", MODE_PRIVATE);
 
@@ -227,13 +210,12 @@ public class DailyWeather extends Fragment {
                     StringBuffer[i].append(", Low: " + dailyWeatherForecastController[i][Globals.TEMP_LOW] + "\n\n");
                     w.dailyMessages[i] = StringBuffer[i].toString();
                 }
-
-
             } catch (Exception _exception) {
                 _exception.getMessage();
             }
             return w;
         }
+
 
         /**
          * This method will display the results to the views and be called after everything is done.
@@ -295,15 +277,11 @@ public class DailyWeather extends Fragment {
                             imageViews[i].setImageResource(wind.getIconResID());
                             break;
                     }
-
                 }
-
                 // Catch invalid zip codes here and display error message.
             } catch (Exception _e) {
                 textViews[0].setText(_w.dailyMessages[0] = "DAILY: Invalid Zip Code. Please Try Again.");
-
             }
-
             //Displays the message to view output
             for (int i = 0; i < 7; i++) {
                 textViews[i].setText(_w.dailyMessages[i]);
@@ -311,5 +289,3 @@ public class DailyWeather extends Fragment {
         }
     }
 }
-
-

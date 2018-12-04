@@ -1,13 +1,13 @@
 package edu.uncg.csc.bigo.weather.views;
-
-import edu.uncg.csc.bigo.weather.R;
-
 /**
  * This is the Enum class for selecting weather icons.
  *
  * @Updated 12/2/2018
  * @Author Steven Tran
  */
+
+import edu.uncg.csc.bigo.weather.R;
+
 public enum Icons {
 
     CLEAR_DAY(R.drawable.clear_day),
@@ -21,24 +21,22 @@ public enum Icons {
     SNOW(R.drawable.snow),
     WIND(R.drawable.wind);
 
-
-    //Icon resource ID
+    //Icon resource ID.
     private int iconResID;
-
 
     /**
      * This is the constructor for the Enum class.
      *
-     * @param _iconResID = Icon Resource ID
+     * @param _iconResID = Icon Resource ID.
      */
     Icons(int _iconResID) {
         this.iconResID = _iconResID;
     }
 
     /**
-     * Getter for iconResID
+     * Getter for iconResID.
      *
-     * @return iconResID = Icon Resource ID
+     * @return iconResID = Icon Resource ID.
      */
     public int getIconResID() {
         return iconResID;

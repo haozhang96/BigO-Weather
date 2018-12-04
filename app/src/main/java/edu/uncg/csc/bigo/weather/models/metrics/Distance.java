@@ -7,15 +7,13 @@ package edu.uncg.csc.bigo.weather.models.metrics;
  * @authors Hao Zhang
  */
 
-
 import edu.uncg.csc.bigo.weather.models.metrics.units.DistanceUnit;
-
 
 public final class Distance extends UnitTaggedValue<Double, DistanceUnit> {
     /**
      * This constructs a Distance object with a value and a unit.
-     * @param _value The distance's value
-     * @param _unit The distance's unit
+     * @param _value The distance's value.
+     * @param _unit The distance's unit.
      */
     public Distance(double _value, DistanceUnit _unit) {
         super(_value, _unit);
@@ -24,16 +22,16 @@ public final class Distance extends UnitTaggedValue<Double, DistanceUnit> {
 
     /**
      * This method returns a new distance converted to the given unit.
-     * @param _unit The distance unit to convert to
-     * @return A new Distance object with the converted value and unit
+     * @param _unit The distance unit to convert to.
+     * @return A new Distance object with the converted value and unit.
      */
     @Override
     public Distance convertTo(DistanceUnit _unit) {
         if (_unit == null) {
-            // Make sure a new unit was given
+            // Make sure a new unit was given.
             throw new IllegalArgumentException("A new unit was not specified!");
         } else if (_unit.equals(this.getUnit())) {
-            // Converting something to itself is just itself
+            // Converting something to itself is just itself.
             return this;
         }
 
@@ -93,7 +91,7 @@ public final class Distance extends UnitTaggedValue<Double, DistanceUnit> {
 
     /**
      * This method overrides Object's toString method for pretty-printing.
-     * @return A prettified string
+     * @return A prettified string.
      */
     @Override
     public String toString() {

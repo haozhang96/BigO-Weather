@@ -2,10 +2,10 @@ package edu.uncg.csc.bigo.weather.models.util;
 import java.util.Random;
 
 /**
- * The Globals class lists the enumerations of the global variables needed across the project
- * <p>
- * updated 11/14/2018
+ * The Globals class lists the enumerations of the global variables needed across the project, as
+ * well as a method that will choose one of 5 API keys to allow a larger amount of calls per day.
  *
+ * @updated 12/4/2018
  * @authors John Isaac Wilkinson
  */
 public class Globals {
@@ -33,6 +33,13 @@ public class Globals {
     public static final int NEAREST_STORM = 20;
     public static final int ICON = 21;
 
+
+    /**
+     * The getGlobalDarksky method generates a random integer between 1 and 5 and chooses one of five
+     * API keys respectively.
+     *
+     * @return s The API key String
+     */
     public static String getGlobalDarksky(){
         Random myRand = new Random();
         int n = myRand.nextInt(5)+1;

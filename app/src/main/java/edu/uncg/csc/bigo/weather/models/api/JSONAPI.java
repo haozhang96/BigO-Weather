@@ -3,10 +3,9 @@ package edu.uncg.csc.bigo.weather.models.api;
  * This abstract class describes a JSON-based REST API.
  * It is only to be used by API classes extending it.
  *
- * @updated 2018/09/25
+ * @updated 09/25/2018
  * @authors John Isaac Wilkinson, Harman Bains, Hao Zhang
  */
-
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -17,11 +16,10 @@ import java.util.MissingFormatArgumentException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 public abstract class JSONAPI extends RESTAPI {
     /**
      * This constructs a JSONAPI instance with the endpoint URL string of a JSON-based REST API.
-     * @param _endpoint A JSON-based REST API endpoint URL string
+     * @param _endpoint A JSON-based REST API endpoint URL string.
      */
     protected JSONAPI(String _endpoint) {
         super(_endpoint);
@@ -30,18 +28,17 @@ public abstract class JSONAPI extends RESTAPI {
 
     /**
      * This method defines a way of invoking the pre-set API endpoint URL and receiving a response.
-     * @param _endpointFormatters Formatters to format the API endpoint URL on invocation
-     * @return A JSONObject that was returned from the API endpoint
+     * @param _endpointFormatters Formatters to format the API endpoint URL on invocation.
+     * @return A JSONObject that was returned from the API endpoint.
      * @throws MissingFormatArgumentException An exception indicating that an insufficient number of
-     *     formatters had been passed to format the API endpoint URL before invocation
-     * @throws IOException An exception indicating a problem with the connection to the API endpoint
+     *     formatters had been passed to format the API endpoint URL before invocation.
+     * @throws IOException An exception indicating a problem with the connection to the API endpoint.
      * @throws JSONException An exception indicating a problem with parsing the API endpoint's
-     *     response as a JSONObject
+     *     response as a JSONObject.
      */
     @Override
     protected JSONObject getResponse(Object ..._endpointFormatters)
-            throws MissingFormatArgumentException, IOException, JSONException
-    {
+            throws MissingFormatArgumentException, IOException, JSONException {
         // Create a URL object from the endpoint URL string formatted using the specified
         // formatters.
         URL url = new URL(String.format(this.endpoint, _endpointFormatters));

@@ -1,22 +1,17 @@
 package edu.uncg.csc.bigo.weather.data;
-
 /**
- * This class creates the directory and file where locations will be saved. Zip code, latitude and
- * longitude will be saved to the file.
+ * This class creates the directory and file where locations will be saved. Zip code will be taken
+ * as input and saved to the files.
  *
  * @author Harman Bains
- * @updated 10/29/2018
+ * @updated 12/3/2018
  */
 
 import android.content.Context;
-import android.util.Log;
-
 import java.io.File;
 
 public class CreateFile {
-
-    // The name of the file and directory created. Will be stored in another file along with API keys.
-
+    // Declare the paths of the files. Some paths can cause conflict due to threading issues on Android.
     final static String fileName = "zip.txt";
     final static String sortedFileName = "zipSorted.txt";
     final static String directoryName = "ZipDirectory";
@@ -26,8 +21,9 @@ public class CreateFile {
     static File newFile;
 
     /**
-     * @param _context is passed in for the app to create the file and directory.
-     * of the app at that moment.
+     * This method creates the directory and file on the device if they do not exist.
+     *
+     * @param _context is passed in for the app to create the file and directory of the app at that moment.
      * @return void. Creates the file and directory.
      * @throws Exception in case the file or directory were not created.
      */
@@ -46,14 +42,11 @@ public class CreateFile {
             // Create the file in the directory made above.
             try {
                 newFile = new File(txtDir, fileName);
-
             } catch (Exception e) {
-                Log.e("Exception", " could not create file in directory " + e.toString());
+                e.toString();
             }
-
         } catch (Exception e) {
-            Log.e("Exception", " could not create directory " + e.toString());
+            e.toString();
         }
     }
 }
-

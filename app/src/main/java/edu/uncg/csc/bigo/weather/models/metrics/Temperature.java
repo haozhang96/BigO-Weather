@@ -2,19 +2,17 @@ package edu.uncg.csc.bigo.weather.models.metrics;
 /**
  * This class defines a temperature object with a temperature unit attached to it.
  *
- * @updated 2018/09/26
+ * @updated 09/26/2018
  * @authors Hao Zhang
  */
 
-
 import edu.uncg.csc.bigo.weather.models.metrics.units.TemperatureUnit;
-
 
 public final class Temperature extends UnitTaggedValue<Double, TemperatureUnit> {
     /**
      * This constructs a Temperature object with a value and a unit.
-     * @param _value The temperature's value
-     * @param _unit The temperature's unit
+     * @param _value The temperature's value.
+     * @param _unit The temperature's unit.
      */
     public Temperature(double _value, TemperatureUnit _unit) {
         super(_value, _unit);
@@ -23,8 +21,8 @@ public final class Temperature extends UnitTaggedValue<Double, TemperatureUnit> 
 
     /**
      * This method returns a new temperature converted to the given unit.
-     * @param _unit The temperature unit to convert to
-     * @return A new Temperature object with the converted value and unit
+     * @param _unit The temperature unit to convert to.
+     * @return A new Temperature object with the converted value and unit.
      */
     @Override
     public Temperature convertTo(TemperatureUnit _unit) {
@@ -74,7 +72,7 @@ public final class Temperature extends UnitTaggedValue<Double, TemperatureUnit> 
 
     /**
      * This method overrides Object's toString method for pretty-printing.
-     * @return A prettified string
+     * @return A prettified string.
      */
     @Override
     public String toString() {

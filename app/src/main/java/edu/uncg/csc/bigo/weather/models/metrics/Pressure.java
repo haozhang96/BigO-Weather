@@ -7,15 +7,13 @@ package edu.uncg.csc.bigo.weather.models.metrics;
  * @authors Hao Zhang
  */
 
-
 import edu.uncg.csc.bigo.weather.models.metrics.units.PressureUnit;
-
 
 public final class Pressure extends UnitTaggedValue<Double, PressureUnit> {
     /**
      * This constructs a Pressure object with a value and a unit.
-     * @param _value The pressure's value
-     * @param _unit The pressure's unit
+     * @param _value The pressure's value.
+     * @param _unit The pressure's unit.
      */
     public Pressure(double _value, PressureUnit _unit) {
         super(_value, _unit);
@@ -24,8 +22,8 @@ public final class Pressure extends UnitTaggedValue<Double, PressureUnit> {
 
     /**
      * This method returns a new pressure converted to the given unit.
-     * @param _unit The pressure unit to convert to
-     * @return A new Pressure object with the converted value and unit
+     * @param _unit The pressure unit to convert to.
+     * @return A new Pressure object with the converted value and unit.
      */
     @Override
     public Pressure convertTo(PressureUnit _unit) {
@@ -115,7 +113,7 @@ public final class Pressure extends UnitTaggedValue<Double, PressureUnit> {
 
     /**
      * This method overrides Object's toString method for pretty-printing.
-     * @return A prettified string
+     * @return A prettified string.
      */
     @Override
     public String toString() {
