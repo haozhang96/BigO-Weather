@@ -44,8 +44,6 @@ public class HourlyDetailed extends AppCompatActivity {
             R.id.hourDetailEight, R.id.hourDetailNine, R.id.hourDetailTen, R.id.hourDetailEleven,
             R.id.hourDetailTwelve};
 
-    String[][] hourlyWeatherForecastController;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
