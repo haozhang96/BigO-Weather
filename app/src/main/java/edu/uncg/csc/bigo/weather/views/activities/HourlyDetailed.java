@@ -121,7 +121,6 @@ public class HourlyDetailed extends AppCompatActivity {
             //Shared preference for hourly detail.
             SharedPreferences global = getSharedPreferences("GLOBAL", MODE_PRIVATE);
 
-
             try {
                 //Initialize the controller to get the weather hourly forecast.
                 detailedWeatherForecastController = WeatherController.getWeatherHourlyForecast(global.getInt("ZIP", 27403));

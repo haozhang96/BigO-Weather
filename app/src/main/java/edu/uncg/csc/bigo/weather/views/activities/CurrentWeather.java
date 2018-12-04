@@ -131,9 +131,9 @@ public class CurrentWeather extends Fragment {
         /**
          * This method will display the results to the views and be called after everything is done.
          *
-         * @param w = Wrapper of string data.
+         * @param _w = Wrapper of string data.
          */
-        protected void onPostExecute(Wrapper w) {
+        protected void onPostExecute(Wrapper _w) {
             try {
 
                 //This will choose the correct weather icon for the ImageView.
@@ -190,12 +190,12 @@ public class CurrentWeather extends Fragment {
                 }
 
                 //Sets the TextViews with the String data for view output.
-                currentMessage.setText(w.currentMessage);
-                temperature.setText(w.temperature);
+                currentMessage.setText(_w.currentMessage);
+                temperature.setText(_w.temperature);
 
                 // Catch invalid zip codes here and display error message.
             } catch (Exception _e) {
-                currentMessage.setText(w.currentMessage = "CURRENTLY: Invalid Zip Code. Please Try Again.");
+                currentMessage.setText(_w.currentMessage = "CURRENTLY: Invalid Zip Code. Please Try Again.");
 
                 // Erase invalid inputs from the file.
                 DataController controller = new DataController();

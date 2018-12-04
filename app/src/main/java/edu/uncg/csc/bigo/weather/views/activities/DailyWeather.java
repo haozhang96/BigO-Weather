@@ -229,8 +229,8 @@ public class DailyWeather extends Fragment {
                 }
 
 
-            } catch (Exception exception) {
-                exception.getMessage();
+            } catch (Exception _exception) {
+                _exception.getMessage();
             }
             return w;
         }
@@ -238,9 +238,9 @@ public class DailyWeather extends Fragment {
         /**
          * This method will display the results to the views and be called after everything is done.
          *
-         * @param w = Wrapper of string data.
+         * @param _w = Wrapper of string data.
          */
-        protected void onPostExecute(Wrapper w) {
+        protected void onPostExecute(Wrapper _w) {
             try {
                 //Iterates through the days to add the correct weather icon.
                 for (int i = 0; i < 7; i++) {
@@ -299,14 +299,14 @@ public class DailyWeather extends Fragment {
                 }
 
                 // Catch invalid zip codes here and display error message.
-            } catch (Exception e) {
-                textViews[0].setText(w.dailyMessages[0] = "DAILY: Invalid Zip Code. Please Try Again.");
+            } catch (Exception _e) {
+                textViews[0].setText(_w.dailyMessages[0] = "DAILY: Invalid Zip Code. Please Try Again.");
 
             }
 
             //Displays the message to view output
             for (int i = 0; i < 7; i++) {
-                textViews[i].setText(w.dailyMessages[i]);
+                textViews[i].setText(_w.dailyMessages[i]);
             }
         }
     }

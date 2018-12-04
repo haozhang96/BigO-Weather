@@ -15,26 +15,31 @@ import edu.uncg.csc.bigo.weather.controllers.DataController;
 import edu.uncg.csc.bigo.weather.data.CreateFile;
 
 /**
- *
+ * This class is responsible for setting the app off to choose a location for their weather.
  *
  * @Updated: 12/4/2018
- * @Author: Steven Tran
+ * @Authors: Steven Tran, Harmain Bains
  */
 public class Location extends AppCompatActivity {
 
+    //Textview for error message (wrong zip code).
     private TextView errorMessage;
 
+    //Int used to store zip code.
     private int zipCode;
 
+    //Autocomplete view for search bar.
     AutoCompleteTextView autoView;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle _savedInstanceState) {
+        super.onCreate(_savedInstanceState);
+
+        //Setting the view to Location view.
         setContentView(R.layout.activity_location);
 
-        //Initialize the formatting message TextView box
+        //Initialize the formatting message TextView box.
         errorMessage = findViewById(R.id.errorMessage);
 
         //Initialize the AutoCompleteTextBox which gets data from the saved text file.
@@ -64,6 +69,7 @@ public class Location extends AppCompatActivity {
             e.toString();
         }
 
+        //This gets set off when the button gets clicked on.
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View _v) {
@@ -75,6 +81,7 @@ public class Location extends AppCompatActivity {
                 else if (autoView.getText().toString().length() == 5) {
                     zipCode = Integer.valueOf(autoView.getText().toString());
 
+                    //Shared preference for storing the zip code.
                     SharedPreferences sp = getSharedPreferences("GLOBAL", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sp.edit();
 
@@ -90,10 +97,13 @@ public class Location extends AppCompatActivity {
                         exception.toString();
                     }
 
+                    //Actually storing the int into shared preference editor.
                     editor.putInt("ZIP", zipCode);
                     editor.apply();
 
                     errorMessage.setText("");
+
+                    //Switching from location view to Main activity.
                     startActivity(new Intent(Location.this, MainActivity.class));
                 }
             }
