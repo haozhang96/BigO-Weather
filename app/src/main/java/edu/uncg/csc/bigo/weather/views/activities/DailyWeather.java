@@ -82,6 +82,8 @@ public class DailyWeather extends Fragment {
     private Integer[] buttonID = {R.id.detailedOne, R.id.detailedTwo, R.id.detailedThree,
             R.id.detailedFour, R.id.detailedFive, R.id.detailedSix, R.id.detailedSeven};
 
+    private static StringBuffer test;
+
     /**
      * After onCreate method, this method handles executing the data retrieval and creating a saved
      * instance.
@@ -93,7 +95,60 @@ public class DailyWeather extends Fragment {
         super.onActivityCreated(_savedInstanceState);
 
 
+        SharedPreferences yes = getActivity().getSharedPreferences("please", MODE_PRIVATE);
+
+        final SharedPreferences.Editor editor = yes.edit();
+
+
+        for (int i = 0; i < 7; i++) {
+            final int finalI = i;
+            getActivity().findViewById(buttonID[i]).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    switch(finalI) {
+                        case 0:
+                            editor.putString("GO", "0");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), DailyDetailed.class));
+                            break;
+                        case 1:
+                            editor.putString("GO","1");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), DailyDetailed.class));
+                            break;
+                        case 2:
+                            editor.putString("GO","2");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), DailyDetailed.class));
+                            break;
+                        case 3:
+                            editor.putString("GO","3");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), DailyDetailed.class));
+                            break;
+                        case 4:
+                            editor.putString("GO","4");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), DailyDetailed.class));
+                            break;
+                        case 5:
+                            editor.putString("GO","5");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), DailyDetailed.class));
+                            break;
+                        case 6:
+                            editor.putString("GO","6");
+                            editor.apply();
+                            startActivity(new Intent(getActivity(), DailyDetailed.class));
+                            break;
+                    }
+                }
+            });
+        }
+
         new DailyDataRetrieval().execute();
+
+
     }
 
     /**
@@ -116,7 +171,9 @@ public class DailyWeather extends Fragment {
             imageViews[i] = v.findViewById(imageViewID[i]);
             buttons[i] = v.findViewById(buttonID[i]);
         }
+
         return v;
+
     }
 
 
@@ -238,15 +295,6 @@ public class DailyWeather extends Fragment {
                         imageViews[i].setImageResource(wind.getIconResID());
                         break;
                 }
-            }
-
-            for (int i = 0; i < 7; i++) {
-                getActivity().findViewById(buttonID[i]).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(getActivity(), DailyDetailed.class));
-                    }
-                });
             }
 
             //Displays the message to view output
