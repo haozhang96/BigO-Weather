@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -14,11 +13,12 @@ import android.widget.TextView;
 import edu.uncg.csc.bigo.weather.R;
 import edu.uncg.csc.bigo.weather.controllers.DataController;
 import edu.uncg.csc.bigo.weather.data.CreateFile;
-import edu.uncg.csc.bigo.weather.models.api.location.GeocodioAPI;
-import edu.uncg.csc.bigo.weather.models.util.Globals;
 
 /**
  *
+ *
+ * @Updated: 12/4/2018
+ * @Author: Steven Tran
  */
 public class Location extends AppCompatActivity {
 

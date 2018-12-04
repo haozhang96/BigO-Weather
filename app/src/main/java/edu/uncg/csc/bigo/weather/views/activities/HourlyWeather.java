@@ -34,6 +34,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class HourlyWeather extends Fragment {
 
 
+    //The textviews for each hour.
     private TextView hourOneMessage;
     private TextView hourTwoMessage;
     private TextView hourThreeMessage;
@@ -47,6 +48,7 @@ public class HourlyWeather extends Fragment {
     private TextView hourElevenMessage;
     private TextView hourTwelveMessage;
 
+    //The image for each hour.
     private ImageView hourOneImage;
     private ImageView hourTwoImage;
     private ImageView hourThreeImage;
@@ -60,6 +62,7 @@ public class HourlyWeather extends Fragment {
     private ImageView hourElevenImage;
     private ImageView hourTwelveImage;
 
+    //The buttons for each hour.
     private Button hourDetailOne;
     private Button hourDetailTwo;
     private Button hourDetailThree;
@@ -74,36 +77,43 @@ public class HourlyWeather extends Fragment {
     private Button hourDetailTwelve;
 
 
+    //The array for the textviews.
     private TextView[] textViews = {hourOneMessage, hourTwoMessage, hourThreeMessage,
             hourFourMessage, hourFiveMessage, hourSixMessage, hourSevenMessage, hourEightMessage,
             hourNineMessage, hourTenMessage, hourElevenMessage, hourTwelveMessage};
 
+    //The array for the integer that represent the textview ID.
     private Integer[] textViewID = {R.id.hourOneMessage, R.id.hourTwoMessage, R.id.hourThreeMessage,
             R.id.hourFourMessage, R.id.hourFiveMessage, R.id.hourSixMessage, R.id.hourSevenMessage,
             R.id.hourEightMessage, R.id.hourNineMessage, R.id.hourTenMessage, R.id.hourElevenMessage,
             R.id.hourTwelveMessage};
 
 
+    //The array for the imageviews.
     private ImageView[] imageViews = {hourOneImage, hourTwoImage, hourThreeImage, hourFourImage,
             hourFiveImage, hourSixImage, hourSevenImage, hourEightImage, hourNineImage,
             hourTenImage, hourElevenImage, hourTwelveImage};
 
 
+    //The array for the integer that represents the image ID.
     private Integer[] imageViewID = {R.id.hourOneImage, R.id.hourTwoImage, R.id.hourThreeImage,
             R.id.hourFourImage, R.id.hourFiveImage, R.id.hourSixImage, R.id.hourSevenImage,
             R.id.hourEightImage, R.id.hourNineImage, R.id.hourTenImage, R.id.hourElevenImage,
             R.id.hourTwelveImage};
 
+    //The array that represents the buttons.
     private Button[] buttons = {hourDetailOne, hourDetailTwo, hourDetailThree, hourDetailFour,
             hourDetailFive, hourDetailSix, hourDetailSeven, hourDetailEight, hourDetailNine,
             hourDetailTen, hourDetailEleven, hourDetailTwelve};
 
 
+    //The array of integers that represent the button IDs.
     private Integer[] buttonID = {R.id.hourDetailOne, R.id.hourDetailTwo, R.id.detailedThree,
             R.id.hourDetailFour, R.id.hourDetailFive, R.id.hourDetailSix, R.id.hourDetailSeven,
             R.id.hourDetailEight, R.id.hourDetailNine, R.id.hourDetailTen, R.id.hourDetailEleven,
             R.id.hourDetailTwelve};
 
+    //The 2D array for the controller.
     String[][] hourlyWeatherForecastController;
 
     /**
@@ -116,10 +126,13 @@ public class HourlyWeather extends Fragment {
     public void onActivityCreated(Bundle _savedInstanceState) {
         super.onActivityCreated(_savedInstanceState);
 
+        //The shared preference for the hourly data.
         SharedPreferences preferences = getActivity().getSharedPreferences("HOURLY", MODE_PRIVATE);
 
+        //The editor for the hourly key.
         final SharedPreferences.Editor editor = preferences.edit();
 
+        //Loops through the buttons to apply a shared preference key.
         for (int i = 0; i < 12; i++) {
             final int finalI = i;
             getActivity().findViewById(buttonID[i]).setOnClickListener(new View.OnClickListener() {
@@ -193,10 +206,9 @@ public class HourlyWeather extends Fragment {
             });
         }
 
-        //
+        //Executing the hourly data.
         new HourlyDataRetrieval().execute();
 
-        new HourlyDataRetrieval().execute();
     }
 
     /**
@@ -277,7 +289,7 @@ public class HourlyWeather extends Fragment {
                     w.hourlyMessages[i] = StringBuffer[i].toString();
                 }
 
-            } catch (Exception exception) {
+            } catch (Exception _exception) {
 
             }
             return w;
@@ -286,9 +298,9 @@ public class HourlyWeather extends Fragment {
         /**
          * This method will display the results to the views and be called after everything is done.
          *
-         * @param w = Wrapper of string data.
+         * @param _w = Wrapper of string data.
          */
-        protected void onPostExecute(Wrapper w) {
+        protected void onPostExecute(Wrapper _w) {
             try {
                 //Iterates through the hours to add the correct weather icon.
                 for (int i = 0; i < 12; i++) {
@@ -347,7 +359,7 @@ public class HourlyWeather extends Fragment {
 
                 // Catch invalid zip codes here and display error message.
             } catch (Exception e) {
-                textViews[0].setText(w.hourlyMessages[0] = "HOURLY: Invalid Zip Code. Please Try Again.");
+                textViews[0].setText(_w.hourlyMessages[0] = "HOURLY: Invalid Zip Code. Please Try Again.");
 
                 // Erase invalid inputs from the file.
                 DataController controller = new DataController();
@@ -355,7 +367,7 @@ public class HourlyWeather extends Fragment {
             }
             //Displays the message to view output
             for (int i = 0; i < 12; i++) {
-                textViews[i].setText(w.hourlyMessages[i]);
+                textViews[i].setText(_w.hourlyMessages[i]);
             }
         }
     }

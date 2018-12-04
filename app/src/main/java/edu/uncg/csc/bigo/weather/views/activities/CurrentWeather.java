@@ -134,9 +134,7 @@ public class CurrentWeather extends Fragment {
          * @param w = Wrapper of string data.
          */
         protected void onPostExecute(Wrapper w) {
-
             try {
-
 
                 //This will choose the correct weather icon for the ImageView.
                 switch (currentWeatherController[Globals.ICON]) {
@@ -195,19 +193,16 @@ public class CurrentWeather extends Fragment {
                 currentMessage.setText(w.currentMessage);
                 temperature.setText(w.temperature);
 
-// Catch invalid zip codes here and display error message.
-            } catch (Exception e) {
+                // Catch invalid zip codes here and display error message.
+            } catch (Exception _e) {
                 currentMessage.setText(w.currentMessage = "CURRENTLY: Invalid Zip Code. Please Try Again.");
 
                 // Erase invalid inputs from the file.
                 DataController controller = new DataController();
-//                controller.removeController();
+
                 // Retrieve the zip code from SharedPreference and default to 27403 if an error occurs.
                 controller.removeInvalidZipCodeController(sp.getInt("ZIP", 27403), getContext());
-
             }
-
-
         }
     }
 }

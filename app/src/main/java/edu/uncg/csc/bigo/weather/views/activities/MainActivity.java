@@ -1,18 +1,10 @@
 package edu.uncg.csc.bigo.weather.views.activities;
-/**
- * The MainActivity class controls buttons, textboxes, and the general activity of the program. We are
- * using it mainly to set up the UI necessary for testing.
- * <p>
- * updated 11/14/18
- *
- * @authors Hao Zhang, John Wilkinson, Steven Tran, Harman Bains.
- **/
 
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
+
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -23,26 +15,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
 import edu.uncg.csc.bigo.weather.R;
 import edu.uncg.csc.bigo.weather.controllers.DataController;
-import edu.uncg.csc.bigo.weather.controllers.WeatherController;
 
+
+/**
+ * The MainActivity class controls the 3 fragments: Current, Daily, Hourly. The backbone of the
+ * views.
+ *
+ * @Updated: 12/4/2018
+ * @Author Steven Tran
+ **/
 public class MainActivity extends AppCompatActivity {
 
+    //This manages the fragments.
     private SectionsPagerAdapter mSectionsPagerAdapter;
+
+    //This viewpager allows for view changing.
     private ViewPager mViewPager;
 
 
-    //The first three lines of this are by default in the MainActivity class.
+    /**
+     * The method that is called on start up to manage the view fragments.
+     *
+     * @param _savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
+
+        //Sets the view to Main Activity.
         setContentView(R.layout.activity_main);
 
 
@@ -56,15 +61,18 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tabs);
 
+        //Allows pages to be changed.
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
+        //Shared preference to manage if zipcode was already entered initially.
         SharedPreferences sp = getSharedPreferences("GLOBAL", Context.MODE_PRIVATE);
 
 
         boolean firstRun = sp.getBoolean("run", true);
 
 
+        //If zipcode was not an input yet, then the location view will start up.
         if (firstRun) {
             startActivity(new Intent(MainActivity.this, Location.class));
         }
@@ -72,18 +80,30 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
+    /**
+     * This allows for the top right navigation bar.
+     *
+     * @param _menu
+     * @return true
+     */
+    public boolean onCreateOptionsMenu(Menu _menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.menu_main, _menu);
         return true;
     }
 
+    /**
+     * This defines what the options in the top right navigation bar do.
+     *
+     * @param _item
+     * @return true
+     */
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem _item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        int id = _item.getItemId();
 
         if (id == R.id.action_location) {
             startActivity(new Intent(this, Location.class));
@@ -103,23 +123,37 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(_item);
     }
 
     /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+     * A FragmentPager Adapter that returns a fragment corresponding to
      * one of the sections/tabs/pages.
+     *
+     * @Updated: 12/4/2018
+     * @Author: Steven Tran
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
+        /**
+         * Creating the sections pager adapter.
+         *
+         * @param _fm
+         */
         public SectionsPagerAdapter(FragmentManager _fm) {
             super(_fm);
         }
 
+        /**
+         * Initialize the fragment views.
+         *
+         * @param _position
+         * @return fragment
+         */
         @Override
-        public Fragment getItem(int position) {
+        public Fragment getItem(int _position) {
             Fragment fragment = null;
-            switch (position) {
+            switch (_position) {
                 case 0:
                     fragment = new CurrentWeather();
                     break;
@@ -133,12 +167,23 @@ public class MainActivity extends AppCompatActivity {
             return fragment;
         }
 
+        /**
+         * Gets the count of how many fragments.
+         *
+         * @return 3
+         */
         @Override
         public int getCount() {
             // Show 3 total pages.
             return 3;
         }
 
+        /**
+         * Titles the fragments for declaration.
+         *
+         * @param _position
+         * @return null
+         */
         @Override
         public CharSequence getPageTitle(int _position) {
             switch (_position) {
@@ -152,6 +197,4 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
-
-
 }

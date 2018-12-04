@@ -146,7 +146,7 @@ public class DailyWeather extends Fragment {
             });
         }
 
-        //
+        //Executing the data retrieval.
         new DailyDataRetrieval().execute();
 
     }
