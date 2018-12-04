@@ -127,6 +127,7 @@ public class DailyDetailed extends AppCompatActivity {
             //StringBuffer to append messages if it matches the SharedPreference key.
             StringBuffer StringBuffer = new StringBuffer();
             if (Objects.equals(sp.getString("DailyDetails", "null"), "0")) {
+                StringBuffer.append(detailedWeatherForecastController[0][Globals.TIME].replaceAll("00:00:00 EST 2018", "") + "\n\n");
                 StringBuffer.append("Precipitation: " + detailedWeatherForecastController[0][Globals.PRECIP_PROBABILITY] + "\n");
                 StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[0][Globals.WIND_SPEED] + "\n");
                 StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[0][Globals.WIND_GUST] + "\n");
@@ -134,6 +135,7 @@ public class DailyDetailed extends AppCompatActivity {
                 StringBuffer.append("Moon Phase: " + detailedWeatherForecastController[0][Globals.MOON_PHASE] + "\n");
                 StringBuffer.append("Ozone: " + detailedWeatherForecastController[0][Globals.OZONE] + "\n");
             } else if (Objects.equals(sp.getString("DailyDetails", "null"), "1")) {
+                StringBuffer.append(detailedWeatherForecastController[1][Globals.TIME].replaceAll("00:00:00 EST 2018", "") + "\n\n");
                 StringBuffer.append("Precipitation: " + detailedWeatherForecastController[1][Globals.PRECIP_PROBABILITY] + "\n");
                 StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[1][Globals.WIND_SPEED] + "\n");
                 StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[1][Globals.WIND_GUST] + "\n");
@@ -141,6 +143,7 @@ public class DailyDetailed extends AppCompatActivity {
                 StringBuffer.append("Moon Phase: " + detailedWeatherForecastController[1][Globals.MOON_PHASE] + "\n");
                 StringBuffer.append("Ozone: " + detailedWeatherForecastController[1][Globals.OZONE] + "\n");
             } else if (Objects.equals(sp.getString("DailyDetails", "null"), "2")) {
+                StringBuffer.append(detailedWeatherForecastController[2][Globals.TIME].replaceAll("00:00:00 EST 2018", "") + "\n\n");
                 StringBuffer.append("Precipitation: " + detailedWeatherForecastController[2][Globals.PRECIP_PROBABILITY] + "\n");
                 StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[2][Globals.WIND_SPEED] + "\n");
                 StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[2][Globals.WIND_GUST] + "\n");
@@ -148,6 +151,7 @@ public class DailyDetailed extends AppCompatActivity {
                 StringBuffer.append("Moon Phase: " + detailedWeatherForecastController[2][Globals.MOON_PHASE] + "\n");
                 StringBuffer.append("Ozone: " + detailedWeatherForecastController[2][Globals.OZONE] + "\n");
             } else if (Objects.equals(sp.getString("DailyDetails", "null"), "3")) {
+                StringBuffer.append(detailedWeatherForecastController[3][Globals.TIME].replaceAll("00:00:00 EST 2018", "") + "\n\n");
                 StringBuffer.append("Precipitation: " + detailedWeatherForecastController[3][Globals.PRECIP_PROBABILITY] + "\n");
                 StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[3][Globals.WIND_SPEED] + "\n");
                 StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[3][Globals.WIND_GUST] + "\n");
@@ -155,6 +159,7 @@ public class DailyDetailed extends AppCompatActivity {
                 StringBuffer.append("Moon Phase: " + detailedWeatherForecastController[3][Globals.MOON_PHASE] + "\n");
                 StringBuffer.append("Ozone: " + detailedWeatherForecastController[3][Globals.OZONE] + "\n");
             } else if (Objects.equals(sp.getString("DailyDetails", "null"), "4")) {
+                StringBuffer.append(detailedWeatherForecastController[4][Globals.TIME].replaceAll("00:00:00 EST 2018", "") + "\n\n");
                 StringBuffer.append("Precipitation: " + detailedWeatherForecastController[4][Globals.PRECIP_PROBABILITY] + "\n");
                 StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[4][Globals.WIND_SPEED] + "\n");
                 StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[4][Globals.WIND_GUST] + "\n");
@@ -162,6 +167,7 @@ public class DailyDetailed extends AppCompatActivity {
                 StringBuffer.append("Moon Phase: " + detailedWeatherForecastController[4][Globals.MOON_PHASE] + "\n");
                 StringBuffer.append("Ozone: " + detailedWeatherForecastController[4][Globals.OZONE] + "\n");
             } else if (Objects.equals(sp.getString("DailyDetails", "null"), "5")) {
+                StringBuffer.append(detailedWeatherForecastController[5][Globals.TIME].replaceAll("00:00:00 EST 2018", "") + "\n\n");
                 StringBuffer.append("Precipitation: " + detailedWeatherForecastController[5][Globals.PRECIP_PROBABILITY] + "\n");
                 StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[5][Globals.WIND_SPEED] + "\n");
                 StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[5][Globals.WIND_GUST] + "\n");
@@ -169,6 +175,7 @@ public class DailyDetailed extends AppCompatActivity {
                 StringBuffer.append("Moon Phase: " + detailedWeatherForecastController[5][Globals.MOON_PHASE] + "\n");
                 StringBuffer.append("Ozone: " + detailedWeatherForecastController[5][Globals.OZONE] + "\n");
             } else if (Objects.equals(sp.getString("DailyDetails", "null"), "6")) {
+                StringBuffer.append(detailedWeatherForecastController[6][Globals.TIME].replaceAll("00:00:00 EST 2018", "") + "\n\n");
                 StringBuffer.append("Precipitation: " + detailedWeatherForecastController[6][Globals.PRECIP_PROBABILITY] + "\n");
                 StringBuffer.append("Wind Speed: " + detailedWeatherForecastController[6][Globals.WIND_SPEED] + "\n");
                 StringBuffer.append("Wind Gust: " + detailedWeatherForecastController[6][Globals.WIND_GUST] + "\n");

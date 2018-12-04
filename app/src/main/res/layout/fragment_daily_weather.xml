@@ -17,155 +17,141 @@
 
             <TextView
                 android:id="@+id/dayOneMessage"
-                android:layout_width="match_parent"
+                android:layout_width="317dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="0dp"
                 android:background="@drawable/button_border"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:textAlignment="viewStart"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/dayTwoMessage"
-                android:layout_width="match_parent"
+                android:layout_width="317dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="100dp"
                 android:background="@drawable/button_border"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/dayThreeMessage"
-                android:layout_width="match_parent"
+                android:layout_width="317dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="200dp"
                 android:background="@drawable/button_border"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:textAlignment="textStart"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/dayFourMessage"
-                android:layout_width="match_parent"
+                android:layout_width="317dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="300dp"
                 android:background="@drawable/button_border"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:textAlignment="textStart"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/dayFiveMessage"
-                android:layout_width="match_parent"
+                android:layout_width="317dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="400dp"
                 android:background="@drawable/button_border"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:textAlignment="textStart"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/daySixMessage"
-                android:layout_width="match_parent"
+                android:layout_width="317dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="500dp"
                 android:background="@drawable/button_border"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:textAlignment="textStart"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/daySevenMessage"
-                android:layout_width="match_parent"
+                android:layout_width="317dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="600dp"
                 android:background="@drawable/button_border"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:textAlignment="textStart"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textSize="10sp" />
 
             <ImageView
                 android:id="@+id/dayOneImage"
                 android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_height="100dp"
                 android:layout_marginHorizontal="315dp"
-                android:layout_marginTop="8dp"
-                android:elevation="2dp"
+                android:layout_marginTop="0dp"
                 android:src="@color/Transparent" />
 
             <ImageView
                 android:id="@+id/dayTwoImage"
                 android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_height="100dp"
                 android:layout_marginHorizontal="315dp"
-                android:layout_marginTop="107dp"
-                android:elevation="2dp"
+                android:layout_marginTop="100dp"
                 android:src="@color/Transparent" />
 
             <ImageView
                 android:id="@+id/dayThreeImage"
                 android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_height="100dp"
                 android:layout_marginHorizontal="315dp"
-                android:layout_marginTop="207dp"
-                android:elevation="2dp"
+                android:layout_marginTop="200dp"
                 android:src="@color/Transparent" />
 
             <ImageView
                 android:id="@+id/dayFourImage"
                 android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_height="100dp"
                 android:layout_marginHorizontal="315dp"
-                android:layout_marginTop="308dp"
-                android:elevation="2dp"
+                android:layout_marginTop="300dp"
                 android:src="@color/Transparent" />
 
             <ImageView
                 android:id="@+id/dayFiveImage"
                 android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_height="100dp"
                 android:layout_marginHorizontal="315dp"
-                android:layout_marginTop="407dp"
-                android:elevation="2dp"
+                android:layout_marginTop="400dp"
                 android:src="@color/Transparent" />
 
             <ImageView
                 android:id="@+id/daySixImage"
                 android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_height="100dp"
                 android:layout_marginHorizontal="315dp"
-                android:layout_marginTop="507dp"
-                android:elevation="2dp"
+                android:layout_marginTop="500dp"
                 android:src="@color/Transparent" />
 
             <ImageView
                 android:id="@+id/daySevenImage"
                 android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_height="100dp"
                 android:layout_marginHorizontal="315dp"
-                android:layout_marginTop="607dp"
-                android:elevation="2dp"
+                android:layout_marginTop="600dp"
                 android:src="@color/Transparent" />
 
             <Button

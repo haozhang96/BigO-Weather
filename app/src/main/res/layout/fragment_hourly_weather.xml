@@ -23,9 +23,8 @@
                 android:textAlignment="viewStart"
                 android:textSize="12sp"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textAllCaps="true"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:background="@drawable/button_border" />
 
 
@@ -37,9 +36,8 @@
                 android:textAlignment="textStart"
                 android:textSize="12sp"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textAllCaps="true"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:background="@drawable/button_border" />
 
             <TextView
@@ -50,9 +48,8 @@
                 android:textAlignment="textStart"
                 android:textSize="12sp"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textAllCaps="true"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:background="@drawable/button_border" />
 
             <TextView
@@ -63,9 +60,8 @@
                 android:textAlignment="textStart"
                 android:textSize="12sp"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textAllCaps="true"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:background="@drawable/button_border" />
 
             <TextView
@@ -76,9 +72,8 @@
                 android:textAlignment="textStart"
                 android:textSize="12sp"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textAllCaps="true"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:background="@drawable/button_border" />
 
             <TextView
@@ -87,12 +82,11 @@
                 android:layout_height="80dp"
                 android:layout_marginTop="400dp"
                 android:background="@drawable/button_border"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:textAlignment="textStart"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/hourSevenMessage"
@@ -102,9 +96,8 @@
                 android:textAlignment="textStart"
                 android:textSize="12sp"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textAllCaps="true"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:background="@drawable/button_border" />
 
             <TextView
@@ -115,9 +108,8 @@
                 android:textAlignment="textStart"
                 android:textSize="12sp"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textAllCaps="true"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:background="@drawable/button_border" />
 
             <TextView
@@ -128,9 +120,8 @@
                 android:textAlignment="textStart"
                 android:textSize="12sp"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textAllCaps="true"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:background="@drawable/button_border" />
 
             <TextView
@@ -141,9 +132,8 @@
                 android:textAlignment="textStart"
                 android:textSize="12sp"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textAllCaps="true"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:background="@drawable/button_border" />
 
             <TextView
@@ -154,9 +144,8 @@
                 android:textAlignment="textStart"
                 android:textSize="12sp"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textAllCaps="true"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:background="@drawable/button_border" />
 
             <TextView
@@ -167,9 +156,8 @@
                 android:textAlignment="textStart"
                 android:textSize="12sp"
                 android:textColor="@color/white"
-                android:textStyle="bold"
                 android:textAllCaps="true"
-                android:fontFamily="@font/hammersmith_one"
+                android:fontFamily=""
                 android:background="@drawable/button_border" />
 
             <ImageView
