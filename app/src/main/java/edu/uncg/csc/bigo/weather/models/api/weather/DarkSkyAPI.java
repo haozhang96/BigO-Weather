@@ -10,6 +10,7 @@ package edu.uncg.csc.bigo.weather.models.api.weather;
 import edu.uncg.csc.bigo.weather.models.api.JSONAPI;
 import edu.uncg.csc.bigo.weather.models.metrics.*;
 import edu.uncg.csc.bigo.weather.models.metrics.units.*;
+import edu.uncg.csc.bigo.weather.models.util.Globals;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherData;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherDataBuilder;
@@ -22,11 +23,10 @@ import org.json.JSONObject;
 
 public final class DarkSkyAPI extends JSONAPI implements WeatherAPI {
     /**
-     * This constructs an instance of DarkSkyAPI with a given API key.
-     * @param _apiKey The API key to the Dark Sky API service
+     * This constructs an instance of DarkSkyAPI with the set API key.
      */
-    public DarkSkyAPI(String _apiKey) {
-        super(String.format("https://api.darksky.net/forecast/%s/%%f,%%f", _apiKey));
+    public DarkSkyAPI() {
+        super(String.format("https://api.darksky.net/forecast/%s/%%f,%%f", Globals.APIKEY_DARKSKY));
     }
 
 

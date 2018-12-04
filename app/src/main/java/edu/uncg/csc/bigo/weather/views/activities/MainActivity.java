@@ -16,6 +16,7 @@ import edu.uncg.csc.bigo.weather.models.api.weather.WeatherAPI;
 import edu.uncg.csc.bigo.weather.models.api.weather.DarkSkyAPI;
 import edu.uncg.csc.bigo.weather.models.api.location.GeocodioAPI;
 import edu.uncg.csc.bigo.weather.models.metrics.units.TemperatureUnit;
+import edu.uncg.csc.bigo.weather.models.util.Globals;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherData;
 import edu.uncg.csc.bigo.weather.R;
@@ -62,18 +63,14 @@ public class MainActivity extends AppCompatActivity {
      * This is where we will test things
      */
     private class Test extends AsyncTask<Void, Void, String> {
-        private static final String APIKEY_GEOCODIO = "f0905446086d00db93d937b64d0e999b3b45d5d";
-        private static final String APIKEY_DARKSKY = "1fffd54fe65a40d92a13eb5d7e3e1fee";
-
-
         protected String doInBackground(Void... nothing) {
             try  {
                 // Store a message buffer to append strings to.
                 StringBuffer message = new StringBuffer();
 
                 // Initialize the APIs.
-                WeatherAPI darkSky = new DarkSkyAPI(Test.APIKEY_DARKSKY);
-                LocationAPI geocodio = new GeocodioAPI(Test.APIKEY_GEOCODIO);
+                WeatherAPI darkSky = new DarkSkyAPI();
+                LocationAPI geocodio = new GeocodioAPI(Globals.APIKEY_GEOCODIO);
 
                 // Get the location of the ZIP code.
                 int zipCode = 27409;
@@ -84,13 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 ));
 
                 // Get the current weather data for the ZIP code.
-
-                Log.d("Hao", getApplicationContext().getPackageResourcePath());
-                // "edu/uncg/csc/bigo/weather/models/api/weather"
-                Log.d("Hao", Objects.toString(ClassLoader.getSystemClassLoader().loadClass("models.api.weather.DarkSkyAPI")));
-                Log.d("Hao",
-                        Objects.toString(this.getClass().getClassLoader().getResources(".").hasMoreElements())
-                );
                 WeatherData testCurrent = WeatherController.getCurrentWeather(location); // darkSky.getCurrentWeather(location);
                 message.append("\n\nCurrently:\n" + testCurrent);
                 message.append("\nTemperature in C: " + testCurrent.getTemperature().convertTo(TemperatureUnit.CELSIUS));

@@ -70,4 +70,35 @@ public final class DynamicPackageLoader {
             );
         }
     }
+
+
+    /**
+     * This method dynamically loads all the classes in a given package as subclasses of a given
+     *     superclass.
+     * The code has been adapted from: https://dzone.com/articles/get-all-classes-within-package
+     *
+     * @param _superClass The superclass to cast the dynamically-loaded classes to
+     * @param _packageName The name of the package to dynamically load classes from
+     * @return An array of dynamically-loaded classes that are subclasses of the given superclass
+     * @throws ClassNotFoundException An exception indicating failure to dynamically load a class
+     */
+    public static Class[] loadPackageClassesAs(
+            Class _superClass, String _packageName, String[] _classNames
+    )
+            throws ClassNotFoundException
+    {
+        ArrayList<Class> classes = new ArrayList();
+        ClassLoader classLoader = DynamicPackageLoader.class.getClassLoader();
+
+        for (String className: _classNames) {
+            // Dynamically load the class.
+            Class clazz = classLoader.loadClass(_packageName + "." + className);
+
+            // Cast the class to be a subclass of the given superclass and store it.
+            classes.add(clazz.asSubclass(_superClass));
+        }
+
+        // Return the dynamically-loaded classes in an array.
+        return classes.toArray(new Class[] {});
+    }
 }

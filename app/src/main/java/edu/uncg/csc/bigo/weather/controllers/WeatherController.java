@@ -50,7 +50,7 @@ public final class WeatherController {
 
 
     private static WeatherAPIFallbackHandler getAPIHandler()
-            throws ClassNotFoundException, IOException
+            throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException
     {
         if (WeatherController.api == null) {
             WeatherController.api = new WeatherAPIFallbackHandler();

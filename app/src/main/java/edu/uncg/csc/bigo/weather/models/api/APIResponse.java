@@ -38,6 +38,6 @@ public class APIResponse<T> {
      * @return The response of the API
      */
     public T getResponse() {
-        return this.getResponse();
+        return this.response;
     }
 }

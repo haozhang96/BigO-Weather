@@ -32,12 +32,18 @@ public abstract class APIFallbackHandler<T extends API> {
      * @throws IOException An exception indicating that the given package name is invalid
      *
      */
-    protected APIFallbackHandler(Class<T> _baseAPIClass, String _fallbackPackageName)
-            throws ClassNotFoundException, IOException
+    protected APIFallbackHandler(
+            Class<T> _baseAPIClass, String _fallbackPackageName, Class<APIFallbackNames> _fallbackNames
+    )
+            throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException
     {
+        Log.d("Test", ((String[]) _fallbackNames.getField("names").get(null)).toString());
         // Dynamically load all the classes in the given package
-        Class<T>[]
-                apiClasses = DynamicPackageLoader.loadPackageAs(_baseAPIClass, _fallbackPackageName);
+        Class<T>[] apiClasses = DynamicPackageLoader.loadPackageClassesAs(
+                _baseAPIClass,
+                _fallbackPackageName,
+                (String[]) _fallbackNames.getField("names").get(null)
+        );
 
         // Store an array of classes and their singletons
         int index = 0;

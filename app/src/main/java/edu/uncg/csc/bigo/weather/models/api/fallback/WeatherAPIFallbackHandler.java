@@ -1,23 +1,25 @@
 package edu.uncg.csc.bigo.weather.models.api.fallback;
 
 
-import android.util.Log;
-
 import edu.uncg.csc.bigo.weather.models.api.weather.WeatherAPI;
+import edu.uncg.csc.bigo.weather.models.api.weather.WeatherAPIFallbackNames;
 import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherData;
 
-import java.io.IOException;
-
 
 public final class WeatherAPIFallbackHandler extends APIFallbackHandler implements WeatherAPI {
-    public WeatherAPIFallbackHandler() throws ClassNotFoundException, IOException {
-        super(WeatherAPI.class, "edu.uncg.csc.bigo.weather.models.api.weather");
+    public WeatherAPIFallbackHandler()
+            throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException
+    {
+        super(
+                WeatherAPI.class,
+                "edu.uncg.csc.bigo.weather.models.api.weather",
+                WeatherAPIFallbackNames.class
+        );
     }
 
 
     public WeatherData getCurrentWeather(LocationCoordinate _location) throws Exception {
-        Log.d("Hao", "In APIFallbackHandler.apiCallInstanceMethod");
         return (WeatherData) this.apiCallInstanceMethod(
                 "getCurrentWeather",
                 new Class[] { LocationCoordinate.class },
