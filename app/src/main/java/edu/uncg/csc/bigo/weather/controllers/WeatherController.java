@@ -1,17 +1,6 @@
 package edu.uncg.csc.bigo.weather.controllers;
 
-import org.json.JSONException;
-
-import java.io.IOException;
-
-import edu.uncg.csc.bigo.weather.models.api.WeatherAPI;
-import edu.uncg.csc.bigo.weather.models.api.location.GeocodioAPI;
-import edu.uncg.csc.bigo.weather.models.api.weather.DarkSkyAPI;
-import edu.uncg.csc.bigo.weather.models.util.LocationCoordinate;
-import edu.uncg.csc.bigo.weather.models.weather.WeatherData;
 import edu.uncg.csc.bigo.weather.models.weather.WeatherDataStringFormatter;
-import edu.uncg.csc.bigo.weather.views.activities.MainActivity;
-import edu.uncg.csc.bigo.weather.models.util.ReadTxt;
 
 /**
  * The WeatherController class acts as the controller between the weather models and the view files.

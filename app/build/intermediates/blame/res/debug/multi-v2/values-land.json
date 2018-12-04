@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Steven T\\OneDrive - UNCG\\Desktop\\BigO-Weather\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
+            "outputFile": "C:\\Users\\h_zhang8\\Documents\\GitHub\\BigO-Weather\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Steven T\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0-rc01.aar\\67c3038f0086c3b0df8e328d542600b8\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\h_zhang8\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0-rc01.aar\\c029b56c28b60f104b5ea30014f98256\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Steven T\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0-rc01.aar\\351e7dde5debacb70d1eea823547c946\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\h_zhang8\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0-rc01.aar\\2e871cf25b9e94baeaf059bc97a30f17\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

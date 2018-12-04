@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 import edu.uncg.csc.bigo.weather.R;
 import edu.uncg.csc.bigo.weather.controllers.DataController;
 import edu.uncg.csc.bigo.weather.data.CreateFile;
+import edu.uncg.csc.bigo.weather.models.api.location.GeocodioAPI;
+import edu.uncg.csc.bigo.weather.models.util.Globals;
 
 /**
  *
@@ -26,13 +29,9 @@ public class Location extends AppCompatActivity {
     AutoCompleteTextView autoView;
 
 
-    /**
-     *
-     * @param _savedInstanceState
-     */
     @Override
-    protected void onCreate(Bundle _savedInstanceState) {
-        super.onCreate(_savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
         //Initialize the formatting message TextView box
@@ -45,7 +44,10 @@ public class Location extends AppCompatActivity {
         final Context context = getApplicationContext();
 
         try {
+            // This is used for CRUD operations.
             DataController dataController = new DataController();
+
+            // Returns all of the stored locations from the file.
             String[] zipArray = dataController.returnLocation();
 
             // Create an adapter that connects the context, AutoCompleteTextView and the saved locations
@@ -63,10 +65,6 @@ public class Location extends AppCompatActivity {
         }
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-            /**
-             *
-             * @param _v
-             */
             @Override
             public void onClick(View _v) {
                 //Make sure the user inputs a properly formatted zip.
@@ -76,6 +74,7 @@ public class Location extends AppCompatActivity {
                 }//If the zip is correctly formatted assign it to zipCode
                 else if (autoView.getText().toString().length() == 5) {
                     zipCode = Integer.valueOf(autoView.getText().toString());
+
                     SharedPreferences sp = getSharedPreferences("GLOBAL", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sp.edit();
 
@@ -100,9 +99,6 @@ public class Location extends AppCompatActivity {
             }
         });
     }
-
-
-
 }
 
 

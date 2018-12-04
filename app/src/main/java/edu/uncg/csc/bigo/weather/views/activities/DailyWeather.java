@@ -15,9 +15,10 @@ import android.widget.TextView;
 import java.util.Locale;
 
 import edu.uncg.csc.bigo.weather.R;
+import edu.uncg.csc.bigo.weather.controllers.DataController;
 import edu.uncg.csc.bigo.weather.controllers.WeatherController;
 import edu.uncg.csc.bigo.weather.models.util.Globals;
-import edu.uncg.csc.bigo.weather.models.weather.Icons;
+import edu.uncg.csc.bigo.weather.views.Icons;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -241,60 +242,70 @@ public class DailyWeather extends Fragment {
          * @param w = Wrapper of string data.
          */
         protected void onPostExecute(Wrapper w) {
+            try {
+                //Iterates through the days to add the correct weather icon.
+                for (int i = 0; i < 7; i++) {
+                    switch (dailyWeatherForecastController[i][Globals.ICON]) {
+                        case "clear-day":
+                            Icons clear_day = Icons.valueOf("Clear_day".toUpperCase(Locale.ENGLISH));
+                            imageViews[i].setImageResource(clear_day.getIconResID());
+                            break;
 
-            //Iterates through the days to add the correct weather icon.
-            for (int i = 0; i < 7; i++) {
-                switch (dailyWeatherForecastController[i][Globals.ICON]) {
-                    case "clear-day":
-                        Icons clear_day = Icons.valueOf("Clear_day".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(clear_day.getIconResID());
-                        break;
+                        case "clear-night":
+                            Icons clear_night = Icons.valueOf("Clear_night".toUpperCase(Locale.ENGLISH));
+                            imageViews[i].setImageResource(clear_night.getIconResID());
+                            break;
 
-                    case "clear-night":
-                        Icons clear_night = Icons.valueOf("Clear_night".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(clear_night.getIconResID());
-                        break;
+                        case "cloudy":
+                            Icons cloudy = Icons.valueOf("Cloudy".toUpperCase(Locale.ENGLISH));
+                            imageViews[i].setImageResource(cloudy.getIconResID());
+                            break;
 
-                    case "cloudy":
-                        Icons cloudy = Icons.valueOf("Cloudy".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(cloudy.getIconResID());
-                        break;
+                        case "fog":
+                            Icons fog = Icons.valueOf("Fog".toUpperCase(Locale.ENGLISH));
+                            imageViews[i].setImageResource(fog.getIconResID());
+                            break;
 
-                    case "fog":
-                        Icons fog = Icons.valueOf("Fog".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(fog.getIconResID());
-                        break;
+                        case "partly-cloudy-day":
+                            Icons partly_cloudy_day = Icons.valueOf("Partly_cloudy_day".toUpperCase(Locale.ENGLISH));
+                            imageViews[i].setImageResource(partly_cloudy_day.getIconResID());
+                            break;
 
-                    case "partly-cloudy-day":
-                        Icons partly_cloudy_day = Icons.valueOf("Partly_cloudy_day".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(partly_cloudy_day.getIconResID());
-                        break;
+                        case "partly-cloudy-night":
+                            Icons partly_cloudy_night = Icons.valueOf("Partly_cloudy_night".toUpperCase(Locale.ENGLISH));
+                            imageViews[i].setImageResource(partly_cloudy_night.getIconResID());
+                            break;
 
-                    case "partly-cloudy-night":
-                        Icons partly_cloudy_night = Icons.valueOf("Partly_cloudy_night".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(partly_cloudy_night.getIconResID());
-                        break;
+                        case "rain":
+                            Icons rain = Icons.valueOf("Rain".toUpperCase(Locale.ENGLISH));
+                            imageViews[i].setImageResource(rain.getIconResID());
+                            break;
 
-                    case "rain":
-                        Icons rain = Icons.valueOf("Rain".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(rain.getIconResID());
-                        break;
+                        case "sleet":
+                            Icons sleet = Icons.valueOf("Sleet".toUpperCase(Locale.ENGLISH));
+                            imageViews[i].setImageResource(sleet.getIconResID());
+                            break;
 
-                    case "sleet":
-                        Icons sleet = Icons.valueOf("Sleet".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(sleet.getIconResID());
-                        break;
+                        case "snow":
+                            Icons snow = Icons.valueOf("Snow".toUpperCase(Locale.ENGLISH));
+                            imageViews[i].setImageResource(snow.getIconResID());
+                            break;
 
-                    case "snow":
-                        Icons snow = Icons.valueOf("Snow".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(snow.getIconResID());
-                        break;
+                        case "wind":
+                            Icons wind = Icons.valueOf("Wind".toUpperCase(Locale.ENGLISH));
+                            imageViews[i].setImageResource(wind.getIconResID());
+                            break;
+                    }
 
-                    case "wind":
-                        Icons wind = Icons.valueOf("Wind".toUpperCase(Locale.ENGLISH));
-                        imageViews[i].setImageResource(wind.getIconResID());
-                        break;
                 }
+
+                // Catch invalid zip codes here and display error message.
+            } catch (Exception e) {
+                textViews[0].setText(w.dailyMessages[0] = "DAILY: Invalid Zip Code. Please Try Again.");
+
+                // Erase invalid inputs from the file.
+                DataController controller = new DataController();
+                controller.removeController();
             }
 
             //Displays the message to view output

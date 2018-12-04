@@ -195,12 +195,12 @@ public class WeatherDataStringFormatter {
 
             dailyForecastStringArray[i][Globals.CITY_STATE_ZIP] = locationName;
             dailyForecastStringArray[i][Globals.PRECIP_INTENSITY] = weatherDailyForecast0.getPrecipitationIntensity().toString();
-            dailyForecastStringArray[i][Globals.PRECIP_PROBABILITY] = weatherDailyForecast0.getPrecipitationProbability().toString();
+            dailyForecastStringArray[i][Globals.PRECIP_PROBABILITY] = weatherDailyForecast0.getPrecipitationProbability().convertTo(AmountUnit.PERCENTAGE).toString();
             dailyForecastStringArray[i][Globals.SUMMARY] = weatherDailyForecast0.getSummary();
             dailyForecastStringArray[i][Globals.TIME] = weatherDailyForecast0.getTime().toString();
             dailyForecastStringArray[i][Globals.CLOUD_COVER] = weatherDailyForecast0.getCloudCover().toString();
             dailyForecastStringArray[i][Globals.DEW_POINT] = weatherDailyForecast0.getDewPoint().toString();
-            dailyForecastStringArray[i][Globals.HUMIDITY] = weatherDailyForecast0.getHumidity().toString();
+            dailyForecastStringArray[i][Globals.HUMIDITY] = weatherDailyForecast0.getHumidity().convertTo(AmountUnit.PERCENTAGE).toString();
             dailyForecastStringArray[i][Globals.LAT_LONG] = weatherDailyForecast0.getLocation().toString();
             dailyForecastStringArray[i][Globals.MOON_PHASE] = weatherDailyForecast0.getMoonPhase().toString();
             dailyForecastStringArray[i][Globals.OZONE] = weatherDailyForecast0.getOzone().toString();

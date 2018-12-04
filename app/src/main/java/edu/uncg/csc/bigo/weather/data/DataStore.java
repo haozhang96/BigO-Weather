@@ -150,7 +150,7 @@ public class DataStore implements DataInterface {
     }
 
     @Override
-    public String[] returnLocation() {
+    public  String[] returnLocation() {
         // This generates the drop down list from the text file for the view.
 
         // Create ArrayList and Array that will hold the saved locations.
@@ -161,6 +161,8 @@ public class DataStore implements DataInterface {
         try {
             // Pass in the directory and file name to be read.
             File loadFile = new File(CreateFile.sortedFilePath);
+
+
 
             // Create ArrayList and Array that will hold the saved locations.
             zipList = new ArrayList<String>();

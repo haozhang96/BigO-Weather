@@ -13,9 +13,10 @@ import android.widget.TextView;
 import java.util.Locale;
 
 import edu.uncg.csc.bigo.weather.R;
+import edu.uncg.csc.bigo.weather.controllers.DataController;
 import edu.uncg.csc.bigo.weather.controllers.WeatherController;
 import edu.uncg.csc.bigo.weather.models.util.Globals;
-import edu.uncg.csc.bigo.weather.models.weather.Icons;
+import edu.uncg.csc.bigo.weather.views.Icons;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -133,62 +134,76 @@ public class CurrentWeather extends Fragment {
          */
         protected void onPostExecute(Wrapper w) {
 
-            //This will choose the correct weather icon for the ImageView.
-            switch (currentWeatherController[Globals.ICON]) {
-                case "clear-day":
-                    Icons clear_day = Icons.valueOf("Clear_day".toUpperCase(Locale.ENGLISH));
-                    weatherIcon.setImageResource(clear_day.getIconResID());
-                    break;
+            try {
 
-                case "clear-night":
-                    Icons clear_night = Icons.valueOf("Clear_night".toUpperCase(Locale.ENGLISH));
-                    weatherIcon.setImageResource(clear_night.getIconResID());
-                    break;
 
-                case "cloudy":
-                    Icons cloudy = Icons.valueOf("Cloudy".toUpperCase(Locale.ENGLISH));
-                    weatherIcon.setImageResource(cloudy.getIconResID());
-                    break;
+                //This will choose the correct weather icon for the ImageView.
+                switch (currentWeatherController[Globals.ICON]) {
+                    case "clear-day":
+                        Icons clear_day = Icons.valueOf("Clear_day".toUpperCase(Locale.ENGLISH));
+                        weatherIcon.setImageResource(clear_day.getIconResID());
+                        break;
 
-                case "fog":
-                    Icons fog = Icons.valueOf("Fog".toUpperCase(Locale.ENGLISH));
-                    weatherIcon.setImageResource(fog.getIconResID());
-                    break;
+                    case "clear-night":
+                        Icons clear_night = Icons.valueOf("Clear_night".toUpperCase(Locale.ENGLISH));
+                        weatherIcon.setImageResource(clear_night.getIconResID());
+                        break;
 
-                case "partly-cloudy-day":
-                    Icons partly_cloudy_day = Icons.valueOf("Partly_cloudy_day".toUpperCase(Locale.ENGLISH));
-                    weatherIcon.setImageResource(partly_cloudy_day.getIconResID());
-                    break;
+                    case "cloudy":
+                        Icons cloudy = Icons.valueOf("Cloudy".toUpperCase(Locale.ENGLISH));
+                        weatherIcon.setImageResource(cloudy.getIconResID());
+                        break;
 
-                case "partly-cloudy-night":
-                    Icons partly_cloudy_night = Icons.valueOf("Partly_cloudy_night".toUpperCase(Locale.ENGLISH));
-                    weatherIcon.setImageResource(partly_cloudy_night.getIconResID());
-                    break;
+                    case "fog":
+                        Icons fog = Icons.valueOf("Fog".toUpperCase(Locale.ENGLISH));
+                        weatherIcon.setImageResource(fog.getIconResID());
+                        break;
 
-                case "rain":
-                    Icons rain = Icons.valueOf("Rain".toUpperCase(Locale.ENGLISH));
-                    weatherIcon.setImageResource(rain.getIconResID());
-                    break;
+                    case "partly-cloudy-day":
+                        Icons partly_cloudy_day = Icons.valueOf("Partly_cloudy_day".toUpperCase(Locale.ENGLISH));
+                        weatherIcon.setImageResource(partly_cloudy_day.getIconResID());
+                        break;
 
-                case "sleet":
-                    Icons sleet = Icons.valueOf("Sleet".toUpperCase(Locale.ENGLISH));
-                    weatherIcon.setImageResource(sleet.getIconResID());
-                    break;
+                    case "partly-cloudy-night":
+                        Icons partly_cloudy_night = Icons.valueOf("Partly_cloudy_night".toUpperCase(Locale.ENGLISH));
+                        weatherIcon.setImageResource(partly_cloudy_night.getIconResID());
+                        break;
 
-                case "snow":
-                    Icons snow = Icons.valueOf("Snow".toUpperCase(Locale.ENGLISH));
-                    weatherIcon.setImageResource(snow.getIconResID());
-                    break;
+                    case "rain":
+                        Icons rain = Icons.valueOf("Rain".toUpperCase(Locale.ENGLISH));
+                        weatherIcon.setImageResource(rain.getIconResID());
+                        break;
 
-                case "wind":
-                    Icons wind = Icons.valueOf("Wind".toUpperCase(Locale.ENGLISH));
-                    weatherIcon.setImageResource(wind.getIconResID());
-                    break;
+                    case "sleet":
+                        Icons sleet = Icons.valueOf("Sleet".toUpperCase(Locale.ENGLISH));
+                        weatherIcon.setImageResource(sleet.getIconResID());
+                        break;
+
+                    case "snow":
+                        Icons snow = Icons.valueOf("Snow".toUpperCase(Locale.ENGLISH));
+                        weatherIcon.setImageResource(snow.getIconResID());
+                        break;
+
+                    case "wind":
+                        Icons wind = Icons.valueOf("Wind".toUpperCase(Locale.ENGLISH));
+                        weatherIcon.setImageResource(wind.getIconResID());
+                        break;
+                }
+
+                //Sets the TextViews with the String data for view output.
+                currentMessage.setText(w.currentMessage);
+                temperature.setText(w.temperature);
+
+// Catch invalid zip codes here and display error message.
+            } catch (Exception e) {
+                currentMessage.setText(w.currentMessage = "CURRENTLY: Invalid Zip Code. Please Try Again.");
+
+                // Erase invalid inputs from the file.
+                DataController controller = new DataController();
+                controller.removeController();
             }
 
-            //Sets the TextViews with the String data for view output.
-            currentMessage.setText(w.currentMessage);
-            temperature.setText(w.temperature);
+
         }
     }
 }
